@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import "./globals.css";
+﻿import type { Metadata } from "next";
+import portfolioStyles from "./portfolio-styles";
 
 export const metadata: Metadata = {
   title: "王震龙 · AI 应用开发作品集",
@@ -12,5 +12,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="zh-CN"><body>{children}</body></html>;
+  return <html lang="zh-CN"><head><style dangerouslySetInnerHTML={{ __html: portfolioStyles }} /></head><body>{children}</body></html>;
 }

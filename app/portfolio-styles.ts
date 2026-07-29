@@ -1,5 +1,4 @@
-@import "tailwindcss";
-
+﻿const portfolioStyles = String.raw`
 :root { --ink:#10211d; --paper:#f4f0e8; --line:rgba(16,33,29,.18); --acid:#d7fa65; --coral:#fa7562; --violet:#a47cf6; --serif: Georgia, "Times New Roman", "Noto Serif SC", serif; }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; }
@@ -37,3 +36,8 @@ a { color:inherit; text-decoration:none; }
 .project-lens{font-size:10px!important;letter-spacing:.13em;text-transform:uppercase;color:var(--acid)!important;margin:0 0 16px!important}.project-links{display:flex;gap:20px;margin-top:25px}.project-links a{font-size:10px;letter-spacing:.1em;border-bottom:1px solid rgba(237,244,222,.45);padding-bottom:5px;transition:color .2s,border-color .2s}.project-links a:hover{color:var(--acid);border-color:var(--acid)}
 @media (max-width:700px){.signal-strip{font-size:9px}.commerce-visual,.ticket-visual,.flow-visual{order:1;grid-row:auto;min-height:190px;width:100%;height:190px}.project-copy{order:2}.commerce-lanes{height:42px;margin:16px 0}.commerce-order{font-size:21px}.card-a{top:52px}.card-b{top:95px}.card-c{top:138px}.ticket-rail{top:54px;bottom:19px}.flow-steps{top:52px}.flow-steps b{width:65px;height:65px;font-size:16px}.flow-log{bottom:13px}.project-links{margin-top:17px;gap:13px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+
+`;
+
+export default portfolioStyles;
+
