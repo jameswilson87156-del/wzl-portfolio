@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import SiteComplianceFooter from "./_components/SiteComplianceFooter";
+
+export const metadata: Metadata = {
+  title: "页面不存在",
+  alternates: { canonical: null },
+  openGraph: { url: null },
+  robots: { index: false, follow: false },
+};
 
 export default function NotFound() {
   return (
@@ -7,6 +16,7 @@ export default function NotFound() {
       <h1>页面不存在。</h1>
       <p>该地址不属于当前公开作品集。</p>
       <Link href="/">返回首页</Link>
+      <SiteComplianceFooter />
     </main>
   );
 }

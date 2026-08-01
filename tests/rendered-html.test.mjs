@@ -392,3 +392,65 @@ test("Phase 1C.2 case orientation remains semantic and evidence context stays in
   assert.match(css, /--section-space-lg:/);
   assert.match(css, /--section-space-md:/);
 });
+
+test("Phase 1F.4A exposes one truthful public identity contract", async () => {
+  const config = await readFile(
+    new URL("../app/site-config.ts", import.meta.url),
+    "utf8",
+  );
+  const expectedOrigin = "https://wzl8.top";
+  const expectedIcp = "豫ICP备2026032125号-1";
+  const expectedIcpUrl = "https://beian.miit.gov.cn/";
+  const expectedPages = [
+    ["/", "https://wzl8.top/"],
+    ["/projects/commerceflow", "https://wzl8.top/projects/commerceflow/"],
+    ["/projects/ticket", "https://wzl8.top/projects/ticket/"],
+    ["/projects/devflow", "https://wzl8.top/projects/devflow/"],
+  ];
+
+  assert.equal(expectedOrigin, "https://wzl8.top");
+  assert.match(config, /origin: "https:\/\/wzl8\.top"/);
+  assert.match(config, /hostname: "wzl8\.top"/);
+  assert.match(config, new RegExp(`icpNumber: "${expectedIcp}"`));
+  assert.match(config, /icpUrl: "https:\/\/beian\.miit\.gov\.cn\/"/);
+  assert.doesNotMatch(config, /https?:\/\/www\.wzl8\.top|localhost|127\.0\.0\.1|47\.98\.192\.15/);
+
+  for (const [pathname, canonical] of expectedPages) {
+    const html = await (await render(pathname)).text();
+    const canonicalMatch = html.match(/<link rel="canonical" href="([^"]+)"/);
+    assert.equal(canonicalMatch?.[1], canonical, `${pathname} canonical`);
+    assert.match(
+      html,
+      new RegExp(`<meta property="og:url" content="${canonical.replaceAll("/", "\\/")}"`),
+    );
+    assert.match(
+      html,
+      /<meta property="og:image" content="https:\/\/wzl8\.top\/og\.jpg"/,
+    );
+    assert.match(html, new RegExp(`>${expectedIcp}<`));
+    assert.match(html, new RegExp(`href="${expectedIcpUrl.replaceAll("/", "\\/")}"`));
+    assert.match(html, /target="_blank" rel="noopener noreferrer"/);
+    assert.match(html, /aria-label="前往工信部备案系统查询豫ICP备2026032125号-1"/);
+    assert.doesNotMatch(html, />豫ICP备2026032125号</);
+    assert.doesNotMatch(html, /京公网安备|豫公网安备|公网安备/);
+    assert.doesNotMatch(html, /https?:\/\/www\.wzl8\.top|http:\/\/wzl8\.top|localhost|127\.0\.0\.1/);
+  }
+
+  const notFound = await readFile(new URL("../dist/client/404.html", import.meta.url), "utf8");
+  assert.match(notFound, /页面不存在/);
+  assert.match(notFound, new RegExp(`>${expectedIcp}<`));
+  assert.doesNotMatch(notFound, /<link rel="canonical"/);
+  assert.doesNotMatch(notFound, /property="og:url" content="https:\/\/wzl8\.top\//);
+  assert.doesNotMatch(notFound, /京公网安备|豫公网安备|公网安备/);
+
+  const sitemap = await readFile(new URL("../dist/client/sitemap.xml", import.meta.url), "utf8");
+  const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  assert.match(sitemap, /^<\?xml version="1\.0" encoding="UTF-8"\?>/);
+  assert.equal(sitemapUrls.length, 4);
+  assert.deepEqual(sitemapUrls, expectedPages.map(([, canonical]) => canonical));
+  assert.doesNotMatch(sitemap, /localhost|127\.0\.0\.1|www\.wzl8\.top|<lastmod>|\.rsc|404|47\.98\.192\.15/);
+
+  const robots = await readFile(new URL("../dist/client/robots.txt", import.meta.url), "utf8");
+  assert.match(robots, /User-agent: \*\s+Allow: \/\s+Sitemap: https:\/\/wzl8\.top\/sitemap\.xml/);
+  assert.doesNotMatch(robots, /Disallow:/);
+});

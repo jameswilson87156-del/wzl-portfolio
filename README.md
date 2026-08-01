@@ -93,3 +93,12 @@ npm run build
 - 阿里云 loopback-only staging 与本地 SSH 隧道验收已完成；这不等同于公网生产部署。
 - 公网 80/443、DNS 与 HTTPS 仍未开放；当前不声称已完成正式公网生产发布。
 - `NVDA_NOT_VERIFIED`、`ANDROID_EMULATOR_NOT_VERIFIED`、`IPHONE_SAFARI_NOT_VERIFIED`：真实辅助技术与设备发布验收仍待暂存 URL 可访问后执行。
+
+## Public domain preparation status
+
+- Official origin: `https://wzl8.top`.
+- ICP filing number: `豫ICP备2026032125号-1`.
+- Domain metadata, canonical URLs, sitemap, robots policy, and ICP footer are implemented in code.
+- DNS is not configured; SSL has not been requested; public Nginx ports 80/443 are not enabled.
+- This repository cannot claim a public production launch, public live status, search indexing, or public-security filing completion.
+- Loopback-only staging is currently used for internal validation.

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   collaborationDisclosure,
@@ -5,7 +6,37 @@ import {
   type EvidenceItem,
 } from "./portfolio-data";
 import ContactActions from "./_components/ContactActions";
+import SiteComplianceFooter from "./_components/SiteComplianceFooter";
+import { siteUrl } from "./site-config";
 import ScreenshotFrame from "./projects/_components/ScreenshotFrame";
+
+export const metadata: Metadata = {
+  title: "王震龙 · Java 后端 / AI 应用开发作品集",
+  description: "面向 Java 后端 / AI 应用开发实习的证据优先工程作品集。",
+  alternates: {
+    canonical: siteUrl("/"),
+  },
+  openGraph: {
+    title: "王震龙 · Java 后端 / AI 应用开发作品集",
+    description: "把业务问题，做成可验证的工程系统。",
+    url: siteUrl("/"),
+    type: "website",
+    images: [
+      {
+        url: siteUrl("/og.jpg"),
+        width: 1200,
+        height: 630,
+        alt: "王震龙 Java 后端与 AI 应用开发作品集",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "王震龙 · Java 后端 / AI 应用开发作品集",
+    description: "把业务问题，做成可验证的工程系统。",
+    images: [siteUrl("/og.jpg")],
+  },
+};
 
 function Brand() {
   return (
@@ -318,6 +349,7 @@ export default function Home() {
             <a href="#top">BACK TO TOP ↑</a>
             <span>FACTS FIRST · BUILD · VERIFY · EXPLAIN</span>
           </div>
+          <SiteComplianceFooter />
         </div>
       </footer>
     </main>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import CaseSectionNav from "./CaseSectionNav";
 import ProjectScreenshot from "./ProjectScreenshot";
+import SiteComplianceFooter from "../../_components/SiteComplianceFooter";
 import type {
   EvidenceLink,
   Project,
@@ -492,6 +493,7 @@ export default function ProjectCase({ project }: { project: Project }) {
           <i aria-hidden="true">↗</i>
         </Link>
       </section>
+      <SiteComplianceFooter />
     </main>
   );
 }

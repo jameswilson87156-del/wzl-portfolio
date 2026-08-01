@@ -1253,6 +1253,50 @@ img {
   border-bottom: 1px solid rgba(16, 33, 29, 0.36);
 }
 
+.site-compliance-footer {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-top: 22px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(238, 244, 223, 0.18);
+  color: rgba(238, 244, 223, 0.72);
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  overflow-wrap: anywhere;
+}
+
+.site-compliance-footer a {
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-underline-offset: 3px;
+}
+
+.site-compliance-footer a:hover {
+  color: var(--acid);
+}
+
+.site-compliance-footer a:focus-visible {
+  outline: 2px solid var(--acid);
+  outline-offset: 5px;
+}
+
+.contact .site-compliance-footer {
+  border-top-color: rgba(16, 33, 29, 0.3);
+  color: rgba(16, 33, 29, 0.72);
+}
+
+.contact .site-compliance-footer a:hover,
+.contact .site-compliance-footer a:focus-visible {
+  color: var(--ink);
+}
+
 /* Case pages */
 .case-page {
   background: var(--paper);
@@ -4971,6 +5015,11 @@ a.evidence-claim:hover {
 }
 
 @media (max-width: 700px) {
+  .site-compliance-footer {
+    justify-content: flex-start;
+    margin-top: 18px;
+  }
+
   .case-ambient {
     width: 78vw;
     top: 20vh;
