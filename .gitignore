@@ -40,3 +40,30 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+
+# local review and handoff artifacts
+/.local/
+/.package-stage/
+/.phase1d3a1-transfer-staging/
+/README_FOR_REVIEW.md
+
+# local phase evidence
+/phase-1e2/
+/phase-1e3a-audit/
+/phase-1e3b1-viewer-fix/
+/phase-1e3b2-final-optical/
+/phase-1e3b2a-evidence/
+
+# internal audit archive
+/docs/portfolio-v3/
+
+# local archives and incremental caches
+/portfolio-*.tgz
+/portfolio-*.zip
+/tsconfig.tsbuildinfo
+
+# local audit scripts and Python cache
+/scripts/__pycache__/
+/scripts/phase1*.mjs
+/scripts/phase1*.py
+*.py[cod]

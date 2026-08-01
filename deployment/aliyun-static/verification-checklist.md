@@ -1,0 +1,21 @@
+# Future production verification checklist
+
+- [ ] Approved release ZIP hash matches the uploaded artifact.
+- [ ] Release manifest validates.
+- [ ] `.rsc` and `index.rsc` are byte-identical.
+- [ ] `/`, three project routes and refreshes return 200.
+- [ ] `/.rsc?_rsc=probe` and three project RSC files return 200 with octet-stream MIME.
+- [ ] CSS, JavaScript, seven evidence images, favicon and OG images return 200.
+- [ ] Unknown route returns the intended 404 with status 404.
+- [ ] HTML, CSS, JavaScript, JSON, RSC and SVG return gzip when requested.
+- [ ] PNG, WebP, JPEG and ICO are not recompressed.
+- [ ] Compressed responses include `Vary: Accept-Encoding`.
+- [ ] Responsive WebP and original evidence PNG use the reviewed long-cache policy.
+- [ ] `robots.txt` and `sitemap.xml` return 200 with a short cache.
+- [ ] Directory listing is disabled.
+- [ ] Hidden paths and private-key/backup extensions are denied.
+- [ ] Browser console has no errors or warnings.
+- [ ] OpenClaw port 18352 is unchanged.
+- [ ] searxng port 8080 is unchanged.
+- [ ] Rollback target is recorded before switching `current`.
+- [ ] DNS and HTTPS remain a separately approved operation.

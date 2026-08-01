@@ -1,0 +1,115 @@
+{
+  "scope": "Phase 1D.2A: retained app and public files must remain byte-identical after deliberate unused-target cleanup",
+  "files": [
+    {
+      "path": "app/_components/ContactActions.tsx",
+      "bytes": 6318,
+      "sha256": "72009ba45e8e68c2fb4317dec71039e2faf495e90c4afcaf4a77afaae05893d6"
+    },
+    {
+      "path": "app/_components/MotionController.tsx",
+      "bytes": 7493,
+      "sha256": "93d0560de4e867072cbea68724675d62652f325a81d88081c009eaf86260879d"
+    },
+    {
+      "path": "app/globals.css",
+      "bytes": 83230,
+      "sha256": "89a96f79e1981dcadd7d42824e96826af07f03044217590a454012113c5e3324"
+    },
+    {
+      "path": "app/layout.tsx",
+      "bytes": 1240,
+      "sha256": "fba1cab973d7a8411fc155f3824ceccea7c8ab3cd7fbc8e639000f9b63add76f"
+    },
+    {
+      "path": "app/page.tsx",
+      "bytes": 11850,
+      "sha256": "fdbb9aab1d075ca10e3f670e0ddd9175b73f5fff1c9e915efc39ad30192097fd"
+    },
+    {
+      "path": "app/portfolio-data.ts",
+      "bytes": 54943,
+      "sha256": "00293d77d84c405bf7e91d2378a7f9804e0483819af0e1e93574b47f0d9aa374"
+    },
+    {
+      "path": "app/projects/_components/CaseSectionNav.tsx",
+      "bytes": 1717,
+      "sha256": "baea1790b3fc609b7483651b73a7b165701dc178edde56fa9c95c0c6422070f5"
+    },
+    {
+      "path": "app/projects/_components/ImageViewer.tsx",
+      "bytes": 3302,
+      "sha256": "91dc9c4bb8ff41528d8e3048bb0b3aafaa40b19dff7b25cbc99e4b7582666b26"
+    },
+    {
+      "path": "app/projects/_components/ProjectCase.tsx",
+      "bytes": 16225,
+      "sha256": "6088199aca669fb5930f9e6f90c8d704876efd2968e27abad9862f5f2b85b8dd"
+    },
+    {
+      "path": "app/projects/commerceflow/page.tsx",
+      "bytes": 432,
+      "sha256": "6c9d4a9e91d0fcf365ce105000280fda9c0e736263eb7866f5b2f3283ba50c91"
+    },
+    {
+      "path": "app/projects/devflow/page.tsx",
+      "bytes": 443,
+      "sha256": "37887f118f0578b5deb6fbc02e7b52d7a22cbd30864d776dd4f535092428ff33"
+    },
+    {
+      "path": "app/projects/ticket/page.tsx",
+      "bytes": 455,
+      "sha256": "36b17bb1bddd7d23157216d4a95562da9aee2c506022e803ac2dbd850b649919"
+    },
+    {
+      "path": "public/favicon.ico",
+      "bytes": 4375,
+      "sha256": "1ae1bb8b4fca2e9e3fb7d1cb35b6ec1353121988f78865acddba15c9fad73198"
+    },
+    {
+      "path": "public/favicon.svg",
+      "bytes": 718,
+      "sha256": "3e8863288c2d43dd33d2a71de317dcf9198f09932ea8d61e0def1b846a865435"
+    },
+    {
+      "path": "public/og.png",
+      "bytes": 922675,
+      "sha256": "f225a49c842db8d3a89581f70a23a76dfb6b08cd84ebdc171b9770f03bf20284"
+    },
+    {
+      "path": "public/projects/commerceflow/ai-service.png",
+      "bytes": 206273,
+      "sha256": "6fd7a08681f5818e165de83c941d8c7497365ffb09cbe40f30e5fe9435342ed1"
+    },
+    {
+      "path": "public/projects/commerceflow/order-inventory.png",
+      "bytes": 146548,
+      "sha256": "8ae1703e1eee853d085b51a0b83828a6f271a20cd23aa0aa8341d9a09aef93a5"
+    },
+    {
+      "path": "public/projects/devflow/trace.png",
+      "bytes": 237779,
+      "sha256": "83b3a30aed90783cadbdab35c8d7dc59fa0092ac66ab48ee72ffd28489d9b57c"
+    },
+    {
+      "path": "public/projects/devflow/workbench.png",
+      "bytes": 247718,
+      "sha256": "143c038580e39d066a5089d7a387e6403f7649a22fbf7ae1388883bdd99b2a01"
+    },
+    {
+      "path": "public/projects/ticket/evaluation-metrics.png",
+      "bytes": 443809,
+      "sha256": "07e5de945a3ee6e465e1e7842e8cad447d7dbc9c99e25c84fd0087718bcbfde0"
+    },
+    {
+      "path": "public/projects/ticket/trace.png",
+      "bytes": 603815,
+      "sha256": "22ee6cc912b96f6a3b75e7a46ca84fa2ce9d2a93ba55b611cd7eaaf9afb62942"
+    },
+    {
+      "path": "public/projects/ticket/workbench.png",
+      "bytes": 695722,
+      "sha256": "bd75422afce4fdce0f9b8125a19d5ca71ecfdec76ca815001c93ebdad9e77945"
+    }
+  ]
+}
