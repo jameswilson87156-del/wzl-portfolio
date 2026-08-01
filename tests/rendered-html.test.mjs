@@ -31,27 +31,35 @@ function extractAttribute(tag, name) {
   return tag.match(new RegExp(`${name}="([^"]*)"`))?.[1] ?? "";
 }
 
-test("homepage keeps the frozen V3 positioning and information architecture", async () => {
+test("homepage exposes the approved internship positioning and information architecture", async () => {
   const response = await render("/");
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
 
-  assert.doesNotMatch(html, /Java 全栈|Agent 工程/);
-  assert.match(html, /Java 后端\s*\/\s*AI 应用开发/);
-  assert.match(
-    html,
-    /把业务问题，[\s\S]*做成[\s\S]*可验证的[\s\S]*工程系统。/,
-  );
-  assert.match(html, /JAVA BACKEND × AI APPLICATIONS/);
+  assert.match(html, /Java 全栈开发/);
+  assert.match(html, /AI 应用开发/);
+  assert.match(html, /王震龙 · 软件工程本科 · 2027 届/);
+  assert.match(html, /Java Full-stack/);
+  assert.match(html, /AI Application/);
+  assert.match(html, /AI Tooling &amp; Agent/);
+  assert.match(html, /Java 后端核心/);
+  assert.match(html, /ABOUT &amp; STACK/);
+  assert.match(html, /Java 全栈与 AI 应用开发/);
+  assert.match(html, /2027 届[\s\S]*一周内可到岗[\s\S]*每周可实习 6 天/);
+  assert.match(html, /可连续实习 6 个月[\s\S]*接受异地实习/);
+  assert.match(html, /FRONTEND &amp; FULL-STACK DELIVERY/);
+  assert.match(html, /AI APPLICATION, TOOLING &amp; AGENT/);
+  assert.match(html, /Agent 仅指应用工作流与证据聚合/);
   assert.doesNotMatch(html, /查看最强项目/);
-  assert.match(html, /查看 CommerceFlow 案例/);
-  assert.match(html, /查看验证证据/);
+  assert.match(html, /查看工程项目/);
+  assert.match(html, /href="#projects"/);
+  assert.match(html, />GitHub<\/span>/);
   assert.match(html, /2027 GRAD · OPEN TO INTERNSHIP/);
   assert.doesNotMatch(html, /AVAILABLE FOR INTERNSHIP · 2026/);
   assert.match(html, /CommerceFlow AI Mall/);
-  assert.match(html, /Enterprise Ticket RAG Copilot/);
-  assert.match(html, /PROMPTOPS \/ RUN OBSERVABILITY/);
+  assert.match(html, /Enterprise AI Ticket Copilot/);
+  assert.match(html, /AI TOOLING \/ AGENT WORKFLOW/);
   assert.match(html, /01[\s\S]*BUILD/);
   assert.match(html, /02[\s\S]*VERIFY/);
   assert.match(html, /03[\s\S]*EXPLAIN/);
@@ -68,7 +76,13 @@ test("homepage keeps the frozen V3 positioning and information architecture", as
   assert.match(html, /href="\/favicon\.ico"/);
   assert.match(
     html,
-    /寻求[\s\S]*Java 后端[\s\S]*AI 应用开发[\s\S]*实习机会。/,
+    /寻求[\s\S]*Java 全栈[\s\S]*AI 应用开发[\s\S]*实习机会。/,
+  );
+  assert.match(html, /AI 工具 \/ Agent 应用方向，兼投 Java 后端。/);
+  assert.match(html, /王震龙｜Java 全栈与 AI 应用开发作品集/);
+  assert.match(
+    html,
+    /王震龙的软件工程作品集，展示以 Java 后端为核心的 Spring Boot 3、Vue 3 全栈项目/,
   );
   assert.doesNotMatch(html, /简历下载|求职城市|头像|QQ|添加我为朋友/);
 });

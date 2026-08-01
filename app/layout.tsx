@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import MotionController from "./_components/MotionController";
 import { SITE_CONFIG } from "./site-config";
 import "./globals.css";
@@ -6,7 +6,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.origin),
   title: {
-    default: "王震龙 · Java 后端 / AI 应用开发作品集",
+    default: "王震龙｜Java 全栈与 AI 应用开发作品集",
     template: "%s · 王震龙",
   },
 };

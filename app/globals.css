@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --ink: #10211d;
   --ink-deep: #0b1714;
   --paper: #f3f0e7;
@@ -5066,5 +5066,223 @@ a.evidence-claim:hover {
   .image-viewer[open][data-viewer-state="open"] .image-viewer-panel,
   .image-viewer[open]::backdrop {
     animation: none !important;
+  }
+}
+
+/* Phase 2A: positioning hierarchy only; Viewer and motion contracts stay unchanged. */
+.hero-kicker.hero-identity {
+  color: #b4c3b1;
+  font-family: var(--mono);
+  font-size: clamp(10px, 1vw, 12px);
+  letter-spacing: 0.08em;
+}
+
+.hero-direction-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.hero-direction-tags span {
+  padding: 7px 9px;
+  color: #c1cbbc;
+  border: 1px solid rgba(238, 244, 223, 0.24);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.positioning-section {
+  padding: 112px 0 126px;
+  border-top: 1px solid var(--line-dark);
+}
+
+.positioning-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.positioning-heading h2 {
+  max-width: 680px;
+  margin: 22px 0 0;
+  font-family: var(--serif);
+  font-size: clamp(38px, 4.7vw, 68px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.06em;
+}
+
+.positioning-heading > p {
+  max-width: 280px;
+  margin: 0;
+  color: #5d6b64;
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+.positioning-grid {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(38px, 7vw, 104px);
+  margin-top: 56px;
+}
+
+.positioning-copy {
+  max-width: 430px;
+}
+
+.positioning-copy p {
+  margin: 0 0 20px;
+  color: #4f5e56;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.positioning-copy p:last-child {
+  margin-bottom: 0;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.positioning-copy .positioning-openness {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.availability-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.availability-strip span {
+  padding: 7px 9px;
+  color: #39483f;
+  border: 1px solid rgba(35, 50, 42, 0.18);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+.stack-groups {
+  display: grid;
+  gap: 24px;
+}
+
+.stack-group {
+  padding-top: 18px;
+  border-top: 1px solid var(--line-dark);
+}
+
+.stack-group-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.stack-group-heading span {
+  color: #6a7b70;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.stack-group-heading strong {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.stack-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.stack-tags span {
+  padding: 7px 9px;
+  color: #39483f;
+  background: rgba(35, 50, 42, 0.07);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+.stack-group-note {
+  max-width: 500px;
+  margin: 15px 0 0;
+  color: #6a7b70;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.contact-subline {
+  grid-column: 2;
+  margin-top: 24px;
+  color: #52615a;
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 1023px) {
+  .positioning-heading {
+    display: block;
+  }
+
+  .positioning-heading > p {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-kicker.hero-identity {
+    letter-spacing: 0.04em;
+  }
+
+  .hero-direction-tags {
+    margin-top: 22px;
+  }
+
+  .positioning-section {
+    padding: 78px 0 88px;
+  }
+
+  .positioning-grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+    margin-top: 38px;
+  }
+
+  .positioning-copy p {
+    font-size: 13px;
+  }
+
+  .availability-strip {
+    margin-top: 24px;
+  }
+
+  .stack-group-heading {
+    display: block;
+  }
+
+  .stack-group-heading strong {
+    display: block;
+    margin-top: 8px;
+  }
+
+  .contact-subline {
+    grid-column: 1 / -1;
+    margin-top: 0;
   }
 }

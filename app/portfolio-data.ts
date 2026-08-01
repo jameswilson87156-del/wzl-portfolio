@@ -1,4 +1,4 @@
-export type ProjectTone = "coral" | "violet" | "lime";
+﻿export type ProjectTone = "coral" | "violet" | "lime";
 
 export type VerificationType =
   | "ci"
@@ -179,19 +179,19 @@ export const projects: Project[] = [
   {
     slug: "commerceflow",
     no: "01",
-    type: "JAVA TRANSACTION SYSTEM",
+    type: "JAVA BACKEND",
     title: "CommerceFlow AI Mall",
     shortTitle: "CommerceFlow",
     summary:
-      "用 Java 事务、幂等键与 Redis Lua 保证订单事实一致，再将受限业务事实交给 AI 服务，并由 Java 在异常时降级。",
+      "围绕商品、订单、库存和 AI 商品助手构建的 Java 业务系统，重点展示分层设计、状态流转、数据一致性和前后端联调。",
     question:
       "如何在重复请求、库存竞争和 AI 服务异常时保持订单事实一致？",
     stack:
       "Java 17 · Spring Boot 3 · MySQL 8.4 · Redis Lua · Vue 3 · UniApp · FastAPI",
     tone: "coral",
-    tags: ["下单幂等", "库存一致性", "AI businessFacts"],
-    lens: "Java 事务系统",
-    proof: "订单事实一致性",
+    tags: ["Java Backend", "Idempotency", "Inventory Consistency", "Vue 3 Delivery"],
+    lens: "Java 后端核心",
+    proof: "业务系统与全栈交付",
     repo: `https://github.com/${owner}/${commerceRepo}`,
     readme: commerceLink("README.md"),
     status: commerceStatus,
@@ -625,19 +625,19 @@ export const projects: Project[] = [
   {
     slug: "ticket",
     no: "02",
-    type: "RAG DECISION SUPPORT",
-    title: "Enterprise Ticket RAG Copilot",
-    shortTitle: "Ticket RAG Copilot",
+    type: "AI APPLICATION",
+    title: "Enterprise AI Ticket Copilot",
+    shortTitle: "Ticket Copilot",
     summary:
-      "以关键词检索为可复现基线，通过引用证据、失败样本和人工复核，暴露召回边界。",
+      "面向企业工单处理场景的 AI 应用，串联知识检索、建议生成、人工复核、Trace 和审计流程。",
     question:
       "AI 工单建议如何展示来源、暴露召回失败并保留人工确认？",
     stack:
-      "Java 17 · Spring Boot 3 · Vue 3 · TypeScript · Keyword Retrieval · Human Review",
+      "Java 17 · Spring Boot 3 · Vue 3 · TypeScript · Keyword Retrieval · Human Review · Trace",
     tone: "violet",
-    tags: ["Keyword Retrieval", "Citation", "16 Synthetic Cases"],
-    lens: "RAG 决策支持",
-    proof: "来源、失败样本与人工确认",
+    tags: ["Keyword Retrieval", "Citation", "Human Review", "Trace"],
+    lens: "AI 应用",
+    proof: "检索与复核",
     repo: `https://github.com/${owner}/${ticketRepo}`,
     readme: ticketLink("README.md"),
     action:
@@ -1077,19 +1077,19 @@ export const projects: Project[] = [
   {
     slug: "devflow",
     no: "03",
-    type: "PROMPTOPS / RUN OBSERVABILITY",
+    type: "AI TOOLING / AGENT WORKFLOW",
     title: "DevFlow Copilot",
     shortTitle: "DevFlow",
     summary:
-      "将 Prompt 版本、Provider 路由、工具调用和运行证据关联到一次可回放、可审核的 AI Run。",
+      "面向开发工作流的 AI 工具，提供 Provider 路由、Prompt 模板、状态管理、日志诊断和历史记录。",
     question:
       "一次 AI Run 中的 Prompt、Provider 和 Tool Call 如何被记录、回放和审核？",
     stack:
       "Java 17 · Spring Boot · Vue 3 · TypeScript · Provider Router · Flyway",
     tone: "lime",
-    tags: ["Prompt Version", "Tool Call", "Run Evidence"],
-    lens: "PromptOps",
-    proof: "一次 Run 的记录、回放与审核",
+    tags: ["Provider Router", "PromptOps", "Tool Call", "Run Evidence"],
+    lens: "AI 工具 / Agent 工作流",
+    proof: "工作流证据聚合",
     repo: `https://github.com/${owner}/${devFlowRepo}`,
     readme: devFlowLink("README.md"),
     action:

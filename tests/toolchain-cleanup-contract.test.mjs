@@ -79,10 +79,23 @@ test("static export, routes, assets and README retain the release boundary", () 
   ]) {
     assert.equal(exists(required), true, `${required} must remain`);
   }
-  assert.match(readme, /Aliyun|阿里云/);
-  assert.match(readme, /STATIC|静态/i);
-  assert.match(readme, /尚未执行生产部署/);
-  assert.doesNotMatch(readme, /已经上线|已上线|已部署生产/);
+  assert.match(readme, /Java 全栈/);
+  assert.match(readme, /AI 应用开发/);
+  assert.match(readme, /正式网站/);
+  assert.match(readme, /https:\/\/wzl8\.top/);
+  assert.match(readme, /正式公网访问/);
+  assert.match(readme, /npm test：30\/30 PASS/);
+  assert.match(readme, /Keyword Retrieval/);
+  assert.match(
+    readme,
+    /不声称模型训练、算法研究或复杂自治多 Agent Runtime/,
+  );
+  assert.doesNotMatch(readme, /Enterprise Ticket RAG Copilot/);
+  assert.doesNotMatch(readme, /DNS is not configured/);
+  assert.doesNotMatch(readme, /SSL has not been requested/);
+  assert.doesNotMatch(readme, /public Nginx ports 80\/443 are not enabled/);
+  assert.doesNotMatch(readme, /尚未执行生产部署/);
+  assert.doesNotMatch(readme, /当前不声称已完成正式公网生产发布/);
   const maps = [];
   const walk = (directory) => {
     for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {

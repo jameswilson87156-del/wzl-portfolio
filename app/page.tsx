@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import {
   collaborationDisclosure,
@@ -10,15 +10,67 @@ import SiteComplianceFooter from "./_components/SiteComplianceFooter";
 import { siteUrl } from "./site-config";
 import ScreenshotFrame from "./projects/_components/ScreenshotFrame";
 
+const techStackGroups = [
+  {
+    label: "JAVA BACKEND CORE",
+    title: "Java 后端核心",
+    items: [
+      "Java 17",
+      "Spring Boot 3",
+      "Spring MVC",
+      "MyBatis / MyBatis-Plus",
+      "MySQL",
+      "Redis",
+      "REST API",
+      "Maven",
+      "JUnit / MockMvc",
+    ],
+  },
+  {
+    label: "FRONTEND & FULL-STACK DELIVERY",
+    title: "前端与全栈交付",
+    items: [
+      "Vue 3",
+      "TypeScript",
+      "Axios",
+      "Element Plus",
+      "前后端联调",
+      "Git",
+      "Linux",
+      "Docker",
+      "Nginx",
+      "HTTPS Deployment",
+    ],
+  },
+  {
+    label: "AI APPLICATION, TOOLING & AGENT",
+    title: "AI 应用、工具与 Agent",
+    items: [
+      "Provider Router",
+      "Retrieval Workflow",
+      "PromptOps",
+      "Tool Calling",
+      "Human Review",
+      "Trace",
+      "Fallback Handling",
+      "Agent Workflow",
+    ],
+  },
+] as const;
+
 export const metadata: Metadata = {
-  title: "王震龙 · Java 后端 / AI 应用开发作品集",
-  description: "面向 Java 后端 / AI 应用开发实习的证据优先工程作品集。",
+  title: {
+    absolute: "王震龙｜Java 全栈与 AI 应用开发作品集",
+  },
+  description:
+    "王震龙的软件工程作品集，展示以 Java 后端为核心的 Spring Boot 3、Vue 3 全栈项目，以及 AI 应用、AI 工具和 Agent 工作流工程实践。",
   alternates: {
     canonical: siteUrl("/"),
   },
   openGraph: {
-    title: "王震龙 · Java 后端 / AI 应用开发作品集",
-    description: "把业务问题，做成可验证的工程系统。",
+    title: "王震龙｜Java 全栈与 AI 应用开发作品集",
+    description:
+      "王震龙的软件工程作品集，展示以 Java 后端为核心的 Spring Boot 3、Vue 3 全栈项目，以及 AI 应用、AI 工具和 Agent 工作流工程实践。",
     url: siteUrl("/"),
     type: "website",
     images: [
@@ -26,14 +78,15 @@ export const metadata: Metadata = {
         url: siteUrl("/og.jpg"),
         width: 1200,
         height: 630,
-        alt: "王震龙 Java 后端与 AI 应用开发作品集",
+        alt: "王震龙 Java 全栈与 AI 应用开发作品集",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "王震龙 · Java 后端 / AI 应用开发作品集",
-    description: "把业务问题，做成可验证的工程系统。",
+    title: "王震龙｜Java 全栈与 AI 应用开发作品集",
+    description:
+      "王震龙的软件工程作品集，展示以 Java 后端为核心的 Spring Boot 3、Vue 3 全栈项目，以及 AI 应用、AI 工具和 Agent 工作流工程实践。",
     images: [siteUrl("/og.jpg")],
   },
 };
@@ -137,6 +190,7 @@ export default function Home() {
             <div className="nav-links">
               <a href="#projects">项目</a>
               <a href="#evidence">证据</a>
+              <a href="#about">关于</a>
               <a
                 href="https://github.com/jameswilson87156-del"
                 target="_blank"
@@ -161,31 +215,36 @@ export default function Home() {
               2027 GRAD · INTERNSHIP
             </span>
           </div>
-          <p className="hero-kicker">JAVA BACKEND × AI APPLICATIONS</p>
+          <p className="hero-kicker hero-identity">王震龙 · 软件工程本科 · 2027 届</p>
           <h1 className="hero-title" data-hero-title="true">
-            <span className="hero-title-mask"><span>把业务问题，</span></span>
-            <span className="hero-title-mask"><span>
-              <em>做成</em>可验证的
-            </span></span>
-            <span className="hero-title-mask"><span>工程系统。</span></span>
+            <span className="hero-title-mask"><span>Java 全栈开发</span></span>
+            <span className="hero-title-mask"><span><em>×</em></span></span>
+            <span className="hero-title-mask"><span>AI 应用开发</span></span>
           </h1>
+          <div className="hero-direction-tags" aria-label="求职方向">
+            <span>Java Full-stack</span>
+            <span>AI Application</span>
+            <span>AI Tooling &amp; Agent</span>
+          </div>
           <div className="hero-bottom">
             <p>
-              王震龙 · 软件工程本科 · 2027 届
+              以 Java 后端能力为核心，使用 Spring Boot 3 与 Vue 3 完成全栈交付，
               <br />
-              <strong>Java 后端 / AI 应用开发</strong>
-              <br />
-              使用 Java、Vue 3 与 AI 能力，完成从业务链路、失败处理到测试和
-              CI 的完整验证。
+              并在 AI 工具和 Agent 应用工作流中实践大模型接入、检索、人工复核与失败降级。
             </p>
             <div className="hero-actions">
-              <Link className="hero-action primary" href="/projects/commerceflow">
-                <span>查看 CommerceFlow 案例</span>
+              <Link className="hero-action primary" href="#projects">
+                <span>查看工程项目</span>
                 <b aria-hidden="true">↗</b>
               </Link>
-              <a className="hero-action" href="#evidence">
-                <span>查看验证证据</span>
-                <b aria-hidden="true">↓</b>
+              <a
+                className="hero-action"
+                href="https://github.com/jameswilson87156-del/wzl-portfolio"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span>GitHub</span>
+                <b aria-hidden="true">↗</b>
               </a>
             </div>
           </div>
@@ -241,9 +300,8 @@ export default function Home() {
             <p className="section-label light">/ 精选项目</p>
             <h2>三个问题，三种工程重点。</h2>
           </div>
-          <p>
-            固定顺序对应事务一致性、RAG 决策支持与 AI Run
-            可观测。技术结论以源码、测试和仓库文档为准。
+            <p>
+              固定顺序对应 Java 业务系统、AI 工单应用与 AI 工具工作流。技术结论以源码、测试和仓库文档为准。
           </p>
         </div>
 
@@ -293,13 +351,65 @@ export default function Home() {
       </section>
 
       <section
+        className="positioning-section shell"
+        id="about"
+        data-reveal="section"
+      >
+        <div className="positioning-heading">
+          <div>
+            <p className="section-label">/ ABOUT & STACK</p>
+            <h2>把后端基础，接到真实的 AI 应用场景。</h2>
+          </div>
+          <p>项目中使用的技术与当前学习方向，按交付链路分组展示。</p>
+        </div>
+        <div className="positioning-grid">
+          <div className="positioning-copy">
+            <p>
+              我是一名 2027 届软件工程本科生，主要学习和实践 Java 全栈与 AI 应用开发。
+            </p>
+            <p>
+              项目中以 Java、Spring Boot 3、MySQL、Redis 和 Vue 3 为主要技术栈，关注业务流程、接口设计、数据状态、异常处理、测试与部署；同时在 AI 工具与 Agent 应用项目中实践 Provider 路由、检索、Prompt、Tool Calling、Trace、人工复核与失败降级。
+            </p>
+            <p className="positioning-openness">
+              目前主要寻找 Java 全栈、AI 应用、AI 工具或 Agent 应用开发方向的实习机会，同时兼投 Java 后端与 Java + Vue 岗位。
+            </p>
+            <div className="availability-strip" aria-label="实习条件">
+              <span>2027 届</span>
+              <span>一周内可到岗</span>
+              <span>每周可实习 6 天</span>
+              <span>可连续实习 6 个月</span>
+              <span>接受异地实习</span>
+            </div>
+          </div>
+          <div className="stack-groups" aria-label="技术栈分组">
+            {techStackGroups.map((group) => (
+              <div className="stack-group" key={group.label}>
+                <div className="stack-group-heading">
+                  <span>{group.label}</span>
+                  <strong>{group.title}</strong>
+                </div>
+                <div className="stack-tags">
+                  {group.items.map((item) => <span key={item}>{item}</span>)}
+                </div>
+                {group.label === "AI APPLICATION, TOOLING & AGENT" ? (
+                  <p className="stack-group-note">
+                    Agent 仅指应用工作流与证据聚合，不代表复杂自治多 Agent Runtime。
+                  </p>
+                ) : null}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
         className="capabilities engineering-method shell"
         id="method"
         data-reveal="section"
       >
         <div className="cap-title">
           <p className="section-label">/ ENGINEERING METHOD</p>
-          <p>Vue 3 全栈交付 · RAG · Agent 工作流 · PromptOps</p>
+          <p>Java 全栈 · AI 应用 · AI 工具与 Agent 工作流</p>
         </div>
         <div className="cap-list">
           <article>
@@ -333,14 +443,15 @@ export default function Home() {
             className="contact-hero-link"
             data-reveal="contact"
           >
-            <span>JAVA BACKEND × AI APPLICATIONS</span>
+            <span>JAVA FULL-STACK × AI APPLICATIONS</span>
             <strong>
-              <span>寻求 <span className="contact-phrase">Java 后端</span></span>
+              <span>寻求 <span className="contact-phrase">Java 全栈</span></span>
               <em>
                 或 <span className="contact-phrase">AI 应用开发</span>
                 <span className="contact-phrase">实习机会。</span>
               </em>
             </strong>
+            <small className="contact-subline">AI 工具 / Agent 应用方向，兼投 Java 后端。</small>
             <i aria-hidden="true">↗</i>
           </div>
           <ContactActions />
