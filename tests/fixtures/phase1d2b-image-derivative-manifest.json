@@ -1,0 +1,148 @@
+{
+    "images":  [
+                   {
+                       "derivatives":  [
+                                           {
+                                               "path":  "projects/commerceflow/responsive/order-inventory-480w.webp",
+                                               "width":  480,
+                                               "sha256":  "1fee060d37f9b3b4efd2426bfda155f5ecd9109bfa18140fd78d93ff1840761b"
+                                           },
+                                           {
+                                               "path":  "projects/commerceflow/responsive/order-inventory-768w.webp",
+                                               "width":  768,
+                                               "sha256":  "1877183e284f2a7f648f84277418c6d4c988acfeaa41d694e7a8e4d47da046f5"
+                                           },
+                                           {
+                                               "path":  "projects/commerceflow/responsive/order-inventory-1280w.webp",
+                                               "width":  1280,
+                                               "sha256":  "9f555c2a96aed6f66577212cb947a440f8e3ecefb5b2d6535d2b3395f5b7cec1"
+                                           },
+                                           {
+                                               "path":  "projects/commerceflow/responsive/order-inventory-1920w.webp",
+                                               "width":  1920,
+                                               "sha256":  "9e7dec0fe6facbd25f72b5474488a37de81a88c924e4d897f5806d330b7d9aa1"
+                                           }
+                                       ]
+                   },
+                   {
+                       "derivatives":  [
+                                           {
+                                               "path":  "projects/commerceflow/responsive/ai-service-480w.webp",
+                                               "width":  480,
+                                               "sha256":  "a3e7cedb7fc0cf4b9119fbabcf3265e5024e881fb1a3cd8ddbee777c78bd97cf"
+                                           },
+                                           {
+                                               "path":  "projects/commerceflow/responsive/ai-service-768w.webp",
+                                               "width":  768,
+                                               "sha256":  "356ed64dbd8bc299a88d08d023cb7d61762f9b72d7e4a3fa93530918e5aa7ef4"
+                                           },
+                                           {
+                                               "path":  "projects/commerceflow/responsive/ai-service-1280w.webp",
+                                               "width":  1280,
+                                               "sha256":  "3e8e4cd9e5c3ba3832138819c25bcfdf98ee9cf4c540a19a738b4751b9f85bca"
+                                           },
+                                           {
+                                               "path":  "projects/commerceflow/responsive/ai-service-1920w.webp",
+                                               "width":  1920,
+                                               "sha256":  "450858ae22106e4cd433438e80897745c944d65383620550bf039cc034b0fbc2"
+                                           }
+                                       ]
+                   },
+                   {
+                       "derivatives":  [
+                                           {
+                                               "path":  "projects/ticket/responsive/workbench-480w.webp",
+                                               "width":  480,
+                                               "sha256":  "368a7dde26ce3d01d4884eb126d5d51c40fe59c2ff09d891b5525567e234dcba"
+                                           },
+                                           {
+                                               "path":  "projects/ticket/responsive/workbench-768w.webp",
+                                               "width":  768,
+                                               "sha256":  "0b12a1166c6261f30a2435be9cee025c902ff89b702efbf2724f50a41cc1330a"
+                                           },
+                                           {
+                                               "path":  "projects/ticket/responsive/workbench-1280w.webp",
+                                               "width":  1280,
+                                               "sha256":  "1d0aaab86ccfcb43404c2658fb05f8f28257f4d0f298f61a43a1a34dfe6aac34"
+                                           },
+                                           {
+                                               "path":  "projects/ticket/responsive/workbench-1920w.webp",
+                                               "width":  1920,
+                                               "sha256":  "e5255ecf62602732bce7f94b66d9d945a99ce4368acab2934886c1a2f50432fe"
+                                           }
+                                       ]
+                   },
+                   {
+                       "derivatives":  [
+                                           {
+                                               "path":  "projects/ticket/responsive/evaluation-metrics-480w.webp",
+                                               "width":  480,
+                                               "sha256":  "3aa790d00a9285ba4c4e1516f51db90e63a9d94b963c351dbdef17c8ba8e8acf"
+                                           },
+                                           {
+                                               "path":  "projects/ticket/responsive/evaluation-metrics-768w.webp",
+                                               "width":  768,
+                                               "sha256":  "9e5552b4156aeba69f283b85788db59ed9064136ff400d9a07a23b3709a09ac0"
+                                           },
+                                           {
+                                               "path":  "projects/ticket/responsive/evaluation-metrics-1280w.webp",
+                                               "width":  1280,
+                                               "sha256":  "4e9c9204fabdeb3f46b5ac1372ac0e6421a3ce733638bcff9c7eacb88f5f0c4c"
+                                           },
+                                           {
+                                               "path":  "projects/ticket/responsive/evaluation-metrics-1920w.webp",
+                                               "width":  1920,
+                                               "sha256":  "e0974beb364c4e12d3910cd3b254a98eb1dc28d9f99981dcf726214758e17a45"
+                                           }
+                                       ]
+                   },
+                   {
+                       "derivatives":  [
+                                           {
+                                               "path":  "projects/devflow/responsive/workbench-480w.webp",
+                                               "width":  480,
+                                               "sha256":  "9748f9b83dc2058bd9d9f3e07de9845d0fba25e0816379b58896e0b1d7e391ae"
+                                           },
+                                           {
+                                               "path":  "projects/devflow/responsive/workbench-768w.webp",
+                                               "width":  768,
+                                               "sha256":  "b6fc86ed1e3130b2514ee65a37cf6ca91dc642c2e8401815d9f19afb8a13c3df"
+                                           },
+                                           {
+                                               "path":  "projects/devflow/responsive/workbench-1280w.webp",
+                                               "width":  1280,
+                                               "sha256":  "3ff83991b9571f58c54a121a8e6a1b42da931ff0540ced3e247e39b365ed2732"
+                                           },
+                                           {
+                                               "path":  "projects/devflow/responsive/workbench-1440w.webp",
+                                               "width":  1440,
+                                               "sha256":  "c54394a110f6b4a95d3f5dcb264b98c708af6a4047031fd0911e0e73f2494992"
+                                           }
+                                       ]
+                   },
+                   {
+                       "derivatives":  [
+                                           {
+                                               "path":  "projects/devflow/responsive/trace-480w.webp",
+                                               "width":  480,
+                                               "sha256":  "626c27083fd2b710933e7be3565b1025fcb2ebea66fe3a4caa6625edf85eb13f"
+                                           },
+                                           {
+                                               "path":  "projects/devflow/responsive/trace-768w.webp",
+                                               "width":  768,
+                                               "sha256":  "91975a62dd34d8d60a83db9a56b5defbb93540a9d1c74685217de47fcfab2881"
+                                           },
+                                           {
+                                               "path":  "projects/devflow/responsive/trace-1280w.webp",
+                                               "width":  1280,
+                                               "sha256":  "c51a227a88ac6cc6c121b1ff37bb640be7ee52ecdf9f283f84dc7dab440d09e0"
+                                           },
+                                           {
+                                               "path":  "projects/devflow/responsive/trace-1440w.webp",
+                                               "width":  1440,
+                                               "sha256":  "95ddea8268b73d9271f6faaf000d8048c09bfde2c523bbd167c36db866f7cdb7"
+                                           }
+                                       ]
+                   }
+               ]
+}

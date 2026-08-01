@@ -28,7 +28,7 @@ test("responsive previews preserve all original evidence PNG bytes", () => {
     assert.equal(exists(relative), true, relative);
     assert.equal(sha256(relative), expected.get(relative), relative);
   }
-  const manifest = json("docs/portfolio-v3/phase-1d2b-release/image-derivative-manifest.json");
+  const manifest = json("tests/fixtures/phase1d2b-image-derivative-manifest.json");
   assert.equal(manifest.images.length, 6);
   for (const image of manifest.images) {
     assert.equal(image.derivatives.length, 4);
