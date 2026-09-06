@@ -6845,6 +6845,9 @@ body {
   padding: 15px 13px 13px;
   overflow: hidden;
   isolation: isolate;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
   background:
     linear-gradient(145deg, rgba(240, 242, 233, 0.075), rgba(240, 242, 233, 0.018) 64%),
     #10211d;
@@ -6942,6 +6945,11 @@ body {
 .hero-capability:hover > i,
 .hero-capability:focus-within > i {
   transform: translate(3px, 3px);
+}
+
+.hero-capability:focus-visible {
+  outline: 2px solid var(--cap-accent);
+  outline-offset: -3px;
 }
 
 @media (max-width: 700px) {

@@ -250,8 +250,15 @@ export default function Home() {
             <span className="hero-title-mask"><span><em>×</em></span></span>
             <span className="hero-title-mask"><span>AI 应用开发</span></span>
           </h1>
-          <div className="hero-direction-tags hero-capability-rail" aria-label="求职方向">
-            <article className="hero-capability hero-capability--java">
+          <nav
+            className="hero-direction-tags hero-capability-rail"
+            aria-label="求职方向与项目入口"
+          >
+            <a
+              className="hero-capability hero-capability--java"
+              href="#project-commerceflow"
+              aria-label="Java Full-stack：查看 CommerceFlow 项目"
+            >
               <span className="hero-capability-index">01</span>
               <div className="hero-capability-copy">
                 <span className="hero-capability-label">JAVA BACKEND</span>
@@ -259,8 +266,12 @@ export default function Home() {
                 <small>业务闭环 · 接口与数据一致性</small>
               </div>
               <i aria-hidden="true">↗</i>
-            </article>
-            <article className="hero-capability hero-capability--ai">
+            </a>
+            <a
+              className="hero-capability hero-capability--ai"
+              href="#project-ticket"
+              aria-label="AI Application：查看 Ticket Copilot 项目"
+            >
               <span className="hero-capability-index">02</span>
               <div className="hero-capability-copy">
                 <span className="hero-capability-label">AI APPLICATION</span>
@@ -268,8 +279,12 @@ export default function Home() {
                 <small>检索证据 · 人工复核</small>
               </div>
               <i aria-hidden="true">↗</i>
-            </article>
-            <article className="hero-capability hero-capability--agent">
+            </a>
+            <a
+              className="hero-capability hero-capability--agent"
+              href="#project-devflow"
+              aria-label="AI Tooling and Agent：查看 DevFlow 项目"
+            >
               <span className="hero-capability-index">03</span>
               <div className="hero-capability-copy">
                 <span className="hero-capability-label">AI TOOLING</span>
@@ -277,8 +292,8 @@ export default function Home() {
                 <small>Provider 路由 · Trace 回放</small>
               </div>
               <i aria-hidden="true">↗</i>
-            </article>
-          </div>
+            </a>
+          </nav>
           <HeroProjectRail projects={heroProjectRail} />
           <div className="hero-bottom">
             <p>

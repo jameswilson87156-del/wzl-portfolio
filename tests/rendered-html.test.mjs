@@ -44,10 +44,18 @@ test("homepage exposes the approved internship positioning and information archi
   assert.match(html, /AI Application/);
   assert.match(html, /AI Tooling &amp; Agent/);
   assert.match(html, /class="hero-direction-tags hero-capability-rail"/);
+  assert.match(html, /aria-label="求职方向与项目入口"/);
   assert.equal(
-    (html.match(/class="hero-capability hero-capability--/g) ?? []).length,
+    (html.match(/<a class="hero-capability hero-capability--/g) ?? []).length,
     3,
   );
+  for (const href of [
+    "#project-commerceflow",
+    "#project-ticket",
+    "#project-devflow",
+  ]) {
+    assert.match(html, new RegExp(`class="hero-capability[^"]*" href="${href}"`));
+  }
   assert.match(html, /业务闭环 · 接口与数据一致性/);
   assert.match(html, /检索证据 · 人工复核/);
   assert.match(html, /Provider 路由 · Trace 回放/);
