@@ -113,6 +113,7 @@ export type Project = {
   caseEvidence: EvidenceItem[];
   sourceGroups: SourceGroup[];
   boundaries: string[];
+  coverImage?: ProjectImage;
   primaryImage: ProjectImage;
   secondaryImage: ProjectImage;
   metricImage?: ProjectImage;
@@ -134,6 +135,27 @@ const verifiedAt = "2026-07-31";
 
 function blob(repo: string, sha: string, path: string) {
   return `https://github.com/${owner}/${repo}/blob/${sha}/${path}`;
+}
+
+function coverImage(
+  path: string,
+  label: string,
+  alt: string,
+  description: string,
+): ProjectImage {
+  return {
+    alt,
+    description,
+    frameKind: "hero",
+    height: 1000,
+    label,
+    objectPosition: "50% 50%",
+    originalSrc: path,
+    responsiveSrc: path,
+    responsiveSrcSet: `${path} 1600w`,
+    sizes: "(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) 42vw, 540px",
+    width: 1600,
+  };
 }
 
 const commerceLink = (path: string) => blob(commerceRepo, commerceSha, path);
@@ -595,6 +617,12 @@ export const projects: Project[] = [
       "AI 默认使用确定性 commerceflow-mock，不包装成真实外部大模型效果。",
       "可靠性结果不外推为高并发生产能力、QPS 或商业系统压测。",
     ],
+    coverImage: coverImage(
+      "/projects/commerceflow/order-inventory.png",
+      "COMMERCEFLOW / ORDER TRUTH",
+      "CommerceFlow 订单一致性作品集封面，包含订单、库存和 AI 服务证据切片",
+      "Editorial cover composition built from the local CommerceFlow evidence screens.",
+    ),
     primaryImage: {
       alt: "CommerceFlow 订单管理与库存执行证据真实运行页面",
       description: "Order, SKU and inventory evidence from a local run.",
@@ -1034,6 +1062,12 @@ export const projects: Project[] = [
       "Provider fallback 100% 来自未配置真实 API Key，不是模型质量指标。",
       "100% Top-K Hit Rate 不等于检索完美；Context Recall@3 为 90%，Citation Precision 为 81.11%。",
     ],
+    coverImage: coverImage(
+      "/projects/ticket/workbench.png",
+      "TICKET COPILOT / RAG REVIEW",
+      "Enterprise Ticket Copilot 作品集封面，包含工单工作台、Trace 和 Human Review 证据切片",
+      "Editorial cover composition built from the local Ticket Copilot evidence screens.",
+    ),
     primaryImage: {
       alt: "Enterprise Ticket RAG Copilot 工单工作台真实运行页面",
       description: "Ticket queue, citation evidence and human review in one workbench.",
@@ -1461,6 +1495,12 @@ export const projects: Project[] = [
       `metrics_snapshot 固定在旧提交 ${devFlowMetricsSha.slice(0, 7)} 且采集时工作树非干净，旧数量不绑定当前 ${devFlowSha.slice(0, 7)}。`,
       "Human Review 不自动修改代码、提交 Git 或部署生产环境。",
     ],
+    coverImage: coverImage(
+      "/projects/devflow/trace.png",
+      "DEVFLOW / RUN EVIDENCE",
+      "DevFlow Copilot 作品集封面，包含 Agent Run、Trace 和审核证据切片",
+      "Editorial cover composition built from the local DevFlow evidence screens.",
+    ),
     primaryImage: {
       alt: "DevFlow Copilot Agent Run Trace Evidence 页面",
       description: "Run history, trace steps and review evidence for one agent workflow.",

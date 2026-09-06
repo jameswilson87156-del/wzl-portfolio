@@ -85,7 +85,30 @@ export default function CaseSectionNav() {
   return (
     <nav ref={navRef} className="case-section-nav" aria-label="案例章节导航" data-active-section={active}>
       <div className="shell case-section-nav-inner">
-        <span className="case-section-mobile" aria-live="polite">{current[1]} / 06 · {current[2]}</span>
+        <details className="case-section-mobile-menu">
+          <summary>
+            <span className="case-section-mobile" aria-live="polite">
+              {current[1]} / 06 · {current[2]}
+            </span>
+            <i aria-hidden="true">+</i>
+          </summary>
+          <ol aria-label="移动端章节跳转">
+            {sections.map(([id, number, label]) => (
+              <li key={`mobile-${id}`} className={active === id ? "is-active" : ""}>
+                <a
+                  href={`#${id}`}
+                  aria-current={active === id ? "location" : undefined}
+                  onClick={(event) => {
+                    const menu = event.currentTarget.closest("details");
+                    if (menu) menu.open = false;
+                  }}
+                >
+                  <span>{number}</span>{label}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </details>
         <ol>
           {sections.map(([id, number, label]) => (
             <li key={id} className={active === id ? "is-active" : ""}>

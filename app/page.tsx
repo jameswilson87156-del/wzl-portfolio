@@ -6,6 +6,10 @@ import {
   type EvidenceItem,
 } from "./portfolio-data";
 import ContactActions from "./_components/ContactActions";
+import EditorialProjectCover from "./_components/EditorialProjectCover";
+import HeroProjectRail from "./_components/HeroProjectRail";
+import MobileNav from "./_components/MobileNav";
+import ScrollAwareHeader from "./_components/ScrollAwareHeader";
 import SiteComplianceFooter from "./_components/SiteComplianceFooter";
 import { siteUrl } from "./site-config";
 import ScreenshotFrame from "./projects/_components/ScreenshotFrame";
@@ -55,6 +59,25 @@ const techStackGroups = [
       "Fallback Handling",
       "Agent Workflow",
     ],
+  },
+] as const;
+
+const heroProjectRail = [
+  {
+    slug: "commerceflow",
+    no: "01",
+    shortTitle: "CommerceFlow",
+    type: "JAVA BACKEND",
+    trace: "REQUEST → VERIFY → COMMIT",
+    cue: "订单事实 / 一致性",
+  },
+  {
+    slug: "ticket",
+    no: "02",
+    shortTitle: "Ticket Copilot",
+    type: "AI WORKFLOW",
+    trace: "RETRIEVE → REVIEW → EXPLAIN",
+    cue: "检索证据 / 人工复核",
   },
 ] as const;
 
@@ -112,24 +135,29 @@ function ProjectVisual({
       className="project-screenshot-link"
       href={`/projects/${project.slug}`}
       aria-label={`打开 ${project.title} 项目案例`}
+      data-cover-art={project.coverImage ? "editorial" : "evidence"}
     >
       <ScreenshotFrame
         className="project-screenshot-frame"
         frameKind="card"
-        label={image.label}
+        label={project.coverImage?.label ?? image.label}
         transitionName={`project-${project.slug}-screenshot-1`}
       >
-        <img
-          src={image.responsiveSrc}
-          srcSet={image.responsiveSrcSet}
-          sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) 42vw, 480px"
-          alt={image.alt}
-          width={image.width}
-          height={image.height}
-          loading="lazy"
-          decoding="async"
-          style={{ objectPosition: image.objectPosition }}
-        />
+        {project.coverImage ? (
+          <EditorialProjectCover project={project} />
+        ) : (
+          <img
+            src={image.responsiveSrc}
+            srcSet={image.responsiveSrcSet}
+            sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) 42vw, 480px"
+            alt={image.alt}
+            width={image.width}
+            height={image.height}
+            loading="lazy"
+            decoding="async"
+            style={{ objectPosition: image.objectPosition }}
+          />
+        )}
       </ScreenshotFrame>
     </a>
   );
@@ -184,10 +212,11 @@ export default function Home() {
         <div className="hero-scan-beam" aria-hidden="true" />
         <div className="hero-pointer-glow" aria-hidden="true" />
 
-        <header className="site-header">
+        <ScrollAwareHeader>
           <nav className="nav shell" aria-label="主导航">
             <Brand />
             <div className="nav-links">
+              <MobileNav />
               <a href="#projects">项目</a>
               <a href="#evidence">证据</a>
               <a href="#about">关于</a>
@@ -203,7 +232,7 @@ export default function Home() {
               </a>
             </div>
           </nav>
-        </header>
+        </ScrollAwareHeader>
 
         <div className="hero-content shell">
           <div className="eyebrow">
@@ -221,15 +250,40 @@ export default function Home() {
             <span className="hero-title-mask"><span><em>×</em></span></span>
             <span className="hero-title-mask"><span>AI 应用开发</span></span>
           </h1>
-          <div className="hero-direction-tags" aria-label="求职方向">
-            <span>Java Full-stack</span>
-            <span>AI Application</span>
-            <span>AI Tooling &amp; Agent</span>
+          <div className="hero-direction-tags hero-capability-rail" aria-label="求职方向">
+            <article className="hero-capability hero-capability--java">
+              <span className="hero-capability-index">01</span>
+              <div className="hero-capability-copy">
+                <span className="hero-capability-label">JAVA BACKEND</span>
+                <strong>Java Full-stack</strong>
+                <small>业务闭环 · 接口与数据一致性</small>
+              </div>
+              <i aria-hidden="true">↗</i>
+            </article>
+            <article className="hero-capability hero-capability--ai">
+              <span className="hero-capability-index">02</span>
+              <div className="hero-capability-copy">
+                <span className="hero-capability-label">AI APPLICATION</span>
+                <strong>AI Application</strong>
+                <small>检索证据 · 人工复核</small>
+              </div>
+              <i aria-hidden="true">↗</i>
+            </article>
+            <article className="hero-capability hero-capability--agent">
+              <span className="hero-capability-index">03</span>
+              <div className="hero-capability-copy">
+                <span className="hero-capability-label">AI TOOLING</span>
+                <strong>AI Tooling &amp; Agent</strong>
+                <small>Provider 路由 · Trace 回放</small>
+              </div>
+              <i aria-hidden="true">↗</i>
+            </article>
           </div>
+          <HeroProjectRail projects={heroProjectRail} />
           <div className="hero-bottom">
             <p>
               以 Java 后端能力为核心，使用 Spring Boot 3 与 Vue 3 完成全栈交付，
-              <br />
+              <br className="hero-break" />
               并在 AI 工具和 Agent 应用工作流中实践大模型接入、检索、人工复核与失败降级。
             </p>
             <div className="hero-actions">
@@ -294,23 +348,36 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="project-section" id="projects">
+      <section
+        className="project-section"
+        id="projects"
+        data-portfolio-scope="static-case-studies"
+      >
         <div className="shell projects-head" data-reveal="section">
           <div>
-            <p className="section-label light">/ 精选项目</p>
-            <h2>三个问题，三种工程重点。</h2>
+            <p className="section-label light">/ 精选项目 · STATIC CASE STUDIES</p>
+            <h2>两个业务项目，按案例阅读。</h2>
+            <p className="projects-reading-key">
+              PROBLEM → ROLE → PROOF <span>先看问题，再看我的贡献和可验证证据。</span>
+            </p>
           </div>
-            <p>
-              固定顺序对应 Java 业务系统、AI 工单应用与 AI 工具工作流。技术结论以源码、测试和仓库文档为准。
+          <p>
+            先看 CommerceFlow 与 Ticket Copilot 的核心链路，再看 AI 工具工作流。这里展示截图、源码、测试和边界，不是在线业务入口。
           </p>
         </div>
 
         <div className="projects">
           {projects.map((project) => (
             <article
-              className={`project project-${project.tone}`}
+              className={`project project-${project.tone} ${
+                project.slug === "devflow"
+                  ? "project-supporting"
+                  : "project-featured"
+              }`}
+              id={`project-${project.slug}`}
               key={project.slug}
               data-project={project.slug}
+              data-featured={project.slug !== "devflow" ? "true" : "false"}
               data-signal-on-view="project"
             >
               <div className="project-top">
@@ -326,6 +393,20 @@ export default function Home() {
                   {project.title}
                 </h3>
                 <p>{project.summary}</p>
+                <div className="project-scan-grid" aria-label="项目快速阅读">
+                  <div>
+                    <span>FOCUS</span>
+                    <strong>{project.lens}</strong>
+                  </div>
+                  <div>
+                    <span>PROOF LENS</span>
+                    <strong>{project.proof}</strong>
+                  </div>
+                  <div>
+                    <span>PUBLIC SIGNAL</span>
+                    <strong>{project.status.claim}</strong>
+                  </div>
+                </div>
                 <p className="project-question">
                   <span>CORE QUESTION</span>
                   {project.question}
@@ -334,6 +415,10 @@ export default function Home() {
                   {project.tags.map((tag) => (
                     <span key={tag}>{tag}</span>
                   ))}
+                </div>
+                <div className="project-proof-chip" aria-label="项目证据状态">
+                  <span>{project.status.claim}</span>
+                  <small>{project.status.verificationType}</small>
                 </div>
                 <div className="project-links">
                   <a href={`/projects/${project.slug}`}>阅读案例 ↗</a>

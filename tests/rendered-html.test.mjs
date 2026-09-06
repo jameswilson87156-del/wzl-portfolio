@@ -43,6 +43,14 @@ test("homepage exposes the approved internship positioning and information archi
   assert.match(html, /Java Full-stack/);
   assert.match(html, /AI Application/);
   assert.match(html, /AI Tooling &amp; Agent/);
+  assert.match(html, /class="hero-direction-tags hero-capability-rail"/);
+  assert.equal(
+    (html.match(/class="hero-capability hero-capability--/g) ?? []).length,
+    3,
+  );
+  assert.match(html, /业务闭环 · 接口与数据一致性/);
+  assert.match(html, /检索证据 · 人工复核/);
+  assert.match(html, /Provider 路由 · Trace 回放/);
   assert.match(html, /Java 后端核心/);
   assert.match(html, /ABOUT &amp; STACK/);
   assert.match(html, /Java 全栈与 AI 应用开发/);
@@ -73,6 +81,9 @@ test("homepage exposes the approved internship positioning and information archi
   assert.equal(countTags(html, "header"), 1);
   assert.equal(countTags(html, "footer"), 1);
   assert.match(html, />WZL<\/span>[\s\S]*PORTFOLIO/);
+  assert.match(html, /class="nav-mobile-menu"/);
+  assert.match(html, /打开站点菜单/);
+  assert.match(html, /href="#projects"[\s\S]*>项目<\/span>/);
   assert.match(html, /href="\/favicon\.ico"/);
   assert.match(
     html,

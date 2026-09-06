@@ -9,6 +9,26 @@ import type {
 } from "../../portfolio-data";
 import { projects } from "../../portfolio-data";
 
+type CaseInteractionSignal = {
+  trace: string;
+  note: string;
+};
+
+const caseInteractionSignals: Record<string, CaseInteractionSignal> = {
+  commerceflow: {
+    trace: "REQUEST → VERIFY → COMMIT",
+    note: "从幂等请求、库存判断读到订单事务事实。",
+  },
+  ticket: {
+    trace: "RETRIEVE → REVIEW → EXPLAIN",
+    note: "从检索来源、人工门禁读到回答边界。",
+  },
+  devflow: {
+    trace: "PROMPT → ROUTE → REPLAY",
+    note: "从 Prompt、Provider 路由读到 Run 证据回放。",
+  },
+};
+
 function ExternalLink({
   link,
   className,
@@ -71,6 +91,8 @@ export default function ProjectCase({ project }: { project: Project }) {
   const nextProject = projects[(currentIndex + 1) % projects.length];
   const primaryFailure = project.failureCases[0];
   const secondaryFailures = project.failureCases.slice(1);
+  const interactionSignal =
+    caseInteractionSignals[project.slug] ?? caseInteractionSignals.devflow;
   const caseImages = [
     project.primaryImage,
     project.secondaryImage,
@@ -133,6 +155,24 @@ export default function ProjectCase({ project }: { project: Project }) {
               <span>STATUS</span>
               <p className="case-status">{project.status.claim}</p>
             </div>
+          </div>
+        </div>
+
+        <div className="case-hero-followup shell" data-case-signal={interactionSignal.trace}>
+          <div className="case-hero-signal">
+            <span>READING SIGNAL</span>
+            <strong>{interactionSignal.trace}</strong>
+            <small>{interactionSignal.note}</small>
+          </div>
+          <div className="case-hero-actions" aria-label="案例快速入口">
+            <a className="case-hero-action case-hero-action-primary" href="#case-system">
+              <span>追踪系统</span>
+              <b aria-hidden="true">↓</b>
+            </a>
+            <a className="case-hero-action" href="#case-evidence">
+              <span>查看证据</span>
+              <b aria-hidden="true">↘</b>
+            </a>
           </div>
         </div>
       </section>
