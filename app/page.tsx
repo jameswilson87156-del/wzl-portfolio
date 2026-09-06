@@ -549,6 +549,7 @@ export default function Home() {
         id="method"
         data-reveal="section"
       >
+        <h2 className="sr-only">工程方法</h2>
         <div className="cap-title">
           <p className="section-label">/ ENGINEERING METHOD</p>
           <p>Java 全栈 · AI 应用 · AI 工具与 Agent 工作流</p>

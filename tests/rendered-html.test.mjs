@@ -75,6 +75,7 @@ test("homepage exposes the approved internship positioning and information archi
   assert.match(html, /业务正确性边界、幂等与库存回放，以及 MySQL 证据链。/);
   assert.match(html, /检索、引用、人工复核边界与 synthetic evaluation。/);
   assert.match(html, /Provider、Prompt、Tool Call 与 Run Evidence 链路。/);
+  assert.match(html, /<h2 class="sr-only">工程方法<\/h2>/);
   assert.match(html, /FULL EVIDENCE LEDGER/);
   assert.match(html, /50 REQUESTS · LOCAL REPLAY/);
   assert.match(html, /TOP-K · SYNTHETIC EVAL/);

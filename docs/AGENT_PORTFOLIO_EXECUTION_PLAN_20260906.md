@@ -300,3 +300,12 @@
 - 移动端将主要 CTA 排在重点项目 rail 之前，并减少首屏上下留白；重点项目 rail 保留为第二层探索入口，避免 320/390 宽度下主行动入口出现过晚。
 - 清理封面装饰标题的 heading 语义，并把 `HTTPS Deployment` 改为 `Portfolio HTTPS`，避免招聘者将个人网站托管实践误解为三个业务项目的生产部署。
 - 没有删除完整证据；案例页仍保留全量证据、SHA、日期、边界与链接。没有新增指标、生产声明、依赖或外部写入。
+
+### 2026-09-06 — Release Candidate 语义收口
+
+- 在 `ENGINEERING METHOD` 区域补充视觉隐藏的正式 `h2`（`工程方法`），保留原有 `/ ENGINEERING METHOD` 视觉标签与布局；不改颜色、动画、图片、项目内容或 CSS 结构。
+- `npm.cmd test`：构建、静态准备、静态校验与 30 项测试全部通过；静态产物 67 个文件、核心文件 21 个、source map 为 0，根 RSC 字节一致。
+- `npm.cmd run lint`：0 errors，保留既有原生 `<img>` warning；`npx.cmd tsc --noEmit` 通过；`git diff --check` 通过。
+- 重启本地 5179 静态预览进程使其明确指向当前 `dist/client`，并在 5179 与 5180 实际浏览器 AX 树中确认 `h1 → h2 → h3` 的 `工程方法` 标题和既有首页结构。
+- 当前发布候选状态：`LOCAL_UI=PASS`、`STATIC_PREVIEW=PASS`、`RESPONSIVE=PASS`、`KEYBOARD_AND_AX=PASS`、`LINT=PASS_WITH_ONE_NON_BLOCKING_IMG_WARNING`、`TYPESCRIPT=PASS`、`TEST_AND_BUILD=PASS`、`GITHUB_SYNC=BLOCKED`、`STAGING=PENDING`。
+- 本地工作树仅保留本次语义标题和渲染契约测试修改；未推送 GitHub，未执行 DNS、证书、云资源或公网发布动作。
