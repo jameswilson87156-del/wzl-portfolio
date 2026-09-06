@@ -60,6 +60,8 @@ The hero title remains readable while its entrance motion runs. The motion now m
 
 The three plain outline tags under the hero title now form a compact capability rail. Each cell keeps the original role direction while adding a factual engineering lens: Java full-stack maps to business flow and data consistency, AI application maps to retrieval evidence and human review, and AI tooling maps to provider routing and trace replay. The cells use project accents, indexed labels, a restrained hover response, and a stacked mobile layout. No new framework, metric, production claim, or project evidence was introduced.
 
+The capability rail is also a native keyboard-accessible shortcut: its three cells link to the matching CommerceFlow, Ticket Copilot, and DevFlow case cards. This makes the first viewport explain both the role direction and the next evidence destination without adding a second visual control row.
+
 ## Boundary
 
 This change is local to the portfolio site clone. It does not deploy `wzl8.top`, modify DNS, alter the Aliyun host, publish the two business repositories, or add credentials. The cover pass was checked in the local browser at `http://127.0.0.1:5180/` and in the static preview on port `5179` after the build.
