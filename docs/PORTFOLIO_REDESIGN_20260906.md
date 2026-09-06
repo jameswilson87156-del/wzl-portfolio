@@ -62,6 +62,8 @@ The three plain outline tags under the hero title now form a compact capability 
 
 The capability rail is also a native keyboard-accessible shortcut: its three cells link to the matching CommerceFlow, Ticket Copilot, and DevFlow case cards. This makes the first viewport explain both the role direction and the next evidence destination without adding a second visual control row.
 
+The adjacent project rail now uses a native `nav` landmark as well, so its hover and focus preview remains a readable project navigation pattern instead of an anonymous visual panel.
+
 ## Boundary
 
 This change is local to the portfolio site clone. It does not deploy `wzl8.top`, modify DNS, alter the Aliyun host, publish the two business repositories, or add credentials. The cover pass was checked in the local browser at `http://127.0.0.1:5180/` and in the static preview on port `5179` after the build.

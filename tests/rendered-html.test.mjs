@@ -56,6 +56,8 @@ test("homepage exposes the approved internship positioning and information archi
   ]) {
     assert.match(html, new RegExp(`class="hero-capability[^"]*" href="${href}"`));
   }
+  assert.match(html, /<nav[^>]*class="hero-project-index[^>]*aria-label="重点项目"/);
+  assert.equal((html.match(/class="hero-project-link"/g) ?? []).length, 2);
   assert.match(html, /业务闭环 · 接口与数据一致性/);
   assert.match(html, /检索证据 · 人工复核/);
   assert.match(html, /Provider 路由 · Trace 回放/);

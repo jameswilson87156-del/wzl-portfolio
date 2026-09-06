@@ -48,7 +48,7 @@ export default function HeroProjectRail({ projects }: HeroProjectRailProps) {
   }
 
   return (
-    <div
+    <nav
       className={`hero-project-index${activeSlug ? " has-active" : ""}`}
       aria-label="重点项目"
       data-active-project={activeSlug ?? "none"}
@@ -92,6 +92,6 @@ export default function HeroProjectRail({ projects }: HeroProjectRailProps) {
       <span className="hero-project-note">
         TWO CASE STUDIES / ONE ENGINEERING THROUGHLINE
       </span>
-    </div>
+    </nav>
   );
 }
