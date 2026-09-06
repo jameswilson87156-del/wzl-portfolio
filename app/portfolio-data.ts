@@ -93,6 +93,7 @@ export type Project = {
   title: string;
   shortTitle: string;
   summary: string;
+  contribution: string;
   question: string;
   stack: string;
   tone: ProjectTone;
@@ -103,6 +104,7 @@ export type Project = {
   readme: string;
   action?: string;
   status: EvidenceItem;
+  homepageEvidenceClaim: string;
   challenge: string;
   headings: ProjectHeadings;
   ownership: Ownership;
@@ -206,6 +208,8 @@ export const projects: Project[] = [
     shortTitle: "CommerceFlow",
     summary:
       "围绕商品、订单、库存和 AI 商品助手构建的 Java 业务系统，重点展示分层设计、状态流转、数据一致性和前后端联调。",
+    contribution:
+      "业务正确性边界、幂等与库存回放，以及 MySQL 证据链。",
     question:
       "如何在重复请求、库存竞争和 AI 服务异常时保持订单事实一致？",
     stack:
@@ -217,6 +221,7 @@ export const projects: Project[] = [
     repo: `https://github.com/${owner}/${commerceRepo}`,
     readme: commerceLink("README.md"),
     status: commerceStatus,
+    homepageEvidenceClaim: "ORDER RELIABILITY VERIFIED ×3",
     challenge:
       "电商展示不能只停留在商品列表。真正需要解释的是：重复请求会不会重复扣库存，库存竞争时是否超卖，失败时事务如何回滚，以及 AI 回答究竟来自哪些业务事实。",
     headings: {
@@ -658,6 +663,8 @@ export const projects: Project[] = [
     shortTitle: "Ticket Copilot",
     summary:
       "面向企业工单处理场景的 AI 应用，串联知识检索、建议生成、人工复核、Trace 和审计流程。",
+    contribution:
+      "检索、引用、人工复核边界与 synthetic evaluation。",
     question:
       "AI 工单建议如何展示来源、暴露召回失败并保留人工确认？",
     stack:
@@ -671,6 +678,7 @@ export const projects: Project[] = [
     action:
       "https://github.com/jameswilson87156-del/enterprise-ai-ticket-copilot/actions/runs/30552284724",
     status: ticketStatus,
+    homepageEvidenceClaim: "16 SYNTHETIC EVAL CASES",
     challenge:
       "普通 RAG Demo 往往只展示一个问答框，却无法回答建议引用了什么、哪些样本召回失败，以及风险动作由谁确认。本案例把失败样本和人工门禁放到成功指标旁边。",
     headings: {
@@ -1116,6 +1124,8 @@ export const projects: Project[] = [
     shortTitle: "DevFlow",
     summary:
       "面向开发工作流的 AI 工具，提供 Provider 路由、Prompt 模板、状态管理、日志诊断和历史记录。",
+    contribution:
+      "Provider、Prompt、Tool Call 与 Run Evidence 链路。",
     question:
       "一次 AI Run 中的 Prompt、Provider 和 Tool Call 如何被记录、回放和审核？",
     stack:
@@ -1129,6 +1139,7 @@ export const projects: Project[] = [
     action:
       "https://github.com/jameswilson87156-del/devflow-copilot/actions/runs/30552289460",
     status: devFlowStatus,
+    homepageEvidenceClaim: "FRONTEND TEST + BUILD PASS",
     challenge:
       "AI Coding Demo 很容易变成聊天套壳。项目需要展示一次生成为什么发生、使用了哪个 Prompt Version、Provider 是否降级、调用了什么工具、生成结果如何进入人工审核。",
     headings: {

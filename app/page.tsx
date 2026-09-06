@@ -43,7 +43,7 @@ const techStackGroups = [
       "Linux",
       "Docker",
       "Nginx",
-      "HTTPS Deployment",
+      "Portfolio HTTPS",
     ],
   },
   {
@@ -163,7 +163,13 @@ function ProjectVisual({
   );
 }
 
-function EvidenceClaim({ item }: { item: EvidenceItem }) {
+function EvidenceClaim({
+  item,
+  className,
+}: {
+  item: EvidenceItem;
+  className?: string;
+}) {
   const content = (
     <>
       <strong>{item.claim}</strong>
@@ -187,7 +193,7 @@ function EvidenceClaim({ item }: { item: EvidenceItem }) {
 
   return item.evidenceHref ? (
     <a
-      className="evidence-claim"
+      className={`evidence-claim${className ? ` ${className}` : ""}`}
       href={item.evidenceHref}
       target="_blank"
       rel="noreferrer"
@@ -196,7 +202,10 @@ function EvidenceClaim({ item }: { item: EvidenceItem }) {
       {content}
     </a>
   ) : (
-    <div className="evidence-claim" {...attributes}>
+    <div
+      className={`evidence-claim${className ? ` ${className}` : ""}`}
+      {...attributes}
+    >
       {content}
     </div>
   );
@@ -340,7 +349,7 @@ export default function Home() {
               紧跟证据。
             </h2>
             <p>
-              每条数字和状态均绑定仓库提交、验证日期、来源与适用边界。
+              首页先给出每个项目的一条主证据；完整账本和边界说明留在案例页。
             </p>
           </div>
           {projects.map((project) => (
@@ -354,9 +363,38 @@ export default function Home() {
                 <h3>{project.shortTitle}</h3>
               </div>
               <div className="evidence-claims">
-                {project.evidence.map((item) => (
-                  <EvidenceClaim item={item} key={item.claim} />
-                ))}
+                {(() => {
+                  const primaryEvidence =
+                    project.evidence.find(
+                      (item) => item.claim === project.homepageEvidenceClaim,
+                    ) ?? project.evidence[0];
+                  const additionalEvidence = project.evidence.filter(
+                    (item) => item !== primaryEvidence,
+                  );
+
+                  return (
+                    <>
+                      <EvidenceClaim
+                        item={primaryEvidence}
+                        className="evidence-claim-primary"
+                      />
+                      {additionalEvidence.length ? (
+                        <details className="evidence-more">
+                          <summary>
+                            <span>FULL EVIDENCE LEDGER</span>
+                            <b>{additionalEvidence.length} more records</b>
+                            <i aria-hidden="true">+</i>
+                          </summary>
+                          <div className="evidence-claims evidence-claims-more">
+                            {additionalEvidence.map((item) => (
+                              <EvidenceClaim item={item} key={item.claim} />
+                            ))}
+                          </div>
+                        </details>
+                      ) : null}
+                    </>
+                  );
+                })()}
               </div>
             </article>
           ))}
@@ -371,13 +409,13 @@ export default function Home() {
         <div className="shell projects-head" data-reveal="section">
           <div>
             <p className="section-label light">/ 精选项目 · STATIC CASE STUDIES</p>
-            <h2>两个业务项目，按案例阅读。</h2>
+            <h2>两个业务主案例，一个 AI 工作流案例。</h2>
             <p className="projects-reading-key">
               PROBLEM → ROLE → PROOF <span>先看问题，再看我的贡献和可验证证据。</span>
             </p>
           </div>
           <p>
-            先看 CommerceFlow 与 Ticket Copilot 的核心链路，再看 AI 工具工作流。这里展示截图、源码、测试和边界，不是在线业务入口。
+            先看 CommerceFlow 与 Ticket Copilot 两个业务主案例，再看 DevFlow AI 工具工作流。这里展示截图、源码、测试和边界，不是在线业务入口。
           </p>
         </div>
 
@@ -408,6 +446,10 @@ export default function Home() {
                   {project.title}
                 </h3>
                 <p>{project.summary}</p>
+                <p className="project-contribution">
+                  <span>MY CONTRIBUTION</span>
+                  {project.contribution}
+                </p>
                 <div className="project-scan-grid" aria-label="项目快速阅读">
                   <div>
                     <span>FOCUS</span>

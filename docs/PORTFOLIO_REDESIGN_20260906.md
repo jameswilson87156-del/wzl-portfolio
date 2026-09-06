@@ -64,6 +64,12 @@ The capability rail is also a native keyboard-accessible shortcut: its three cel
 
 The adjacent project rail now uses a native `nav` landmark as well, so its hover and focus preview remains a readable project navigation pattern instead of an anonymous visual panel.
 
+## Recruiting reading pass — 2026-09-06
+
+An independent review confirmed that the visual direction should stay intact and that the next gains come from reading order. The homepage now states the project hierarchy as two flagship business cases plus one AI tooling workflow case, puts a short personal contribution line on every project card, and surfaces one bounded primary evidence item per project before the remaining ledger. The full evidence remains available in a native disclosure and on each case page.
+
+On small screens, the main project CTA comes before the secondary hero project rail and the hero keeps less vertical padding. Cover metrics carry their scope (`LOCAL REPLAY`, `SYNTHETIC EVAL`, or `TESTED`), and the portfolio deployment stack label no longer reads like a deployment claim about the business projects. This pass keeps the editorial visual system and stops short of adding more glow, cards, parallax, or decorative motion.
+
 ## Boundary
 
 This change is local to the portfolio site clone. It does not deploy `wzl8.top`, modify DNS, alter the Aliyun host, publish the two business repositories, or add credentials. The cover pass was checked in the local browser at `http://127.0.0.1:5180/` and in the static preview on port `5179` after the build.

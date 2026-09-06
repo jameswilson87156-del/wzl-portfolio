@@ -8,7 +8,7 @@ const coverCopy = {
     accent: "TRUTH.",
     subtitle: "CommerceFlow AI Mall",
     question: "订单事实如何在重复请求和库存竞争中保持稳定？",
-    metrics: ["50 REQUESTS", "STOCK 10", "1 FACT CHAIN"],
+    metrics: ["50 REQUESTS · LOCAL REPLAY", "STOCK 10 · CONTROLLED", "1 FACT CHAIN"],
     accentClass: "cover-coral",
   },
   ticket: {
@@ -17,7 +17,7 @@ const coverCopy = {
     accent: "REVIEW.",
     subtitle: "Enterprise Ticket Copilot",
     question: "AI 建议在哪里结束，人工确认从哪里开始？",
-    metrics: ["TOP-K", "CITATION", "HUMAN GATE"],
+    metrics: ["TOP-K · SYNTHETIC EVAL", "CITATION · TESTED", "HUMAN GATE"],
     accentClass: "cover-violet",
   },
   devflow: {
@@ -26,7 +26,7 @@ const coverCopy = {
     accent: "EVIDENCE.",
     subtitle: "DevFlow Copilot",
     question: "一次 AI Run 能否被记录、回放并接受审核？",
-    metrics: ["PROMPT", "TOOL CALL", "REPLAY"],
+    metrics: ["PROMPT · TRACE", "TOOL CALL · TESTED", "REPLAY · EVIDENCE"],
     accentClass: "cover-lime",
   },
 } as const;
@@ -41,10 +41,10 @@ export default function EditorialProjectCover({ project }: { project: Project })
       <div className="editorial-cover-noise" aria-hidden="true" />
       <div className="editorial-cover-copy">
         <span>{copy.kicker}</span>
-        <h4>
+        <div className="editorial-cover-title">
           {copy.title}
           <em>{copy.accent}</em>
-        </h4>
+        </div>
         <p>{copy.subtitle}</p>
         <small>{copy.question}</small>
       </div>

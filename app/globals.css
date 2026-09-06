@@ -2624,7 +2624,7 @@ a.evidence-claim:hover {
 .evidence-claim small {
   color: #8fa194;
   font-family: var(--mono);
-  font-size: 7px;
+  font-size: 8px;
   letter-spacing: 0.07em;
 }
 
@@ -2639,6 +2639,70 @@ a.evidence-claim:hover {
 
 .evidence-claim em {
   color: #73877a;
+}
+
+.evidence-claim-primary {
+  min-height: 138px;
+}
+
+.evidence-more {
+  border-bottom: 1px solid var(--line-light);
+}
+
+.evidence-more > summary {
+  min-height: 48px;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 8px;
+  color: #90a296;
+  font: 700 8px/1.3 var(--mono);
+  letter-spacing: 0.09em;
+  cursor: pointer;
+  list-style: none;
+}
+
+.evidence-more > summary::-webkit-details-marker {
+  display: none;
+}
+
+.evidence-more > summary span {
+  color: var(--acid);
+}
+
+.evidence-more > summary b {
+  color: #9fb0a3;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.evidence-more > summary i {
+  color: var(--acid);
+  font: 400 16px/1 var(--sans);
+  font-style: normal;
+}
+
+.evidence-more[open] > summary i {
+  font-size: 0;
+}
+
+.evidence-more[open] > summary i::after {
+  content: "−";
+  font-size: 16px;
+}
+
+.evidence-more > summary:focus-visible {
+  outline: 2px solid var(--acid);
+  outline-offset: 3px;
+}
+
+.evidence-claims-more {
+  border-top: 1px solid rgba(238, 244, 223, 0.11);
+}
+
+.evidence-claims-more .evidence-claim {
+  min-height: 112px;
 }
 
 .project {
@@ -2659,6 +2723,24 @@ a.evidence-claim:hover {
   color: var(--acid);
   font-family: var(--mono);
   font-size: 8px;
+  letter-spacing: 0.11em;
+}
+
+.project-contribution {
+  max-width: 560px;
+  margin-top: 16px !important;
+  padding: 12px 0 0;
+  color: #d5dfd5 !important;
+  border-top: 1px solid rgba(238, 244, 223, 0.13);
+  font-size: 12px !important;
+  line-height: 1.65 !important;
+}
+
+.project-contribution span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--acid);
+  font: 700 8px/1 var(--mono);
   letter-spacing: 0.11em;
 }
 
@@ -5395,7 +5477,7 @@ a.evidence-claim:hover {
   font-weight: 700;
 }
 
-.editorial-cover-copy h4 {
+.editorial-cover-copy .editorial-cover-title {
   margin: 19% 0 5%;
   color: #f0f4e7;
   font-family: var(--sans);
@@ -5405,7 +5487,7 @@ a.evidence-claim:hover {
   line-height: 0.88;
 }
 
-.editorial-cover-copy h4 em {
+.editorial-cover-copy .editorial-cover-title em {
   display: block;
   color: var(--cover-accent);
   font-style: normal;
@@ -5541,7 +5623,7 @@ a.evidence-claim:hover {
     width: 42%;
   }
 
-  .editorial-cover-copy h4 {
+  .editorial-cover-copy .editorial-cover-title {
     margin-top: 14%;
     font-size: clamp(23px, 8vw, 34px);
   }
@@ -6104,7 +6186,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    padding: 72px 0 48px;
+    padding: 54px 0 32px;
   }
 
   .hero h1 {
@@ -6112,7 +6194,8 @@ body {
   }
 
   .hero-project-index {
-    margin-top: 34px;
+    order: 6;
+    margin-top: 26px;
     padding-left: 0;
     border-left: 0;
   }
@@ -6130,7 +6213,8 @@ body {
   }
 
   .hero-bottom {
-    margin-top: 34px;
+    order: 5;
+    margin-top: 26px;
   }
 
   .projects-head {

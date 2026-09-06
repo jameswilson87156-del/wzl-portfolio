@@ -69,6 +69,17 @@ test("homepage exposes the approved internship positioning and information archi
   assert.match(html, /FRONTEND &amp; FULL-STACK DELIVERY/);
   assert.match(html, /AI APPLICATION, TOOLING &amp; AGENT/);
   assert.match(html, /Agent 仅指应用工作流与证据聚合/);
+  assert.match(html, /两个业务主案例，一个 AI 工作流案例。/);
+  assert.match(html, /TWO FLAGSHIP CASES \/ ONE TOOLING CASE/);
+  assert.equal((html.match(/class="project-contribution"/g) ?? []).length, 3);
+  assert.match(html, /业务正确性边界、幂等与库存回放，以及 MySQL 证据链。/);
+  assert.match(html, /检索、引用、人工复核边界与 synthetic evaluation。/);
+  assert.match(html, /Provider、Prompt、Tool Call 与 Run Evidence 链路。/);
+  assert.match(html, /FULL EVIDENCE LEDGER/);
+  assert.match(html, /50 REQUESTS · LOCAL REPLAY/);
+  assert.match(html, /TOP-K · SYNTHETIC EVAL/);
+  assert.match(html, /Portfolio HTTPS/);
+  assert.doesNotMatch(html, /HTTPS Deployment/);
   assert.doesNotMatch(html, /查看最强项目/);
   assert.match(html, /查看工程项目/);
   assert.match(html, /href="#projects"/);
