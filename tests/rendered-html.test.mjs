@@ -2,8 +2,8 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const commerceSha = "dea3eab7f42b8b1617bb7a3c347fc705040fc129";
-const ticketSha = "6c1a8ae41eb6f3c6d400628c54646996235f6a26";
+const commerceSha = "954d56e01e4e4fe4bf5cc8a16becf60747305b68";
+const ticketSha = "89b608d79166fa13a3093e9fafebaf9da51677f9";
 const devFlowSha = "c9cefd4bbbf30d27579efe7d023a83f764f28736";
 const oldDevFlowMetricsSha =
   "3b54c08a581dcd90a1a3f746be119356b5de41d5";
@@ -189,7 +189,7 @@ test("homepage evidence items keep the Phase 1A evidence contract", async () => 
   }
 
   assert.match(html, /ORDER RELIABILITY VERIFIED ×3/);
-  assert.match(html, /86 BACKEND TESTS/);
+  assert.match(html, /291 BACKEND TESTS/);
   assert.match(html, /6 FRONTEND TESTS/);
   assert.match(html, /16 SYNTHETIC EVAL CASES/);
   assert.match(html, /FRONTEND TEST \+ BUILD PASS/);
@@ -200,7 +200,7 @@ test("homepage evidence items keep the Phase 1A evidence contract", async () => 
       /<article[^>]*data-project="commerceflow"[\s\S]*?<\/article>/,
     )?.[0] ?? "";
   assert.ok(commerce);
-  assert.doesNotMatch(commerce, /30552284724|30552289460|CI VERIFIED/);
+  assert.doesNotMatch(commerce, /34141838761|30552284724|30552289460|CI VERIFIED/);
   assert.match(commerce, /LOCAL VERIFIED/);
 });
 
@@ -308,7 +308,7 @@ test("CommerceFlow keeps ownership honest and does not borrow other CI", async (
   assert.match(html, /Codex 实质参与/);
   assert.match(html, /不能声称整套项目从零独立手写/);
   assert.doesNotMatch(html, /独立完成整个项目|完全自主开发/);
-  assert.doesNotMatch(html, /30552284724|30552289460/);
+  assert.doesNotMatch(html, /34141838761|30552284724|30552289460/);
   assert.match(html, new RegExp(`/blob/${commerceSha}/`));
 });
 

@@ -129,11 +129,15 @@ const ticketRepo = "enterprise-ai-ticket-copilot";
 const devFlowRepo = "devflow-copilot";
 const owner = "jameswilson87156-del";
 
-const commerceSha = "dea3eab7f42b8b1617bb7a3c347fc705040fc129";
-const ticketSha = "6c1a8ae41eb6f3c6d400628c54646996235f6a26";
+const commerceSha = "954d56e01e4e4fe4bf5cc8a16becf60747305b68";
+const ticketSha = "89b608d79166fa13a3093e9fafebaf9da51677f9";
 const devFlowSha = "c9cefd4bbbf30d27579efe7d023a83f764f28736";
 const devFlowMetricsSha = "3b54c08a581dcd90a1a3f746be119356b5de41d5";
 const verifiedAt = "2026-07-31";
+const commerceVerifiedAt = "2026-09-08";
+const ticketVerifiedAt = "2026-09-08";
+const ticketCiRun = "34141838761";
+const ticketCiUrl = `https://github.com/${owner}/${ticketRepo}/actions/runs/${ticketCiRun}`;
 
 function blob(repo: string, sha: string, path: string) {
   return `https://github.com/${owner}/${repo}/blob/${sha}/${path}`;
@@ -170,7 +174,7 @@ const commerceStatus: EvidenceItem = {
   evidenceLabel: "README · LOCAL SHOWCASE",
   evidenceHref: commerceLink("README.md"),
   repositorySha: commerceSha,
-  verifiedAt,
+  verifiedAt: commerceVerifiedAt,
   boundary: "本地 Showcase 状态，不代表生产部署、线上流量或外部模型效果。",
   verificationType: "documentation",
 };
@@ -178,11 +182,10 @@ const commerceStatus: EvidenceItem = {
 const ticketStatus: EvidenceItem = {
   claim: "CI VERIFIED",
   scope: `${ticketRepo} main @ ${ticketSha.slice(0, 7)}`,
-  evidenceLabel: "GitHub Actions #30552284724",
-  evidenceHref:
-    "https://github.com/jameswilson87156-del/enterprise-ai-ticket-copilot/actions/runs/30552284724",
+  evidenceLabel: `GitHub Actions #${ticketCiRun}`,
+  evidenceHref: ticketCiUrl,
   repositorySha: ticketSha,
-  verifiedAt,
+  verifiedAt: ticketVerifiedAt,
   boundary: "CI 证明该提交的前端构建和后端测试通过，不代表生产可用性。",
   verificationType: "ci",
 };
@@ -478,7 +481,7 @@ export const projects: Project[] = [
           "docs/evidence/order-reliability-v1/README.md",
         ),
         repositorySha: commerceSha,
-        verifiedAt,
+        verifiedAt: commerceVerifiedAt,
         boundary: "覆盖库存竞争、并发幂等、Key 冲突与回滚；不是生产负载或吞吐量测试。",
         verificationType: "local",
       },
@@ -490,7 +493,7 @@ export const projects: Project[] = [
           "docs/architecture/REDIS_RATE_LIMIT_FLOW.md",
         ),
         repositorySha: commerceSha,
-        verifiedAt,
+        verifiedAt: commerceVerifiedAt,
         boundary: "固定窗口 Showcase 配置；不代表 DDoS 防护或生产限流能力。",
         verificationType: "documentation",
       },
@@ -505,7 +508,7 @@ export const projects: Project[] = [
           "docs/evidence/order-reliability-v1/README.md",
         ),
         repositorySha: commerceSha,
-        verifiedAt,
+        verifiedAt: commerceVerifiedAt,
         boundary: "本地并发场景，不是生产压测、QPS 或吞吐量指标。",
         verificationType: "local",
       },
@@ -517,7 +520,7 @@ export const projects: Project[] = [
           "apps/mall-api/src/test/java/com/commerceflow/mall/OrderReliabilityMySqlTests.java",
         ),
         repositorySha: commerceSha,
-        verifiedAt,
+        verifiedAt: commerceVerifiedAt,
         boundary: "不声称分布式多实例幂等。",
         verificationType: "local",
       },
@@ -529,7 +532,7 @@ export const projects: Project[] = [
           "apps/mall-api/src/test/java/com/commerceflow/mall/OrderReliabilityMySqlTests.java",
         ),
         repositorySha: commerceSha,
-        verifiedAt,
+        verifiedAt: commerceVerifiedAt,
         boundary: "只覆盖单体 MySQL 事务，不覆盖跨服务 Saga。",
         verificationType: "local",
       },
@@ -676,7 +679,7 @@ export const projects: Project[] = [
     repo: `https://github.com/${owner}/${ticketRepo}`,
     readme: ticketLink("README.md"),
     action:
-      "https://github.com/jameswilson87156-del/enterprise-ai-ticket-copilot/actions/runs/30552284724",
+      ticketCiUrl,
     status: ticketStatus,
     homepageEvidenceClaim: "16 SYNTHETIC EVAL CASES",
     challenge:
@@ -892,22 +895,22 @@ export const projects: Project[] = [
     evidence: [
       ticketStatus,
       {
-        claim: "86 BACKEND TESTS",
+        claim: "291 BACKEND TESTS",
         scope: `${ticketRepo} main @ ${ticketSha.slice(0, 7)} · backend mvn test`,
-        evidenceLabel: "README verification summary",
-        evidenceHref: ticketLink("README.md"),
+        evidenceLabel: "TEST_REPORT.md · MAIN MERGE",
+        evidenceHref: ticketLink("docs/TEST_REPORT.md"),
         repositorySha: ticketSha,
-        verifiedAt,
+        verifiedAt: ticketVerifiedAt,
         boundary: "仓库测试数量，不代表生产流量、SLA 或真实企业数据效果。",
         verificationType: "ci",
       },
       {
         claim: "6 FRONTEND TESTS",
         scope: `${ticketRepo} main @ ${ticketSha.slice(0, 7)} · frontend npm test`,
-        evidenceLabel: "README verification summary",
-        evidenceHref: ticketLink("README.md"),
+        evidenceLabel: "TEST_REPORT.md · MAIN MERGE",
+        evidenceHref: ticketLink("docs/TEST_REPORT.md"),
         repositorySha: ticketSha,
-        verifiedAt,
+        verifiedAt: ticketVerifiedAt,
         boundary: "覆盖前端演示边界与错误处理，不代表完整端到端生产验收。",
         verificationType: "ci",
       },
@@ -917,7 +920,7 @@ export const projects: Project[] = [
         evidenceLabel: "RAG Evaluation Plan",
         evidenceHref: ticketLink("docs/evaluation/RAG_EVALUATION_PLAN.md"),
         repositorySha: ticketSha,
-        verifiedAt,
+        verifiedAt: ticketVerifiedAt,
         boundary: "自建 synthetic demo cases，只验证本地检索与引用链路，不代表真实模型质量。",
         verificationType: "synthetic-evaluation",
       },
@@ -929,7 +932,7 @@ export const projects: Project[] = [
         evidenceLabel: "评测数据与计划",
         evidenceHref: ticketLink("docs/evaluation/RAG_EVALUATION_PLAN.md"),
         repositorySha: ticketSha,
-        verifiedAt,
+        verifiedAt: ticketVerifiedAt,
         boundary: "不代表真实企业工单分布或线上模型效果。",
         verificationType: "synthetic-evaluation",
       },
@@ -939,7 +942,7 @@ export const projects: Project[] = [
         evidenceLabel: "最新指标 JSON",
         evidenceHref: ticketLink("docs/metrics/rag_metrics_latest.json"),
         repositorySha: ticketSha,
-        verifiedAt,
+        verifiedAt: ticketVerifiedAt,
         boundary: "至少命中一个预期来源，不代表召回完整或答案正确。",
         verificationType: "synthetic-evaluation",
       },
@@ -949,7 +952,7 @@ export const projects: Project[] = [
         evidenceLabel: "评测指标快照",
         evidenceHref: ticketLink("docs/metrics/rag_metrics_snapshot.md"),
         repositorySha: ticketSha,
-        verifiedAt,
+        verifiedAt: ticketVerifiedAt,
         boundary: "有引用不等于引用相关、完整或回答正确。",
         verificationType: "synthetic-evaluation",
       },
@@ -959,7 +962,7 @@ export const projects: Project[] = [
         evidenceLabel: "最新评测结果",
         evidenceHref: ticketLink("docs/metrics/rag_metrics_latest.json"),
         repositorySha: ticketSha,
-        verifiedAt,
+        verifiedAt: ticketVerifiedAt,
         boundary: "失败与审核数量只适用于该固定数据集。",
         verificationType: "synthetic-evaluation",
       },
@@ -969,7 +972,7 @@ export const projects: Project[] = [
         evidenceLabel: "Provider 路径说明",
         evidenceHref: ticketLink("docs/TEST_REPORT.md"),
         repositorySha: ticketSha,
-        verifiedAt,
+        verifiedAt: ticketVerifiedAt,
         boundary: "这是配置路径结果，不是模型质量或成功率指标。",
         verificationType: "documentation",
       },
@@ -1056,9 +1059,9 @@ export const projects: Project[] = [
         title: "CI",
         items: [
           {
-            label: "GitHub Actions #30552284724",
+            label: `GitHub Actions #${ticketCiRun}`,
             description: `提交 ${ticketSha.slice(0, 7)} 的 frontend build 与 backend tests。`,
-            href: "https://github.com/jameswilson87156-del/enterprise-ai-ticket-copilot/actions/runs/30552284724",
+            href: ticketCiUrl,
             kind: "ci",
           },
         ],
