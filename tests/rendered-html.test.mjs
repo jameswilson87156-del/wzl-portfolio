@@ -3,7 +3,8 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const commerceSha = "954d56e01e4e4fe4bf5cc8a16becf60747305b68";
-const ticketSha = "bf97f2e0f1c45efb34facfb4b07d258c88aec6fe";
+const ticketSha = "924d40babbb06955c385e9b1106f9ffcbf6c0ea2";
+const ticketLoadSha = "bf97f2e0f1c45efb34facfb4b07d258c88aec6fe";
 const devFlowSha = "c9cefd4bbbf30d27579efe7d023a83f764f28736";
 const oldDevFlowMetricsSha =
   "3b54c08a581dcd90a1a3f746be119356b5de41d5";
@@ -73,7 +74,7 @@ test("homepage exposes the approved internship positioning and information archi
   assert.match(html, /TWO FLAGSHIP CASES \/ ONE TOOLING CASE/);
   assert.equal((html.match(/class="project-contribution"/g) ?? []).length, 3);
   assert.match(html, /业务正确性边界、幂等与库存回放，以及 MySQL 证据链。/);
-  assert.match(html, /检索、引用、人工复核边界、synthetic evaluation，以及 Python AI sidecar 的 API \/ observability \/ load-test 验收。/);
+  assert.match(html, /检索、引用、人工复核边界、synthetic evaluation，以及 Retrieval V2、Python AI sidecar API \/ observability \/ load-test 的分版本验收。/);
   assert.match(html, /Provider、Prompt、Tool Call 与 Run Evidence 链路。/);
   assert.match(html, /<h2 class="sr-only">工程方法<\/h2>/);
   assert.match(html, /FULL EVIDENCE LEDGER/);
@@ -316,13 +317,16 @@ test("Ticket reports synthetic evaluation boundaries beside attractive metrics",
   const html = await (await render("/projects/ticket")).text();
   assert.match(html, /16 SYNTHETIC CASES/);
   assert.match(html, /TOP-K HIT 100% \/ RECALL@3 90%/);
-  assert.match(html, /COVERAGE 100% \/ PRECISION 81\.11%/);
-  assert.match(html, /6 FAILED \/ 15 REVIEW REQUIRED/);
+  assert.match(html, /PRECISION 81\.11% → 97\.78%/);
+  assert.match(html, /FAILED CASES 6 → 1/);
+  assert.match(html, /Retrieval V2/);
+  assert.match(html, /retrieval_v2_comparison_latest\.md/);
   assert.match(html, /1000 HTTP · 0 ERR · P95 51\.38MS/);
   assert.match(html, /python_sidecar_load_latest\.md/);
   assert.match(html, /Provider fallback 100%[\s\S]*不是模型质量指标/);
-  assert.match(html, /synthetic demo case/);
+  assert.match(html, /synthetic/);
   assert.match(html, new RegExp(`/blob/${ticketSha}/`));
+  assert.match(html, new RegExp(`/blob/${ticketLoadSha}/docs/performance/python_sidecar_load_latest\.md`));
 });
 
 test("DevFlow separates current HEAD evidence from the old metrics snapshot", async () => {

@@ -130,13 +130,15 @@ const devFlowRepo = "devflow-copilot";
 const owner = "jameswilson87156-del";
 
 const commerceSha = "954d56e01e4e4fe4bf5cc8a16becf60747305b68";
-const ticketSha = "bf97f2e0f1c45efb34facfb4b07d258c88aec6fe";
+const ticketSha = "924d40babbb06955c385e9b1106f9ffcbf6c0ea2";
+const ticketLoadSha = "bf97f2e0f1c45efb34facfb4b07d258c88aec6fe";
 const ticketCiSha = "89b608d79166fa13a3093e9fafebaf9da51677f9";
 const devFlowSha = "c9cefd4bbbf30d27579efe7d023a83f764f28736";
 const devFlowMetricsSha = "3b54c08a581dcd90a1a3f746be119356b5de41d5";
 const verifiedAt = "2026-07-31";
 const commerceVerifiedAt = "2026-09-08";
 const ticketVerifiedAt = "2026-09-14";
+const ticketLoadVerifiedAt = "2026-09-13";
 const ticketCiVerifiedAt = "2026-09-08";
 const ticketCiRun = "34141838761";
 const ticketCiUrl = `https://github.com/${owner}/${ticketRepo}/actions/runs/${ticketCiRun}`;
@@ -188,7 +190,7 @@ const ticketStatus: EvidenceItem = {
   evidenceHref: ticketLink("README.md"),
   repositorySha: ticketSha,
   verifiedAt: ticketVerifiedAt,
-  boundary: "GitHub main 已包含 Python/FastAPI sidecar 与本地压测证据；不代表生产部署或生产 SLA。",
+  boundary: "GitHub main 已包含 Retrieval V2、Python/FastAPI sidecar 与评测证据；旧 1000 请求压测仍绑定 keyword baseline 提交，不代表 V2 性能或生产 SLA。",
   verificationType: "documentation",
 };
 
@@ -669,21 +671,21 @@ export const projects: Project[] = [
     summary:
       "面向企业工单处理场景的 AI 应用，使用 Java/Spring Boot 承载业务工作流，并以 Python/FastAPI sidecar 提供检索预览、评测摘要、readiness、请求追踪和本地性能证据。",
     contribution:
-      "检索、引用、人工复核边界、synthetic evaluation，以及 Python AI sidecar 的 API / observability / load-test 验收。",
+      "检索、引用、人工复核边界、synthetic evaluation，以及 Retrieval V2、Python AI sidecar API / observability / load-test 的分版本验收。",
     question:
       "AI 工单建议如何展示来源、暴露召回失败并保留人工确认？",
     stack:
-      "Java 17 · Spring Boot 3 · Python 3.12 · FastAPI · Pydantic · pytest · Vue 3 · TypeScript · Keyword Retrieval · RAG Evaluation · Human Review · Trace",
+      "Java 17 · Spring Boot 3 · Python 3.12 · FastAPI · Pydantic · pytest · Vue 3 · TypeScript · Keyword Retrieval · Field-aware IDF Rerank · RAG Evaluation · Human Review · Trace",
     tone: "violet",
-    tags: ["Python / FastAPI", "RAG Evaluation", "Observability", "Load Test"],
+    tags: ["Python / FastAPI", "Retrieval V2", "RAG Evaluation", "Observability"],
     lens: "AI 应用工程",
-    proof: "检索评测 / 可观测 / 压测",
+    proof: "检索迭代 / 评测 / 可观测",
     repo: `https://github.com/${owner}/${ticketRepo}`,
     readme: ticketLink("README.md"),
     action:
       ticketCiUrl,
     status: ticketStatus,
-    homepageEvidenceClaim: "1000 HTTP · 0 ERR · P95 51.38MS",
+    homepageEvidenceClaim: "PRECISION 81.11% → 97.78%",
     challenge:
       "普通 RAG Demo 往往只展示一个问答框，却无法回答建议引用了什么、哪些样本召回失败，以及风险动作由谁确认。本案例把失败样本和人工门禁放到成功指标旁边。",
     headings: {
@@ -696,13 +698,13 @@ export const projects: Project[] = [
       summary:
         "我负责项目方向、RAG 边界、验收标准、评测口径与证据核验；Codex/Claude 深度参与实现、测试和文档，不把 AI 生成代码包装为独立手写。",
       confirmed: [
-        "确认 keyword retrieval 是当前可复现 baseline。",
+        "确认 keyword retrieval 是可复现 baseline，并用同一 16 条 synthetic cases 对比 Retrieval V2。",
         "确认 citation、fallback 与 Human Review 的业务门禁。",
         "核对 16 条 synthetic cases、失败样本与指标边界。",
         "执行 Python/FastAPI HTTP 验收与 1000 请求并发压测，审查差异并决定最终公开表述。",
       ],
       cannotClaim: [
-        "不能声称已经实现 Vector DB、Hybrid Retrieval 或 Rerank。",
+        "不能把 Retrieval V2 写成 BM25、embedding、Vector DB、Hybrid Retrieval 或外部 reranker。",
         "不能把 local-rule fallback 写成真实模型质量。",
         "不能声称全部实现由本人从零独立手写。",
       ],
@@ -711,7 +713,7 @@ export const projects: Project[] = [
     systemSteps: [
       "Ticket Input",
       "Query Rewrite",
-      "Keyword Retrieval",
+      "Keyword Baseline / Retrieval V2",
       "Citation Evidence",
       "Citation Gating",
       "Provider 或 local-rule fallback",
@@ -720,17 +722,17 @@ export const projects: Project[] = [
     ],
     decisions: [
       {
-        title: "先建立 keyword retrieval baseline",
+        title: "先建立 keyword baseline，再做 Retrieval V2",
         body:
-          "关键词检索易复现、易检查，可先暴露数据集、召回与引用问题。",
+          "先用可复现 keyword baseline 暴露召回与引用噪声，再加入字段权重、语料 IDF、分类惩罚、技术锚点与 no-answer threshold。",
         tradeoff:
-          "未把 Vector DB、Hybrid Retrieval 或 Rerank 写成已实现；它们保留为后续实验方向。",
+          "V2 不引入新检索依赖，能验证评测驱动迭代；但它不是 BM25、embedding、Vector DB、Hybrid Retrieval 或外部 reranker。",
         failureCheck:
-          "EVAL-016 因“登录”相似词额外召回账号知识，直接暴露 baseline 的分类与 rerank 缺口。",
+          "V2 将 Citation Precision 从 81.11% 提升到 97.78%、failed cases 从 6 降到 1，同时保留 EVAL-016 作为词面检索边界。",
         evidenceLinks: [
           {
-            label: "打开 RAG 评测计划",
-            href: ticketLink("docs/evaluation/RAG_EVALUATION_PLAN.md"),
+            label: "打开 Retrieval V2 对比",
+            href: ticketLink("docs/metrics/retrieval_v2_comparison_latest.md"),
           },
           {
             label: "打开评测数据集",
@@ -745,7 +747,7 @@ export const projects: Project[] = [
         tradeoff:
           "Citation Coverage 只能证明回答附带了来源，不能证明来源相关、完整或答案正确。",
         failureCheck:
-          "Citation Precision 仅 81.11%，证明“有引用”与“引用准确”必须分开。",
+          "baseline Citation Precision 为 81.11%；V2 提升到 97.78%，仍不把“有引用”写成“回答正确”。",
         evidenceLinks: [
           {
             label: "打开 CitationValidatorTest",
@@ -802,17 +804,17 @@ export const projects: Project[] = [
         ],
       },
       {
-        title: "100% Hit Rate 与 90% Recall 并列",
+        title: "提升 Precision，不牺牲 Hit / Recall",
         body:
-          "Top-K Hit Rate 表示至少命中一个预期来源，Context Recall@3 才反映预期来源是否完整覆盖。",
+          "V2 在同一固定数据集上保持 Top-K Hit Rate 100% 与 Context Recall@3 90%，同时减少无关引用。",
         tradeoff:
-          "未只展示最漂亮的 100%；同时展示 90% Recall、81.11% Precision 和失败样本。",
+          "固定 16 条数据同时参与设计与评测，结果只能作为作品集实验，不能当无偏生产 benchmark。",
         failureCheck:
-          "EVAL-007、015、016 等样本说明命中并不等于上下文干净或完整。",
+          "Precision 81.11% → 97.78%，failed cases 6 → 1；EVAL-016 仍说明词面相似可能造成误召回。",
         evidenceLinks: [
           {
-            label: "打开最新指标 JSON",
-            href: ticketLink("docs/metrics/rag_metrics_latest.json"),
+            label: "打开 Retrieval V2 对比 JSON",
+            href: ticketLink("docs/metrics/retrieval_v2_comparison_latest.json"),
           },
           {
             label: "打开测试报告",
@@ -821,13 +823,13 @@ export const projects: Project[] = [
         ],
       },
       {
-        title: "失败样本进入下一轮检索实验",
+        title: "失败样本驱动检索迭代",
         body:
-          "每个 failed case 保留 expected、observed 与 reason，作为分类、阈值和 rerank 的实验输入。",
+          "保留 baseline 的 expected、observed 与 reason，再用同一评测集验证 V2 是否真正减少误召回。",
         tradeoff:
-          "未用人工改写结果掩盖失败；代价是公开指标不全为 100%。",
+          "没有为了固定数据集把结果硬调成 100%；EVAL-016 继续公开保留。",
         failureCheck:
-          "当前 16 条 synthetic cases 中有 6 条 failed cases，页面详细展示 EVAL-015 与 EVAL-016。",
+          "baseline 有 6 条 failed cases，V2 降到 1 条；EVAL-015 与 EVAL-007 已修复，EVAL-016 仍失败。",
         evidenceLinks: [
           {
             label: "打开评测数据集",
@@ -843,23 +845,23 @@ export const projects: Project[] = [
     failureCases: [
       {
         label: "PRIMARY · EVAL-015",
-        title: "缺少知识时仍召回无关来源",
-        setup: "该 synthetic case 预期没有可用知识来源。",
+        title: "EVAL-015：no-answer threshold 修复误召回",
+        setup: "baseline 在无可用知识时仍召回 KB-FAQ-KNOWLEDGE。",
         expected: "不引用知识条目，进入 fallback / review。",
         observed:
-          "实际召回 KB-FAQ-KNOWLEDGE，失败原因为 unexpected_retrieval_for_fallback_case。",
+          "Retrieval V2 返回 0 hit，unexpected_retrieval_for_fallback_case 被消除。",
         lesson:
-          "关键词重叠会让系统在缺知识时仍显得“有证据”；需要 no-answer threshold、分类或 rerank。",
+          "缺知识时主动 abstain 比为了凑 Top-K 返回弱相关来源更可靠。",
         boundary:
-          "这是自建 synthetic demo case，只说明当前本地 baseline 的召回边界。",
+          "这是固定 synthetic case 上的本地实验修复，不代表真实企业分布。",
         evidenceLinks: [
           {
             label: "打开 EVAL-015 数据",
             href: ticketLink("data/eval/ticket_rag_eval_cases.jsonl"),
           },
           {
-            label: "打开最新评测结果",
-            href: ticketLink("docs/metrics/rag_metrics_latest.json"),
+            label: "打开 V2 对比结果",
+            href: ticketLink("docs/metrics/retrieval_v2_comparison_latest.json"),
           },
         ],
       },
@@ -869,7 +871,7 @@ export const projects: Project[] = [
         setup: "预期来源为 KB-API-500 与 KB-OPS-003。",
         expected: "召回 API 500 与运维排查知识。",
         observed: "额外召回 KB-ACCOUNT-001。",
-        lesson: "keyword baseline 需要更好的意图分类、字段权重或 rerank。",
+        lesson: "V2 已降低大多数噪声，但该词面相似场景仍需要更强意图理解或后续 dense / hybrid 实验。",
         boundary: "不把该样本外推为真实企业工单分布。",
         evidenceLinks: [
           {
@@ -880,12 +882,12 @@ export const projects: Project[] = [
       },
       {
         label: "EVAL-007",
-        title: "预期端口知识旁混入运维与 Bean 来源",
-        setup: "预期来源包含 KB-JAVA-PORT。",
+        title: "EVAL-007：技术锚点移除无关来源",
+        setup: "baseline 除 KB-JAVA-PORT 外还混入运维与 Bean 来源。",
         expected: "聚焦 Java 端口冲突知识。",
-        observed: "同时召回 KB-OPS-003 与 KB-SPRING-BEAN。",
-        lesson: "Top-K 命中不代表上下文没有噪声。",
-        boundary: "辅助失败样本，只用于解释 Citation Precision。",
+        observed: "Retrieval V2 只保留 KB-JAVA-PORT。",
+        lesson: "对技术专属文档增加可解释锚点约束，可减少只因“启动失败”等通用词造成的噪声。",
+        boundary: "只验证固定 synthetic case，不外推为生产检索质量。",
         evidenceLinks: [
           {
             label: "查看 EVAL-007 数据",
@@ -897,14 +899,14 @@ export const projects: Project[] = [
     evidence: [
       ticketStatus,
       {
-        claim: "1000 HTTP · 0 ERR · P95 51.38MS",
-        scope: `${ticketRepo} main @ ${ticketSha.slice(0, 7)} · local loopback Uvicorn load test`,
-        evidenceLabel: "Python sidecar load-test evidence",
-        evidenceHref: ticketLink("docs/performance/python_sidecar_load_latest.md"),
+        claim: "PRECISION 81.11% → 97.78%",
+        scope: `${ticketRepo} main @ ${ticketSha.slice(0, 7)} · 16-case Retrieval V2 comparison`,
+        evidenceLabel: "Retrieval V2 comparison",
+        evidenceHref: ticketLink("docs/metrics/retrieval_v2_comparison_latest.md"),
         repositorySha: ticketSha,
         verifiedAt: ticketVerifiedAt,
-        boundary: "Windows 本机回环 HTTP、单 Uvicorn、synthetic keyword retrieval；不是生产 SLA 或云容量结论。",
-        verificationType: "local",
+        boundary: "同一 16 条 synthetic cases 同时参与设计与评测；不是无偏 benchmark、生产效果或真实企业数据结论。",
+        verificationType: "synthetic-evaluation",
       },
       {
         claim: "291 BACKEND TESTS",
@@ -928,7 +930,7 @@ export const projects: Project[] = [
       },
       {
         claim: "16 SYNTHETIC EVAL CASES",
-        scope: `${ticketRepo} main @ ${ticketSha.slice(0, 7)} · local keyword retrieval dataset`,
+        scope: `${ticketRepo} main @ ${ticketSha.slice(0, 7)} · synthetic retrieval evaluation dataset`,
         evidenceLabel: "RAG Evaluation Plan",
         evidenceHref: ticketLink("docs/evaluation/RAG_EVALUATION_PLAN.md"),
         repositorySha: ticketSha,
@@ -940,12 +942,12 @@ export const projects: Project[] = [
     caseEvidence: [
       {
         claim: "1000 HTTP · 0 ERR · P95 51.38MS",
-        scope: "本机回环 HTTP · 单 Uvicorn · concurrency 20",
+        scope: `keyword baseline @ ${ticketLoadSha.slice(0, 7)} · 本机回环 HTTP · 单 Uvicorn · concurrency 20`,
         evidenceLabel: "Python sidecar load-test evidence",
-        evidenceHref: ticketLink("docs/performance/python_sidecar_load_latest.md"),
-        repositorySha: ticketSha,
-        verifiedAt: ticketVerifiedAt,
-        boundary: "synthetic keyword retrieval 的可复现本地性能证据，不代表生产 SLA 或云容量。",
+        evidenceHref: blob(ticketRepo, ticketLoadSha, "docs/performance/python_sidecar_load_latest.md"),
+        repositorySha: ticketLoadSha,
+        verifiedAt: ticketLoadVerifiedAt,
+        boundary: "bf97f2e keyword baseline 的可复现本地性能证据；不是 Retrieval V2 性能、生产 SLA 或云容量。",
         verificationType: "local",
       },
       {
@@ -960,29 +962,29 @@ export const projects: Project[] = [
       },
       {
         claim: "TOP-K HIT 100% / RECALL@3 90%",
-        scope: "keyword retrieval baseline · Top-K = 3",
-        evidenceLabel: "最新指标 JSON",
-        evidenceHref: ticketLink("docs/metrics/rag_metrics_latest.json"),
+        scope: "Retrieval V2 · Top-K = 3 · baseline 指标保持不变",
+        evidenceLabel: "Retrieval V2 对比 JSON",
+        evidenceHref: ticketLink("docs/metrics/retrieval_v2_comparison_latest.json"),
         repositorySha: ticketSha,
         verifiedAt: ticketVerifiedAt,
         boundary: "至少命中一个预期来源，不代表召回完整或答案正确。",
         verificationType: "synthetic-evaluation",
       },
       {
-        claim: "COVERAGE 100% / PRECISION 81.11%",
-        scope: "citation-gated local evaluation",
-        evidenceLabel: "评测指标快照",
-        evidenceHref: ticketLink("docs/metrics/rag_metrics_snapshot.md"),
+        claim: "PRECISION 81.11% → 97.78%",
+        scope: "keyword baseline → Retrieval V2",
+        evidenceLabel: "Retrieval V2 对比快照",
+        evidenceHref: ticketLink("docs/metrics/retrieval_v2_comparison_latest.md"),
         repositorySha: ticketSha,
         verifiedAt: ticketVerifiedAt,
         boundary: "有引用不等于引用相关、完整或回答正确。",
         verificationType: "synthetic-evaluation",
       },
       {
-        claim: "6 FAILED / 15 REVIEW REQUIRED",
-        scope: "16 条 synthetic cases 的失败与门禁结果",
-        evidenceLabel: "最新评测结果",
-        evidenceHref: ticketLink("docs/metrics/rag_metrics_latest.json"),
+        claim: "FAILED CASES 6 → 1",
+        scope: "16 条 synthetic cases · baseline → Retrieval V2",
+        evidenceLabel: "Retrieval V2 对比结果",
+        evidenceHref: ticketLink("docs/metrics/retrieval_v2_comparison_latest.json"),
         repositorySha: ticketSha,
         verifiedAt: ticketVerifiedAt,
         boundary: "失败与审核数量只适用于该固定数据集。",
@@ -1064,9 +1066,15 @@ export const projects: Project[] = [
             kind: "document",
           },
           {
+            label: "retrieval_v2_comparison_latest.md",
+            description: "Keyword baseline 与 Retrieval V2 的 16-case 指标、changed cases 与实验边界。",
+            href: ticketLink("docs/metrics/retrieval_v2_comparison_latest.md"),
+            kind: "document",
+          },
+          {
             label: "python_sidecar_load_latest.md",
-            description: "1000 请求 / 并发 20 的本地 HTTP 压测、正确性门禁与边界。",
-            href: ticketLink("docs/performance/python_sidecar_load_latest.md"),
+            description: "bf97f2e keyword baseline 的 1000 请求 / 并发 20 本地 HTTP 压测；不是 V2 性能证据。",
+            href: blob(ticketRepo, ticketLoadSha, "docs/performance/python_sidecar_load_latest.md"),
             kind: "document",
           },
           {
@@ -1088,7 +1096,7 @@ export const projects: Project[] = [
         items: [
           {
             label: `GitHub Actions #${ticketCiRun}`,
-            description: `提交 ${ticketSha.slice(0, 7)} 的 frontend build 与 backend tests。`,
+            description: `提交 ${ticketCiSha.slice(0, 7)} 的 frontend build 与 backend tests。`,
             href: ticketCiUrl,
             kind: "ci",
           },
@@ -1097,10 +1105,10 @@ export const projects: Project[] = [
     ],
     boundaries: [
       "默认数据集为 16 条 synthetic enterprise ticket demo cases。",
-      "默认检索方式是 keyword retrieval，不声称已经实现向量数据库、Hybrid Retrieval 或 Rerank。",
-      "Python/FastAPI sidecar 已进入 GitHub main；1000 请求压测来自本机回环 HTTP、单 Uvicorn 进程，不是生产 SLA。",
+      "当前 GitHub main 已实现 dependency-free Retrieval V2：字段权重、语料 IDF、分类惩罚、技术锚点与 no-answer threshold；不是 BM25、embedding、Vector DB、Hybrid Retrieval 或外部 reranker。",
+      "1000 请求压测来自 bf97f2e 的 keyword baseline、本机回环 HTTP 与单 Uvicorn 进程；不是 Retrieval V2 压测或生产 SLA。",
       "Provider fallback 100% 来自未配置真实 API Key，不是模型质量指标。",
-      "100% Top-K Hit Rate 不等于检索完美；Context Recall@3 为 90%，Citation Precision 为 81.11%。",
+      "同一 16 条 synthetic cases 上，Top-K Hit 100% 与 Recall@3 90% 保持不变，Citation Precision 81.11% → 97.78%，failed cases 6 → 1；数据同时参与设计与评测。",
     ],
     coverImage: coverImage(
       "/projects/ticket/workbench.png",
