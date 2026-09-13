@@ -50,8 +50,12 @@ const techStackGroups = [
     label: "AI APPLICATION, TOOLING & AGENT",
     title: "AI 应用、工具与 Agent",
     items: [
+      "Python 3.12 / FastAPI",
+      "Pydantic / pytest",
       "Provider Router",
       "Retrieval Workflow",
+      "RAG Evaluation",
+      "Observability / Load Testing",
       "PromptOps",
       "Tool Calling",
       "Human Review",
@@ -75,9 +79,9 @@ const heroProjectRail = [
     slug: "ticket",
     no: "02",
     shortTitle: "Ticket Copilot",
-    type: "AI WORKFLOW",
-    trace: "RETRIEVE → REVIEW → EXPLAIN",
-    cue: "检索证据 / 人工复核",
+    type: "AI APPLICATION + PYTHON",
+    trace: "RETRIEVE → EVAL → OBSERVE → REVIEW",
+    cue: "FastAPI / 检索评测 / 压测证据",
   },
 ] as const;
 

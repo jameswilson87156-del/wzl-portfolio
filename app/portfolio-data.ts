@@ -130,12 +130,14 @@ const devFlowRepo = "devflow-copilot";
 const owner = "jameswilson87156-del";
 
 const commerceSha = "954d56e01e4e4fe4bf5cc8a16becf60747305b68";
-const ticketSha = "89b608d79166fa13a3093e9fafebaf9da51677f9";
+const ticketSha = "bf97f2e0f1c45efb34facfb4b07d258c88aec6fe";
+const ticketCiSha = "89b608d79166fa13a3093e9fafebaf9da51677f9";
 const devFlowSha = "c9cefd4bbbf30d27579efe7d023a83f764f28736";
 const devFlowMetricsSha = "3b54c08a581dcd90a1a3f746be119356b5de41d5";
 const verifiedAt = "2026-07-31";
 const commerceVerifiedAt = "2026-09-08";
-const ticketVerifiedAt = "2026-09-08";
+const ticketVerifiedAt = "2026-09-14";
+const ticketCiVerifiedAt = "2026-09-08";
 const ticketCiRun = "34141838761";
 const ticketCiUrl = `https://github.com/${owner}/${ticketRepo}/actions/runs/${ticketCiRun}`;
 
@@ -180,14 +182,14 @@ const commerceStatus: EvidenceItem = {
 };
 
 const ticketStatus: EvidenceItem = {
-  claim: "CI VERIFIED",
+  claim: "GITHUB VERIFIED",
   scope: `${ticketRepo} main @ ${ticketSha.slice(0, 7)}`,
-  evidenceLabel: `GitHub Actions #${ticketCiRun}`,
-  evidenceHref: ticketCiUrl,
+  evidenceLabel: "README · PYTHON AI SIDECAR",
+  evidenceHref: ticketLink("README.md"),
   repositorySha: ticketSha,
   verifiedAt: ticketVerifiedAt,
-  boundary: "CI 证明该提交的前端构建和后端测试通过，不代表生产可用性。",
-  verificationType: "ci",
+  boundary: "GitHub main 已包含 Python/FastAPI sidecar 与本地压测证据；不代表生产部署或生产 SLA。",
+  verificationType: "documentation",
 };
 
 const devFlowStatus: EvidenceItem = {
@@ -665,23 +667,23 @@ export const projects: Project[] = [
     title: "Enterprise AI Ticket Copilot",
     shortTitle: "Ticket Copilot",
     summary:
-      "面向企业工单处理场景的 AI 应用，串联知识检索、建议生成、人工复核、Trace 和审计流程。",
+      "面向企业工单处理场景的 AI 应用，使用 Java/Spring Boot 承载业务工作流，并以 Python/FastAPI sidecar 提供检索预览、评测摘要、readiness、请求追踪和本地性能证据。",
     contribution:
-      "检索、引用、人工复核边界与 synthetic evaluation。",
+      "检索、引用、人工复核边界、synthetic evaluation，以及 Python AI sidecar 的 API / observability / load-test 验收。",
     question:
       "AI 工单建议如何展示来源、暴露召回失败并保留人工确认？",
     stack:
-      "Java 17 · Spring Boot 3 · Vue 3 · TypeScript · Keyword Retrieval · Human Review · Trace",
+      "Java 17 · Spring Boot 3 · Python 3.12 · FastAPI · Pydantic · pytest · Vue 3 · TypeScript · Keyword Retrieval · RAG Evaluation · Human Review · Trace",
     tone: "violet",
-    tags: ["Keyword Retrieval", "Citation", "Human Review", "Trace"],
-    lens: "AI 应用",
-    proof: "检索与复核",
+    tags: ["Python / FastAPI", "RAG Evaluation", "Observability", "Load Test"],
+    lens: "AI 应用工程",
+    proof: "检索评测 / 可观测 / 压测",
     repo: `https://github.com/${owner}/${ticketRepo}`,
     readme: ticketLink("README.md"),
     action:
       ticketCiUrl,
     status: ticketStatus,
-    homepageEvidenceClaim: "16 SYNTHETIC EVAL CASES",
+    homepageEvidenceClaim: "1000 HTTP · 0 ERR · P95 51.38MS",
     challenge:
       "普通 RAG Demo 往往只展示一个问答框，却无法回答建议引用了什么、哪些样本召回失败，以及风险动作由谁确认。本案例把失败样本和人工门禁放到成功指标旁边。",
     headings: {
@@ -697,7 +699,7 @@ export const projects: Project[] = [
         "确认 keyword retrieval 是当前可复现 baseline。",
         "确认 citation、fallback 与 Human Review 的业务门禁。",
         "核对 16 条 synthetic cases、失败样本与指标边界。",
-        "运行测试、审查差异并决定最终公开表述。",
+        "执行 Python/FastAPI HTTP 验收与 1000 请求并发压测，审查差异并决定最终公开表述。",
       ],
       cannotClaim: [
         "不能声称已经实现 Vector DB、Hybrid Retrieval 或 Rerank。",
@@ -895,22 +897,32 @@ export const projects: Project[] = [
     evidence: [
       ticketStatus,
       {
-        claim: "291 BACKEND TESTS",
-        scope: `${ticketRepo} main @ ${ticketSha.slice(0, 7)} · backend mvn test`,
-        evidenceLabel: "TEST_REPORT.md · MAIN MERGE",
-        evidenceHref: ticketLink("docs/TEST_REPORT.md"),
+        claim: "1000 HTTP · 0 ERR · P95 51.38MS",
+        scope: `${ticketRepo} main @ ${ticketSha.slice(0, 7)} · local loopback Uvicorn load test`,
+        evidenceLabel: "Python sidecar load-test evidence",
+        evidenceHref: ticketLink("docs/performance/python_sidecar_load_latest.md"),
         repositorySha: ticketSha,
         verifiedAt: ticketVerifiedAt,
+        boundary: "Windows 本机回环 HTTP、单 Uvicorn、synthetic keyword retrieval；不是生产 SLA 或云容量结论。",
+        verificationType: "local",
+      },
+      {
+        claim: "291 BACKEND TESTS",
+        scope: `${ticketRepo} main @ ${ticketCiSha.slice(0, 7)} · backend mvn test`,
+        evidenceLabel: "TEST_REPORT.md · MAIN MERGE",
+        evidenceHref: blob(ticketRepo, ticketCiSha, "docs/TEST_REPORT.md"),
+        repositorySha: ticketCiSha,
+        verifiedAt: ticketCiVerifiedAt,
         boundary: "仓库测试数量，不代表生产流量、SLA 或真实企业数据效果。",
         verificationType: "ci",
       },
       {
         claim: "6 FRONTEND TESTS",
-        scope: `${ticketRepo} main @ ${ticketSha.slice(0, 7)} · frontend npm test`,
+        scope: `${ticketRepo} main @ ${ticketCiSha.slice(0, 7)} · frontend npm test`,
         evidenceLabel: "TEST_REPORT.md · MAIN MERGE",
-        evidenceHref: ticketLink("docs/TEST_REPORT.md"),
-        repositorySha: ticketSha,
-        verifiedAt: ticketVerifiedAt,
+        evidenceHref: blob(ticketRepo, ticketCiSha, "docs/TEST_REPORT.md"),
+        repositorySha: ticketCiSha,
+        verifiedAt: ticketCiVerifiedAt,
         boundary: "覆盖前端演示边界与错误处理，不代表完整端到端生产验收。",
         verificationType: "ci",
       },
@@ -926,6 +938,16 @@ export const projects: Project[] = [
       },
     ],
     caseEvidence: [
+      {
+        claim: "1000 HTTP · 0 ERR · P95 51.38MS",
+        scope: "本机回环 HTTP · 单 Uvicorn · concurrency 20",
+        evidenceLabel: "Python sidecar load-test evidence",
+        evidenceHref: ticketLink("docs/performance/python_sidecar_load_latest.md"),
+        repositorySha: ticketSha,
+        verifiedAt: ticketVerifiedAt,
+        boundary: "synthetic keyword retrieval 的可复现本地性能证据，不代表生产 SLA 或云容量。",
+        verificationType: "local",
+      },
       {
         claim: "16 SYNTHETIC CASES",
         scope: "自建 demo dataset · 不包含真实用户数据",
@@ -1042,6 +1064,12 @@ export const projects: Project[] = [
             kind: "document",
           },
           {
+            label: "python_sidecar_load_latest.md",
+            description: "1000 请求 / 并发 20 的本地 HTTP 压测、正确性门禁与边界。",
+            href: ticketLink("docs/performance/python_sidecar_load_latest.md"),
+            kind: "document",
+          },
+          {
             label: "ticket_rag_eval_cases.jsonl",
             description: "EVAL-007、015、016 等固定评测输入。",
             href: ticketLink("data/eval/ticket_rag_eval_cases.jsonl"),
@@ -1070,6 +1098,7 @@ export const projects: Project[] = [
     boundaries: [
       "默认数据集为 16 条 synthetic enterprise ticket demo cases。",
       "默认检索方式是 keyword retrieval，不声称已经实现向量数据库、Hybrid Retrieval 或 Rerank。",
+      "Python/FastAPI sidecar 已进入 GitHub main；1000 请求压测来自本机回环 HTTP、单 Uvicorn 进程，不是生产 SLA。",
       "Provider fallback 100% 来自未配置真实 API Key，不是模型质量指标。",
       "100% Top-K Hit Rate 不等于检索完美；Context Recall@3 为 90%，Citation Precision 为 81.11%。",
     ],
