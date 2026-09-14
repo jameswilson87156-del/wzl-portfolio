@@ -7137,3 +7137,87 @@ body {
     margin-top: 36px;
   }
 }
+
+
+/* 2026-09-14 cohesive closing sections */
+.positioning-section {
+  padding-bottom: 20px;
+  background: #e8e1d4;
+  box-shadow: 0 0 0 100vmax #e8e1d4;
+  clip-path: inset(0 -100vmax);
+}
+
+.engineering-method {
+  padding-top: 24px;
+  padding-bottom: 18px;
+  background: #e8e1d4;
+  box-shadow: 0 0 0 100vmax #e8e1d4;
+  clip-path: inset(0 -100vmax);
+}
+
+.engineering-method .cap-title {
+  padding-bottom: 16px;
+}
+
+.engineering-method .cap-list article {
+  min-height: 148px;
+  padding-top: 22px;
+}
+
+.engineering-method .cap-list h3 {
+  margin-top: 26px;
+  margin-bottom: 8px;
+}
+
+.engineering-method .collaboration-disclosure {
+  margin-top: 14px;
+  padding-top: 12px;
+}
+
+.contact {
+  padding-top: 18px;
+  background: #e8e1d4;
+}
+
+.contact-intro {
+  padding-bottom: 16px;
+}
+
+.contact-hero-link {
+  padding-top: 24px;
+  padding-bottom: 34px;
+}
+
+@media (max-width: 700px) {
+  .positioning-section {
+    padding-bottom: 20px;
+  }
+
+  .engineering-method {
+    padding-top: 22px;
+    padding-bottom: 20px;
+  }
+
+  .engineering-method .cap-list article {
+    min-height: 124px;
+    padding-top: 18px;
+  }
+
+  .engineering-method .cap-list h3 {
+    margin-top: 20px;
+  }
+
+  .engineering-method .collaboration-disclosure {
+    margin-top: 12px;
+    padding-top: 12px;
+  }
+
+  .contact {
+    padding-top: 16px;
+  }
+
+  .contact-hero-link {
+    padding-top: 28px;
+    padding-bottom: 30px;
+  }
+}
