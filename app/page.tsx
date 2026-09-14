@@ -87,7 +87,7 @@ const heroProjectRail = [
 
 export const metadata: Metadata = {
   title: {
-    absolute: "王震龙｜Java 全栈与 AI 应用开发作品集",
+    absolute: "王震龙｜Java 后端与 AI 应用开发作品集",
   },
   description:
     "王震龙的软件工程作品集，展示以 Java 后端为核心的 Spring Boot 3、Vue 3 全栈项目，以及 AI 应用、AI 工具和 Agent 工作流工程实践。",
@@ -95,7 +95,7 @@ export const metadata: Metadata = {
     canonical: siteUrl("/"),
   },
   openGraph: {
-    title: "王震龙｜Java 全栈与 AI 应用开发作品集",
+    title: "王震龙｜Java 后端与 AI 应用开发作品集",
     description:
       "王震龙的软件工程作品集，展示以 Java 后端为核心的 Spring Boot 3、Vue 3 全栈项目，以及 AI 应用、AI 工具和 Agent 工作流工程实践。",
     url: siteUrl("/"),
@@ -105,13 +105,13 @@ export const metadata: Metadata = {
         url: siteUrl("/og.jpg"),
         width: 1200,
         height: 630,
-        alt: "王震龙 Java 全栈与 AI 应用开发作品集",
+        alt: "王震龙 Java 后端与 AI 应用开发作品集",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "王震龙｜Java 全栈与 AI 应用开发作品集",
+    title: "王震龙｜Java 后端与 AI 应用开发作品集",
     description:
       "王震龙的软件工程作品集，展示以 Java 后端为核心的 Spring Boot 3、Vue 3 全栈项目，以及 AI 应用、AI 工具和 Agent 工作流工程实践。",
     images: [siteUrl("/og.jpg")],
@@ -259,7 +259,7 @@ export default function Home() {
           </div>
           <p className="hero-kicker hero-identity">王震龙 · 软件工程本科 · 2027 届</p>
           <h1 className="hero-title" data-hero-title="true">
-            <span className="hero-title-mask"><span>Java 全栈开发</span></span>
+            <span className="hero-title-mask"><span>Java 后端开发</span></span>
             <span className="hero-title-mask"><span><em>×</em></span></span>
             <span className="hero-title-mask"><span>AI 应用开发</span></span>
           </h1>
@@ -270,12 +270,12 @@ export default function Home() {
             <a
               className="hero-capability hero-capability--java"
               href="#project-commerceflow"
-              aria-label="Java Full-stack：查看 CommerceFlow 项目"
+              aria-label="Java Backend：查看 CommerceFlow 项目"
             >
               <span className="hero-capability-index">01</span>
               <div className="hero-capability-copy">
                 <span className="hero-capability-label">JAVA BACKEND</span>
-                <strong>Java Full-stack</strong>
+                <strong>Java Backend</strong>
                 <small>业务闭环 · 接口与数据一致性</small>
               </div>
               <i aria-hidden="true">↗</i>
@@ -511,13 +511,16 @@ export default function Home() {
         <div className="positioning-grid">
           <div className="positioning-copy">
             <p>
-              我是一名 2027 届软件工程本科生，主要学习和实践 Java 全栈与 AI 应用开发。
+              我是一名 2027 届软件工程本科生，以 Java 后端为核心，同时持续实践 AI 应用开发与 Java + Vue 全栈交付。
+            </p>
+            <p>
+              2026.07–2026.09 在南京玻璃纤维研究设计院有限公司江宁分公司研发部参与企业内网材料研发数据与文件资源管理平台开发，使用 Java 17、Spring Boot 3、MyBatis/MyBatis-Plus、MySQL 完成 REST API、CRUD、分页与关联查询，并参与文件导入预览和页面联调。
             </p>
             <p>
               项目中以 Java、Spring Boot 3、MySQL、Redis 和 Vue 3 为主要技术栈，关注业务流程、接口设计、数据状态、异常处理、测试与部署；同时在 AI 工具与 Agent 应用项目中实践 Provider 路由、检索、Prompt、Tool Calling、Trace、人工复核与失败降级。
             </p>
             <p className="positioning-openness">
-              目前主要寻找 Java 全栈、AI 应用、AI 工具或 Agent 应用开发方向的实习机会，同时兼投 Java 后端与 Java + Vue 岗位。
+              目前主要寻找 Java 后端、AI 应用、AI 工具或 Agent 应用开发方向的实习机会，同时关注 Java + Vue 全栈岗位。
             </p>
             <div className="availability-strip" aria-label="实习条件">
               <span>2027 届</span>
@@ -590,15 +593,15 @@ export default function Home() {
             className="contact-hero-link"
             data-reveal="contact"
           >
-            <span>JAVA FULL-STACK × AI APPLICATIONS</span>
+            <span>JAVA BACKEND × AI APPLICATIONS</span>
             <strong>
-              <span>寻求 <span className="contact-phrase">Java 全栈</span></span>
+              <span>寻求 <span className="contact-phrase">Java 后端</span></span>
               <em>
                 或 <span className="contact-phrase">AI 应用开发</span>
                 <span className="contact-phrase">实习机会。</span>
               </em>
             </strong>
-            <small className="contact-subline">AI 工具 / Agent 应用方向，兼投 Java 后端。</small>
+            <small className="contact-subline">Java + Vue 全栈可作为工程交付补充方向。</small>
             <i aria-hidden="true">↗</i>
           </div>
           <ContactActions />

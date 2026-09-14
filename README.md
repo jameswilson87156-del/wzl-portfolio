@@ -1,8 +1,8 @@
 # 王震龙工程作品集
 
-面向 **Java 全栈与 AI 应用开发** 实习方向的证据优先工程作品集。
+面向 **Java 后端与 AI 应用开发** 实习方向的证据优先工程作品集。
 
-**主定位：Java 全栈开发 × AI 应用开发**
+**主定位：Java 后端开发 × AI 应用开发**
 
 项目以 Java 后端能力为核心，使用 Spring Boot 3、MySQL、Redis 与 Vue 3 完成前后端交付，同时展示 AI 工具、检索工作流、Provider Router、PromptOps、Human Review、Trace 与失败降级等应用工程实践。
 
@@ -18,9 +18,10 @@ AI 工具和 Agent 仅指应用工作流与证据聚合，不声称模型训练�
    - Vue 3 前端与 Java 后端完成全栈交付。
 
 2. **Enterprise AI Ticket Copilot**
-   - 当前默认检索方式为 Keyword Retrieval。
+   - API 默认保留 Keyword Retrieval，同时提供 dependency-free Retrieval V2 评测模式。
+   - 在同一组 16 条 synthetic 工单评测上，Citation Precision 由 81.11% 提升至 97.78%，failed cases 由 6 降至 1；Top-K Hit 与 Recall@3 保持不变。
    - 展示 Citation、Human Review、Trace 与 synthetic evaluation evidence。
-   - 不声称已经实现 Vector DB、Hybrid Retrieval 或 Rerank。
+   - 不声称已经实现 BM25、Embedding、Vector DB、Hybrid Retrieval 或外部 reranker。
 
 3. **DevFlow Copilot**
    - 展示 Provider Router、PromptOps、Tool Call 与 Run Evidence。

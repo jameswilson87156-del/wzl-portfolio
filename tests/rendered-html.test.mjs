@@ -38,10 +38,10 @@ test("homepage exposes the approved internship positioning and information archi
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
 
-  assert.match(html, /Java 全栈开发/);
+  assert.match(html, /Java 后端开发/);
   assert.match(html, /AI 应用开发/);
   assert.match(html, /王震龙 · 软件工程本科 · 2027 届/);
-  assert.match(html, /Java Full-stack/);
+  assert.match(html, /Java Backend/);
   assert.match(html, /AI Application/);
   assert.match(html, /AI Tooling &amp; Agent/);
   assert.match(html, /class="hero-direction-tags hero-capability-rail"/);
@@ -64,7 +64,9 @@ test("homepage exposes the approved internship positioning and information archi
   assert.match(html, /Provider 路由 · Trace 回放/);
   assert.match(html, /Java 后端核心/);
   assert.match(html, /ABOUT &amp; STACK/);
-  assert.match(html, /Java 全栈与 AI 应用开发/);
+  assert.match(html, /以 Java 后端为核心/);
+  assert.match(html, /南京玻璃纤维研究设计院有限公司江宁分公司/);
+  assert.match(html, /2026\.07–2026\.09[\s\S]*Spring Boot 3[\s\S]*MyBatis\/MyBatis-Plus/);
   assert.match(html, /2027 届[\s\S]*一周内可到岗[\s\S]*每周可实习 6 天/);
   assert.match(html, /可连续实习 6 个月[\s\S]*接受异地实习/);
   assert.match(html, /FRONTEND &amp; FULL-STACK DELIVERY/);
@@ -110,10 +112,10 @@ test("homepage exposes the approved internship positioning and information archi
   assert.match(html, /href="\/favicon\.ico"/);
   assert.match(
     html,
-    /寻求[\s\S]*Java 全栈[\s\S]*AI 应用开发[\s\S]*实习机会。/,
+    /寻求[\s\S]*Java 后端[\s\S]*AI 应用开发[\s\S]*实习机会。/,
   );
-  assert.match(html, /AI 工具 \/ Agent 应用方向，兼投 Java 后端。/);
-  assert.match(html, /王震龙｜Java 全栈与 AI 应用开发作品集/);
+  assert.match(html, /Java \+ Vue 全栈可作为工程交付补充方向。/);
+  assert.match(html, /王震龙｜Java 后端与 AI 应用开发作品集/);
   assert.match(
     html,
     /王震龙的软件工程作品集，展示以 Java 后端为核心的 Spring Boot 3、Vue 3 全栈项目/,

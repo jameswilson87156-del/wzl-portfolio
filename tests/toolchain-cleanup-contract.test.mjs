@@ -79,13 +79,15 @@ test("static export, routes, assets and README retain the release boundary", () 
   ]) {
     assert.equal(exists(required), true, `${required} must remain`);
   }
-  assert.match(readme, /Java 全栈/);
+  assert.match(readme, /Java 后端/);
   assert.match(readme, /AI 应用开发/);
   assert.match(readme, /正式网站/);
   assert.match(readme, /https:\/\/wzl8\.top/);
   assert.match(readme, /正式公网访问/);
   assert.match(readme, /npm test：30\/30 PASS/);
   assert.match(readme, /Keyword Retrieval/);
+  assert.match(readme, /Retrieval V2/);
+  assert.match(readme, /97\.78%/);
   assert.match(
     readme,
     /不声称模型训练、算法研究或复杂自治多 Agent Runtime/,
