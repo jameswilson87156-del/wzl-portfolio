@@ -7058,3 +7058,82 @@ body {
     padding: 14px 13px 13px;
   }
 }
+/* 2026-09-14 final responsive polish: short desktop + mobile touch density. */
+@media (min-width: 701px) and (max-height: 820px) {
+  .hero {
+    min-height: 100svh;
+  }
+
+  .hero-content {
+    padding: 68px 0 30px;
+  }
+
+  .hero h1 {
+    font-size: clamp(54px, 7vw, 96px);
+  }
+
+  .hero-kicker.hero-identity {
+    margin-top: 22px;
+  }
+
+  .hero-direction-tags {
+    margin-top: 16px;
+  }
+
+  .hero-bottom {
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 700px) {
+  .project-links a {
+    min-height: 44px;
+  }
+
+  .engineering-method {
+    padding-top: 64px;
+    padding-bottom: 66px;
+  }
+
+  .engineering-method .cap-list article {
+    min-height: 150px;
+    padding-top: 24px;
+  }
+
+  .engineering-method .cap-list h3 {
+    margin-top: 28px;
+    margin-bottom: 8px;
+  }
+
+  .engineering-method .collaboration-disclosure {
+    margin-top: 20px;
+    padding-top: 18px;
+  }
+
+  .contact {
+    padding: 32px 0 18px;
+  }
+
+  .contact-intro {
+    padding-bottom: 20px;
+  }
+
+  .contact-hero-link {
+    gap: 18px;
+    padding: 42px 0 38px;
+  }
+
+  .contact-item,
+  .contact-grid .contact-github {
+    min-height: 124px;
+    padding: 18px 0;
+  }
+
+  .contact-grid .contact-github:hover {
+    padding: 18px 8px;
+  }
+
+  .contact-foot {
+    margin-top: 36px;
+  }
+}
