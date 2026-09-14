@@ -1082,7 +1082,7 @@ img {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: 44px 0 24px;
+  padding: 30px 0 24px;
   color: var(--ink);
   background: var(--acid);
 }
@@ -1115,7 +1115,7 @@ img {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding-bottom: 28px;
+  padding-bottom: 18px;
   border-bottom: 1px solid rgba(16, 33, 29, 0.3);
 }
 
@@ -1133,7 +1133,7 @@ img {
   grid-template-columns: 0.55fr 2fr auto;
   gap: 36px;
   align-items: start;
-  padding: clamp(55px, 8vw, 105px) 0 clamp(48px, 7vw, 88px);
+  padding: clamp(28px, 3vw, 44px) 0 clamp(40px, 4.5vw, 64px);
   border-bottom: 1px solid rgba(16, 33, 29, 0.3);
 }
 
