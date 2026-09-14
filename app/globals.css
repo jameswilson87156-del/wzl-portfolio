@@ -6079,7 +6079,7 @@ body {
 
 .positioning-section {
   padding-top: 132px;
-  padding-bottom: 142px;
+  padding-bottom: 64px;
   background: var(--paper);
 }
 
@@ -6264,7 +6264,7 @@ body {
 
   .positioning-section {
     padding-top: 82px;
-    padding-bottom: 92px;
+    padding-bottom: 64px;
   }
 
   .engineering-method {
