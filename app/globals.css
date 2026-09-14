@@ -6098,9 +6098,18 @@ body {
 }
 
 .engineering-method {
-  padding-top: 138px;
-  padding-bottom: 142px;
+  padding-top: 96px;
+  padding-bottom: 92px;
   background: var(--paper-2);
+}
+
+.engineering-method .cap-list article {
+  min-height: 190px;
+}
+
+.engineering-method .collaboration-disclosure {
+  margin-top: 28px;
+  padding-top: 22px;
 }
 
 .contact {

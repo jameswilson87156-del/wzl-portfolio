@@ -60,8 +60,10 @@ test("homepage exposes the approved internship positioning and information archi
   assert.match(html, /<nav[^>]*class="hero-project-index[^>]*aria-label="重点项目"/);
   assert.equal((html.match(/class="hero-project-link"/g) ?? []).length, 2);
   assert.match(html, /业务闭环 · 接口与数据一致性/);
-  assert.match(html, /检索证据 · 人工复核/);
+  assert.match(html, /Python 3\.12 · FastAPI · Retrieval V2/);
   assert.match(html, /Provider 路由 · Trace 回放/);
+  assert.match(html, /Java 后端 · Python \/ FastAPI · AI 应用与 Agent 工作流/);
+  assert.match(html, /Python 3\.12 \/ FastAPI 实践 Retrieval V2/);
   assert.match(html, /Java 后端核心/);
   assert.match(html, /ABOUT &amp; STACK/);
   assert.match(html, /以 Java 后端为核心/);

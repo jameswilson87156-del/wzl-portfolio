@@ -289,7 +289,7 @@ export default function Home() {
               <div className="hero-capability-copy">
                 <span className="hero-capability-label">AI APPLICATION</span>
                 <strong>AI Application</strong>
-                <small>检索证据 · 人工复核</small>
+                <small>Python 3.12 · FastAPI · Retrieval V2</small>
               </div>
               <i aria-hidden="true">↗</i>
             </a>
@@ -312,7 +312,7 @@ export default function Home() {
             <p>
               以 Java 后端能力为核心，使用 Spring Boot 3 与 Vue 3 完成全栈交付，
               <br className="hero-break" />
-              并在 AI 工具和 Agent 应用工作流中实践大模型接入、检索、人工复核与失败降级。
+              并以 Python 3.12 / FastAPI 实践 Retrieval V2、Citation、人工复核与 AI 工作流。
             </p>
             <div className="hero-actions">
               <Link className="hero-action primary" href="#projects">
@@ -559,7 +559,7 @@ export default function Home() {
         <h2 className="sr-only">工程方法</h2>
         <div className="cap-title">
           <p className="section-label">/ ENGINEERING METHOD</p>
-          <p>Java 全栈 · AI 应用 · AI 工具与 Agent 工作流</p>
+          <p>Java 后端 · Python / FastAPI · AI 应用与 Agent 工作流</p>
         </div>
         <div className="cap-list">
           <article>
