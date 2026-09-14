@@ -6098,8 +6098,8 @@ body {
 }
 
 .engineering-method {
-  padding-top: 96px;
-  padding-bottom: 92px;
+  padding-top: 44px;
+  padding-bottom: 48px;
   background: var(--paper-2);
 }
 
@@ -7091,8 +7091,8 @@ body {
   }
 
   .engineering-method {
-    padding-top: 64px;
-    padding-bottom: 66px;
+    padding-top: 40px;
+    padding-bottom: 44px;
   }
 
   .engineering-method .cap-list article {
