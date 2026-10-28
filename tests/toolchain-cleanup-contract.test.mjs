@@ -88,8 +88,10 @@ test("static export, routes, assets and README retain the release boundary", () 
   assert.match(readme, /当前公开测试开发作品集/);
   assert.match(readme, /https:\/\/ai-agent-portfolio-hub\.vercel\.app/);
   assert.match(readme, /https:\/\/wzl8\.top/);
-  assert.match(readme, /本仓库的测试开发静态版还没有部署到该域名/);
-  assert.match(readme, /当前线上仍是旧版 Java 后端 \/ AI 应用定位/);
+  assert.match(readme, /wzl8\.top` 已发布测试开发作品集/);
+  assert.match(readme, /源提交 `a73f0425f08e7f12990b5e55405583c19becc1c6`/);
+  assert.match(readme, /保留旧静态 release 作为回滚目标/);
+  assert.match(readme, /浏览器验收覆盖 1440×1000、390×844 与 320×780/);
   assert.match(readme, /npm ci.*使用现有 lockfile/);
   assert.match(readme, /工程背景案例/);
   assert.match(readme, /CommerceFlow.*Enterprise AI Ticket Copilot.*DevFlow Copilot/);
