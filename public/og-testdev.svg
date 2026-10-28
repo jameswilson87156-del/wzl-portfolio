@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10211d"/>
+      <stop offset="1" stop-color="#081410"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b3027"/>
+      <stop offset="1" stop-color="#101c18"/>
+    </linearGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0V36" fill="none" stroke="#dce9dc" stroke-opacity=".055" stroke-width="1"/>
+    </pattern>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <circle cx="1122" cy="64" r="202" fill="#57f2c4" fill-opacity=".035"/>
+  <path d="M0 510H1200" stroke="#dce9dc" stroke-opacity=".14"/>
+  <path d="M64 96H620" stroke="#d3ff50" stroke-width="2"/>
+  <circle cx="620" cy="96" r="4" fill="#d3ff50" filter="url(#glow)"/>
+
+  <text x="64" y="75" fill="#aebcaf" font-family="Arial, Microsoft YaHei, sans-serif" font-size="15" font-weight="700" letter-spacing="3">WZL / TEST DEVELOPMENT</text>
+  <text x="64" y="226" fill="#eef4df" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="92" font-weight="700" letter-spacing="-5">测试开发</text>
+  <text x="66" y="296" fill="#d3ff50" font-family="Arial, Microsoft YaHei, sans-serif" font-size="42" font-weight="700" letter-spacing="-1">AI Agent 评测</text>
+  <text x="66" y="354" fill="#aebcaf" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="21" letter-spacing="1">用自动化、逐条断言与 Trace 解释系统行为</text>
+
+  <g transform="translate(66 420)">
+    <rect width="118" height="35" fill="#d3ff50"/>
+    <text x="59" y="23" fill="#10211d" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="800" letter-spacing="1.5">PYTEST</text>
+    <rect x="132" width="153" height="35" fill="#eef4df" fill-opacity=".08" stroke="#eef4df" stroke-opacity=".22"/>
+    <text x="208" y="23" fill="#eef4df" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1">PLAYWRIGHT</text>
+    <rect x="299" width="96" height="35" fill="#eef4df" fill-opacity=".08" stroke="#eef4df" stroke-opacity=".22"/>
+    <text x="347" y="23" fill="#eef4df" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1">TRACE</text>
+    <rect x="409" width="130" height="35" fill="#eef4df" fill-opacity=".08" stroke="#eef4df" stroke-opacity=".22"/>
+    <text x="474" y="23" fill="#eef4df" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1">GITHUB CI</text>
+  </g>
+
+  <g transform="translate(688 132)">
+    <rect width="446" height="356" rx="4" fill="url(#panel)" stroke="#dce9dc" stroke-opacity=".2"/>
+    <path d="M0 54H446" stroke="#dce9dc" stroke-opacity=".16"/>
+    <text x="24" y="33" fill="#aebcaf" font-family="Consolas, monospace" font-size="11" font-weight="700" letter-spacing="2">MOCK EVALUATION / RUN EVIDENCE</text>
+    <rect x="350" y="16" width="72" height="23" fill="#a886ff" fill-opacity=".2" stroke="#a886ff" stroke-opacity=".75"/>
+    <text x="386" y="32" fill="#d3ceff" text-anchor="middle" font-family="Consolas, monospace" font-size="10" font-weight="700" letter-spacing="1">MOCK</text>
+    <text x="24" y="91" fill="#eef4df" font-family="Consolas, monospace" font-size="12" font-weight="700">DATASET</text>
+    <path d="M103 86H142" stroke="#57f2c4" stroke-width="2"/>
+    <path d="m137 81 7 5-7 5" fill="none" stroke="#57f2c4" stroke-width="2"/>
+    <text x="158" y="91" fill="#eef4df" font-family="Consolas, monospace" font-size="12" font-weight="700">AGENT</text>
+    <path d="M214 86H253" stroke="#57f2c4" stroke-width="2"/>
+    <path d="m248 81 7 5-7 5" fill="none" stroke="#57f2c4" stroke-width="2"/>
+    <text x="271" y="91" fill="#eef4df" font-family="Consolas, monospace" font-size="12" font-weight="700">ASSERT</text>
+    <path d="M334 86H373" stroke="#57f2c4" stroke-width="2"/>
+    <path d="m368 81 7 5-7 5" fill="none" stroke="#57f2c4" stroke-width="2"/>
+    <text x="389" y="91" fill="#eef4df" font-family="Consolas, monospace" font-size="11" font-weight="700">TRACE</text>
+
+    <text x="24" y="143" fill="#aebcaf" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12">固定合成用例</text>
+    <text x="24" y="176" fill="#eef4df" font-family="Consolas, monospace" font-size="27" font-weight="700">26 / 26</text>
+    <text x="154" y="143" fill="#aebcaf" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12">Agent 行为通过</text>
+    <text x="154" y="176" fill="#d3ff50" font-family="Consolas, monospace" font-size="27" font-weight="700">24</text>
+    <text x="282" y="143" fill="#aebcaf" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12">保留失败</text>
+    <text x="282" y="176" fill="#ff9d87" font-family="Consolas, monospace" font-size="27" font-weight="700">02</text>
+    <path d="M24 197H422" stroke="#dce9dc" stroke-opacity=".14"/>
+
+    <rect x="24" y="218" width="398" height="45" fill="#0b1512" stroke="#ff9d87" stroke-opacity=".36"/>
+    <text x="39" y="246" fill="#cbc8ff" font-family="Consolas, monospace" font-size="11">agent-014</text>
+    <text x="148" y="246" fill="#d2cdc9" font-family="Microsoft YaHei, sans-serif" font-size="12">工具选择错误</text>
+    <text x="394" y="246" fill="#ff9d87" text-anchor="end" font-family="Consolas, monospace" font-size="11" font-weight="700">FAIL</text>
+    <rect x="24" y="275" width="398" height="45" fill="#0b1512" stroke="#ff9d87" stroke-opacity=".36"/>
+    <text x="39" y="303" fill="#cbc8ff" font-family="Consolas, monospace" font-size="11">agent-015</text>
+    <text x="148" y="303" fill="#d2cdc9" font-family="Microsoft YaHei, sans-serif" font-size="12">重复调用工具</text>
+    <text x="394" y="303" fill="#ff9d87" text-anchor="end" font-family="Consolas, monospace" font-size="11" font-weight="700">FAIL</text>
+  </g>
+
+  <text x="66" y="563" fill="#aebcaf" font-family="Arial, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" letter-spacing="2">SYSTEM QUALITY · AUTOMATION · FAILURE ATTRIBUTION</text>
+  <text x="1134" y="563" fill="#d3ff50" text-anchor="end" font-family="Consolas, monospace" font-size="12" font-weight="700" letter-spacing="2">EVIDENCE FIRST</text>
+</svg>

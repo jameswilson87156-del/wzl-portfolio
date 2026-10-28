@@ -90,7 +90,7 @@ export default function HeroProjectRail({ projects }: HeroProjectRailProps) {
         </small>
       </div>
       <span className="hero-project-note">
-        TWO FLAGSHIP CASES / ONE TOOLING CASE
+        TWO QA PROJECTS / CLICK FOR EVIDENCE
       </span>
     </nav>
   );

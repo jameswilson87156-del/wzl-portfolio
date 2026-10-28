@@ -32,18 +32,15 @@ function extractAttribute(tag, name) {
   return tag.match(new RegExp(`${name}="([^"]*)"`))?.[1] ?? "";
 }
 
-test("homepage exposes the approved internship positioning and information architecture", async () => {
+test("homepage prioritizes test-development projects and preserves evidence boundaries", async () => {
   const response = await render("/");
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
 
-  assert.match(html, /Java 后端开发/);
-  assert.match(html, /AI 应用开发/);
+  assert.match(html, /测试开发实习方向/);
+  assert.match(html, /AI Agent 评测/);
   assert.match(html, /王震龙 · 软件工程本科 · 2027 届/);
-  assert.match(html, /Java Backend/);
-  assert.match(html, /AI Application/);
-  assert.match(html, /AI Tooling &amp; Agent/);
   assert.match(html, /class="hero-direction-tags hero-capability-rail"/);
   assert.match(html, /aria-label="求职方向与项目入口"/);
   assert.equal(
@@ -51,31 +48,59 @@ test("homepage exposes the approved internship positioning and information archi
     3,
   );
   for (const href of [
-    "#project-commerceflow",
-    "#project-ticket",
-    "#project-devflow",
+    "#project-gitea-quality-lab",
+    "#project-promptops",
+    "#engineering-background",
   ]) {
     assert.match(html, new RegExp(`class="hero-capability[^"]*" href="${href}"`));
   }
   assert.match(html, /<nav[^>]*class="hero-project-index[^>]*aria-label="重点项目"/);
   assert.equal((html.match(/class="hero-project-link"/g) ?? []).length, 2);
-  assert.match(html, /业务闭环 · 接口与数据一致性/);
-  assert.match(html, /Python 3\.12 · FastAPI · Retrieval V2/);
-  assert.match(html, /Provider 路由 · Trace 回放/);
-  assert.match(html, /Java 后端 · Python \/ FastAPI · AI 应用与 Agent 工作流/);
-  assert.match(html, /Python 3\.12 \/ FastAPI 实践 Retrieval V2/);
+  assert.match(html, /API → BROWSER → SQLITE/);
+  assert.match(html, /DATASET → MOCK → TRACE/);
+  assert.match(html, /TWO QA PROJECTS \/ CLICK FOR EVIDENCE/);
+  assert.match(html, /CASE → ASSERTION → TRACE/);
+  assert.match(html, /执行状态与被测行为结果分开呈现/);
+  assert.match(html, /id="project-gitea-quality-lab"/);
+  assert.match(html, /id="project-promptops"/);
+  assert.match(html, /24 \/ 24/);
+  assert.match(html, /16 \/ 16/);
+  assert.match(html, /26 \/ 26/);
+  assert.match(html, /24 \/ 26/);
+  assert.match(html, /agent-014/);
+  assert.match(html, /agent-015/);
+  assert.match(html, /活跃 VU 峰值为 1/);
+  assert.match(html, /Mock \/ 规则评测，无真实模型准确率/);
+  assert.match(html, /不代表发现了 40 个 Gitea 产品缺陷/);
+  assert.match(
+    html,
+    /href="https:\/\/github\.com\/jameswilson87156-del\/gitea-quality-lab\/actions\/runs\/40710451708"/,
+  );
+  assert.match(
+    html,
+    /href="https:\/\/github\.com\/jameswilson87156-del\/ai-agent-eval-promptops\/actions\/runs\/40724124012"/,
+  );
+  assert.ok(
+    html.indexOf("Gitea Quality Lab") < html.indexOf("PROJECT 02 · AI AGENT EVALUATION"),
+    "Gitea should be the first test-development project",
+  );
+  assert.ok(
+    html.indexOf("PROJECT 02 · AI AGENT EVALUATION") < html.indexOf("ENGINEERING BACKGROUND · VERIFIED"),
+    "test-development projects should appear before engineering-background cases",
+  );
   assert.match(html, /Java 后端核心/);
   assert.match(html, /ABOUT &amp; STACK/);
-  assert.match(html, /以 Java 后端为核心/);
+  assert.match(html, /主要寻找测试开发实习/);
   assert.match(html, /南京玻璃纤维研究设计院有限公司江宁分公司/);
   assert.match(html, /2026\.07–2026\.09[\s\S]*Spring Boot 3[\s\S]*MyBatis\/MyBatis-Plus/);
+  assert.match(html, /REST API、CRUD、分页与关联查询/);
+  assert.match(html, /Java 后端实践帮助我理解业务状态/);
   assert.match(html, /2027 届[\s\S]*一周内可到岗[\s\S]*每周可实习 6 天/);
   assert.match(html, /可连续实习 6 个月[\s\S]*接受异地实习/);
-  assert.match(html, /FRONTEND &amp; FULL-STACK DELIVERY/);
-  assert.match(html, /AI APPLICATION, TOOLING &amp; AGENT/);
-  assert.match(html, /Agent 仅指应用工作流与证据聚合/);
-  assert.match(html, /两个业务主案例，一个 AI 工作流案例。/);
-  assert.match(html, /TWO FLAGSHIP CASES \/ ONE TOOLING CASE/);
+  assert.match(html, /TEST AUTOMATION &amp; SYSTEM QA/);
+  assert.match(html, /AGENT EVALUATION &amp; QUALITY SIGNALS/);
+  assert.match(html, /PromptOps 使用确定性 Mock Agent/);
+  assert.match(html, /核心求职方向已转为测试开发/);
   assert.equal((html.match(/class="project-contribution"/g) ?? []).length, 3);
   assert.match(html, /业务正确性边界、幂等与库存回放，以及 MySQL 证据链。/);
   assert.match(html, /检索、引用、人工复核边界、synthetic evaluation，以及 Retrieval V2、Python AI sidecar API \/ observability \/ load-test 的分版本验收。/);
@@ -84,10 +109,10 @@ test("homepage exposes the approved internship positioning and information archi
   assert.match(html, /FULL EVIDENCE LEDGER/);
   assert.match(html, /50 REQUESTS · LOCAL REPLAY/);
   assert.match(html, /TOP-K · SYNTHETIC EVAL/);
-  assert.match(html, /Portfolio HTTPS/);
-  assert.doesNotMatch(html, /HTTPS Deployment/);
+  assert.match(html, /TEST DESIGN · AUTOMATION · FAILURE EVIDENCE/);
+  assert.match(html, /可核验的运行证据/);
   assert.doesNotMatch(html, /查看最强项目/);
-  assert.match(html, /查看工程项目/);
+  assert.match(html, /查看测试开发项目/);
   assert.match(html, /href="#projects"/);
   assert.match(html, />GitHub<\/span>/);
   assert.match(html, /2027 GRAD · OPEN TO INTERNSHIP/);
@@ -114,13 +139,14 @@ test("homepage exposes the approved internship positioning and information archi
   assert.match(html, /href="\/favicon\.ico"/);
   assert.match(
     html,
-    /寻求[\s\S]*Java 后端[\s\S]*AI 应用开发[\s\S]*实习机会。/,
+    /寻求[\s\S]*测试开发[\s\S]*AI 测试 \/ Agent 评测[\s\S]*实习机会。/,
   );
-  assert.match(html, /Java \+ Vue 全栈可作为工程交付补充方向。/);
-  assert.match(html, /王震龙｜Java 后端与 AI 应用开发作品集/);
+  assert.match(html, /Java 后端实践作为理解被测系统的工程背景/);
+  assert.match(html, /王震龙｜测试开发 · AI Agent 评测作品集/);
+  assert.match(html, /og:image" content="https:\/\/wzl8\.top\/og-testdev\.jpg"/);
   assert.match(
     html,
-    /王震龙的软件工程作品集，展示以 Java 后端为核心的 Spring Boot 3、Vue 3 全栈项目/,
+    /王震龙，2027 届软件工程本科生，测试开发实习方向。展示 API 与 Web 自动化/,
   );
   assert.doesNotMatch(html, /简历下载|求职城市|头像|QQ|添加我为朋友/);
 });
@@ -157,7 +183,7 @@ test("contact actions expose a truthful WeChat ID copy interaction", async () =>
   assert.doesNotMatch(source, /wechat-qr\.png|weixin:\/\//);
   assert.match(
     contact,
-    /mailto:467113957@qq\.com\?subject=%E5%85%B3%E4%BA%8E%20Java%20%E5%90%8E%E7%AB%AF%20%2F%20AI%20%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%9A%84%E6%B2%9F%E9%80%9A/,
+    /mailto:467113957@qq\.com\?subject=%E5%85%B3%E4%BA%8E%20%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%9A%84%E6%B2%9F%E9%80%9A/,
   );
   assert.match(contact, /复制邮箱/);
   assert.match(
@@ -480,9 +506,11 @@ test("Phase 1F.4A exposes one truthful public identity contract", async () => {
       html,
       new RegExp(`<meta property="og:url" content="${canonical.replaceAll("/", "\\/")}"`),
     );
+    const expectedImage =
+      pathname === "/" ? "og-testdev.jpg" : "og.jpg";
     assert.match(
       html,
-      /<meta property="og:image" content="https:\/\/wzl8\.top\/og\.jpg"/,
+      new RegExp(`<meta property="og:image" content="https:\\/\\/wzl8\\.top\\/${expectedImage}"`),
     );
     assert.match(html, new RegExp(`>${expectedIcp}<`));
     assert.match(html, new RegExp(`href="${expectedIcpUrl.replaceAll("/", "\\/")}"`));

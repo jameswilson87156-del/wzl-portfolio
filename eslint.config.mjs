@@ -11,6 +11,8 @@ const eslintConfig = defineConfig([
     ".next/**",
     "out/**",
     "build/**",
+    // Captured acceptance logs and screenshots are evidence, not lintable source.
+    "outputs/**",
     "next-env.d.ts",
   ]),
 ]);

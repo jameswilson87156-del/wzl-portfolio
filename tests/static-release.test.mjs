@@ -112,6 +112,7 @@ test("static release contains the complete deployable contract", async () => {
       ...responsiveImages,
       "favicon.ico",
       "og.jpg",
+      "og-testdev.jpg",
       "robots.txt",
       "sitemap.xml",
       "static-release-manifest.json",
@@ -160,7 +161,7 @@ test("static preview serves routes and RSC without Vinext or Cloudflare bindings
       assert.match(response.headers.get("content-type") ?? "", /^text\/html/i);
       assert.doesNotMatch(await response.text(), /Directory listing/i);
     }
-    for (const asset of ["/robots.txt", "/sitemap.xml", "/og.jpg", ...responsiveImages.map((value) => `/${value}`)]) {
+    for (const asset of ["/robots.txt", "/sitemap.xml", "/og.jpg", "/og-testdev.jpg", ...responsiveImages.map((value) => `/${value}`)]) {
       const response = await fetch(`${baseURL}${asset}`);
       assert.equal(response.status, 200, asset);
     }

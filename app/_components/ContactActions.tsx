@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 const EMAIL = "467113957@qq.com";
 const WECHAT_ID = "ll467113957";
 const MAILTO =
-  "mailto:467113957@qq.com?subject=%E5%85%B3%E4%BA%8E%20Java%20%E5%90%8E%E7%AB%AF%20%2F%20AI%20%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%9A%84%E6%B2%9F%E9%80%9A";
+  "mailto:467113957@qq.com?subject=%E5%85%B3%E4%BA%8E%20%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%9A%84%E6%B2%9F%E9%80%9A";
 
 function legacyCopy(value: string) {
   const textarea = document.createElement("textarea");

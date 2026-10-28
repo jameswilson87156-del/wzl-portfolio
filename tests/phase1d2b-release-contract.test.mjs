@@ -143,7 +143,8 @@ test("canonical, social metadata, robots and sitemap expose only the four public
   for (const [relative, canonical] of expected) {
     const html = read(relative);
     assert.match(html, new RegExp(`<link rel="canonical" href="${canonical.replaceAll("/", "\\/")}"`));
-    assert.match(html, /property="og:image" content="https:\/\/wzl8\.top\/og\.jpg"/);
+    const expectedImage = relative === "dist/client/index.html" ? "og-testdev.jpg" : "og.jpg";
+    assert.match(html, new RegExp(`property="og:image" content="https://wzl8\\.top/${expectedImage}"`));
     assert.equal((html.match(/rel="canonical"/g) ?? []).length, 1);
   }
   assert.equal(exists("dist/client/robots.txt"), true);
@@ -156,13 +157,13 @@ test("canonical, social metadata, robots and sitemap expose only the four public
 
 test("framework versions and production dependency surface remain frozen", () => {
   const pkg = json("package.json");
-  assert.equal(pkg.dependencies.next, "16.2.12");
-  assert.equal(pkg.devDependencies["eslint-config-next"], "16.2.12");
+  assert.equal(pkg.dependencies.next, "16.4.3");
+  assert.equal(pkg.devDependencies["eslint-config-next"], "16.4.3");
   assert.equal(pkg.devDependencies.vinext, "0.0.50");
   assert.equal(pkg.dependencies.react, "19.2.8");
   assert.equal(pkg.dependencies["react-dom"], "19.2.8");
   assert.equal(pkg.devDependencies["react-server-dom-webpack"], "19.2.8");
-  assert.equal(pkg.devDependencies.vite, "8.0.16");
+  assert.equal(pkg.devDependencies.vite, "8.3.5");
   assert.equal(Object.keys(pkg.dependencies).length, 3);
   assert.equal(Object.values({ ...pkg.dependencies, ...pkg.devDependencies }).some((value) => /motion|anime|gsap/i.test(value)), false);
 });

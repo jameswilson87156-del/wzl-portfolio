@@ -1,39 +1,27 @@
-# 王震龙工程作品集
+# 王震龙 · 测试开发作品集
 
-面向 **Java 后端与 AI 应用开发** 实习方向的证据优先工程作品集。
+面向 **测试开发实习**，兼顾 AI 测试与 Agent 评测。页面优先展示可重复执行的测试、逐条结果、失败样本与公开 CI 证据。
 
-**主定位：Java 后端开发 × AI 应用开发**
+**求职方向：测试开发 / AI 测试 / Agent 评测。** Java 后端开发是既有工程背景，不替代测试开发岗位经历。
 
-项目以 Java 后端能力为核心，使用 Spring Boot 3、MySQL、Redis 与 Vue 3 完成前后端交付，同时展示 AI 工具、检索工作流、Provider Router、PromptOps、Human Review、Trace 与失败降级等应用工程实践。
+## 测试开发主项目
 
-AI 工具和 Agent 仅指应用工作流与证据聚合，不声称模型训练、算法研究或复杂自治多 Agent Runtime。
+1. **Gitea Quality Lab**：在隔离 Docker Compose 中测试 Gitea 28.2 / SQLite；GitHub Actions 运行记录显示 24 个测试框架单元测试和 16 个 API/UI/持久化集成用例通过。测试通过不表示发现了同等数量的产品缺陷。
+2. **PromptOps Studio**：26 条固定合成用例驱动确定性 Mock Agent；每轮 26 条均执行，Agent 行为断言 24 通过、2 失败（`agent-014` 工具误选、`agent-015` 重复调用）。它不是实际模型质量分数。
 
-## 项目
+PromptOps 的本地 30 分钟 Soak 完成 60/60 轮；本地 k6 完成 8,103 个订单/退款工作流，活跃 VU 峰值为 1。这些是隔离本地演练，不代表大并发容量或生产系统验证。
 
-项目顺序与网站一致：
+## 工程背景案例
 
-1. **CommerceFlow AI Mall**
-   - Java 业务系统，覆盖商品、订单与库存。
-   - 重点展示幂等、库存竞争、数据一致性与异常回滚。
-   - Vue 3 前端与 Java 后端完成全栈交付。
+CommerceFlow、Enterprise AI Ticket Copilot 和 DevFlow Copilot 保留为后端、业务状态、接口契约和 AI 工作流的工程背景案例。其原有指标继续使用各自的合成/本地范围说明。
 
-2. **Enterprise AI Ticket Copilot**
-   - API 默认保留 Keyword Retrieval，同时提供 dependency-free Retrieval V2 评测模式。
-   - 在同一组 16 条 synthetic 工单评测上，Citation Precision 由 81.11% 提升至 97.78%，failed cases 由 6 降至 1；Top-K Hit 与 Recall@3 保持不变。
-   - 展示 Citation、Human Review、Trace 与 synthetic evaluation evidence。
-   - 不声称已经实现 BM25、Embedding、Vector DB、Hybrid Retrieval 或外部 reranker。
-
-3. **DevFlow Copilot**
-   - 展示 Provider Router、PromptOps、Tool Call 与 Run Evidence。
-   - Agent Run 指应用工作流中的证据聚合，不代表复杂多 Agent Runtime。
-
-项目页面中的数字、CI、源代码、截图和边界说明以公开证据为准；不声称虚假用户、虚假性能、生产级 AI 模型质量或未验证的外部效果。
+个人项目不写成任职经历，也不声称生产容量、企业生产监控、真实模型准确率或团队内缺陷闭环成果。
 
 ## 正式网站与部署架构
 
 正式网站：https://wzl8.top
 
-当前已验证的正式公网访问链路：
+公开域名与既有静态发布链路：
 
 ~~~
 npm run build
@@ -46,9 +34,9 @@ npm run build
 
 已确认：
 
-- 正式域名可访问。
-- HTTPS 正常。
-- Nginx 静态托管正常。
+- `wzl8.top` 当前线上仍是旧版 Java 后端 / AI 应用定位。
+- 测试开发改版正在 `feat/testdev-live-site` 分支进行本地验收；本分支尚未部署到线上。
+- 既有静态站由 Nginx 托管。线上发布需通过服务器授权流程，当前仓库仅保存静态发布布局草案，没有部署密钥或可执行的生产上传命令。
 - ICP：豫ICP备2026032125号-1。
 - GitHub 公共仓库：https://github.com/jameswilson87156-del/wzl-portfolio
 
@@ -93,14 +81,14 @@ npm run verify:static
 
 ## 验证状态
 
-- npx tsc --noEmit：PASS。
-- npm run lint：PASS，0 errors。
-- npm test：30/30 PASS。
-- npm run build：PASS。
-- git diff --check：PASS。
-- ImageViewer True 1:1：已验证原图 1920×1200、100% 实际尺寸与滚动位置重置。
-- 移动端 320px 与 390px：无页面级横向溢出。
-- canonical、sitemap、robots 与 ICP 页脚：已纳入静态验收。
+- `npm ci` 使用现有 lockfile 安装。
+- 本分支 `npm test` 已完成：静态生产构建与 30 条契约测试通过；`npx tsc --noEmit` 通过。
+- `npm run lint` 退出码为 0，0 errors、1 warning；该 warning 来自保留自适应 `srcSet` 的静态项目截图 `<img>`。
+- `npm audit --omit=dev` 报告 0 个漏洞。完整开发依赖审计仍有 4 个由 Vinext 0.0.50 引入的问题（2 high、2 moderate）；修复版本需要跨主版本迁移 Vinext 与 RSC/React 依赖，尚未升级。
+- 本地 Chrome 浏览器验收覆盖 1440px、390px、320px 与 DevFlow 案例页；页面无横向溢出，控制台错误 0。该证据来自本地静态预览。
+- `.github/workflows/site-quality.yml` 在分支推送或面向 main 的 PR 上执行 lint、类型检查、生产依赖审计和静态构建/契约测试。
+- 测试开发改版已通过本地验收；`wzl8.top` 与 GitHub 账户 Website 当前指向的 Vercel 站点仍是旧版定位，源码尚未部署到公网。
+- canonical、sitemap、robots 与 ICP 页脚由现有静态验收覆盖。
 
 Lighthouse 数据如被引用，仅代表既有本地测试结果，不等于当前公网实时结果。
 
