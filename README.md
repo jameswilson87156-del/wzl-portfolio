@@ -19,9 +19,13 @@ CommerceFlow、Enterprise AI Ticket Copilot 和 DevFlow Copilot 保留为后端�
 
 ## 正式网站与部署架构
 
-正式网站：https://wzl8.top
+当前公开测试开发作品集：https://ai-agent-portfolio-hub.vercel.app/
 
-公开域名与既有静态发布链路：
+自有域名 [wzl8.top](https://wzl8.top/) 目前仍显示旧版 Java 后端 / AI 应用定位。它是独立的 Nginx 部署入口；本仓库的测试开发静态版还没有部署到该域名。
+
+当前 Vercel 站点由 `jameswilson87156-del/ai-agent-portfolio-hub` 仓库发布。本仓库保存的是可独立验证的静态站点源码和发布流程，不代表已更新 `wzl8.top`。
+
+`wzl8.top` 测试开发版的目标发布链路（尚未执行）：
 
 ~~~
 npm run build
@@ -35,8 +39,8 @@ npm run build
 已确认：
 
 - `wzl8.top` 当前线上仍是旧版 Java 后端 / AI 应用定位。
-- 测试开发改版已在 `feat/testdev-live-site` 分支通过本地与 GitHub Actions 验收；PR #1 待审查，尚未部署到线上。
-- 既有静态站由 Nginx 托管。线上发布需通过服务器授权流程，当前仓库仅保存静态发布布局草案，没有部署密钥或可执行的生产上传命令。
+- 测试开发改版已通过 PR [#1](https://github.com/jameswilson87156-del/wzl-portfolio/pull/1) 合入 `main`，合并提交为 `c4826a2`；合并后的 GitHub Actions run [40746739201](https://github.com/jameswilson87156-del/wzl-portfolio/actions/runs/40746739201) 成功。该结果验证仓库源码与静态构建，不表示 `wzl8.top` 已更新。
+- 既有 `wzl8.top` 静态站由 Nginx 托管。仓库不保存服务器密钥、主机映射或生产上传脚本；域名发布需先核实当前主机目标、记录回滚版本、验证新 release，并按部署清单回归。
 - ICP：豫ICP备2026032125号-1。
 - GitHub 公共仓库：https://github.com/jameswilson87156-del/wzl-portfolio
 
@@ -87,7 +91,7 @@ npm run verify:static
 - `npm audit --omit=dev` 报告 0 个漏洞。完整开发依赖审计仍有 4 个由 Vinext 0.0.50 引入的问题（2 high、2 moderate）；修复版本需要跨主版本迁移 Vinext 与 RSC/React 依赖，尚未升级。
 - 本地 Chrome 浏览器验收覆盖 1440px、390px、320px 与 DevFlow 案例页；页面无横向溢出，控制台错误 0。该证据来自本地静态预览。
 - `.github/workflows/site-quality.yml` 在分支推送或面向 main 的 PR 上执行 lint、类型检查、生产依赖审计和静态构建/契约测试。
-- 测试开发改版已通过本地验收和 GitHub Actions run [40735313728](https://github.com/jameswilson87156-del/wzl-portfolio/actions/runs/40735313728)；PR #1 待审查。`wzl8.top` 与 GitHub 账户 Website 当前指向的 Vercel 站点仍是旧版定位，源码尚未部署到公网。
+- 测试开发改版已通过 PR [#1](https://github.com/jameswilson87156-del/wzl-portfolio/pull/1) 合入 `main`，合并后的 Actions run [40746739201](https://github.com/jameswilson87156-del/wzl-portfolio/actions/runs/40746739201) 成功；该仓库没有自动部署配置。GitHub 账户 Website 当前指向已更新的 Vercel 作品集；`wzl8.top` 仍需独立发布。
 - canonical、sitemap、robots 与 ICP 页脚由现有静态验收覆盖。
 
 Lighthouse 数据如被引用，仅代表既有本地测试结果，不等于当前公网实时结果。
