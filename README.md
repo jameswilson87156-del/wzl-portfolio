@@ -35,7 +35,7 @@ npm run build
 已确认：
 
 - `wzl8.top` 当前线上仍是旧版 Java 后端 / AI 应用定位。
-- 测试开发改版正在 `feat/testdev-live-site` 分支进行本地验收；本分支尚未部署到线上。
+- 测试开发改版已在 `feat/testdev-live-site` 分支通过本地与 GitHub Actions 验收；PR #1 待审查，尚未部署到线上。
 - 既有静态站由 Nginx 托管。线上发布需通过服务器授权流程，当前仓库仅保存静态发布布局草案，没有部署密钥或可执行的生产上传命令。
 - ICP：豫ICP备2026032125号-1。
 - GitHub 公共仓库：https://github.com/jameswilson87156-del/wzl-portfolio
@@ -87,7 +87,7 @@ npm run verify:static
 - `npm audit --omit=dev` 报告 0 个漏洞。完整开发依赖审计仍有 4 个由 Vinext 0.0.50 引入的问题（2 high、2 moderate）；修复版本需要跨主版本迁移 Vinext 与 RSC/React 依赖，尚未升级。
 - 本地 Chrome 浏览器验收覆盖 1440px、390px、320px 与 DevFlow 案例页；页面无横向溢出，控制台错误 0。该证据来自本地静态预览。
 - `.github/workflows/site-quality.yml` 在分支推送或面向 main 的 PR 上执行 lint、类型检查、生产依赖审计和静态构建/契约测试。
-- 测试开发改版已通过本地验收；`wzl8.top` 与 GitHub 账户 Website 当前指向的 Vercel 站点仍是旧版定位，源码尚未部署到公网。
+- 测试开发改版已通过本地验收和 GitHub Actions run [40735313728](https://github.com/jameswilson87156-del/wzl-portfolio/actions/runs/40735313728)；PR #1 待审查。`wzl8.top` 与 GitHub 账户 Website 当前指向的 Vercel 站点仍是旧版定位，源码尚未部署到公网。
 - canonical、sitemap、robots 与 ICP 页脚由现有静态验收覆盖。
 
 Lighthouse 数据如被引用，仅代表既有本地测试结果，不等于当前公网实时结果。

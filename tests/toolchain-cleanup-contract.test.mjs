@@ -93,7 +93,7 @@ test("static export, routes, assets and README retain the release boundary", () 
   assert.match(readme, /工程背景案例/);
   assert.match(readme, /CommerceFlow.*Enterprise AI Ticket Copilot.*DevFlow Copilot/);
   assert.match(readme, /确定性 Mock Agent/);
-  assert.match(readme, /测试开发改版正在 `feat\/testdev-live-site` 分支进行本地验收/);
+  assert.match(readme, /测试开发改版已在 `feat\/testdev-live-site` 分支通过本地与 GitHub Actions 验收/);
   assert.match(readme, /活跃 VU 峰值为 1/);
   assert.doesNotMatch(readme, /Enterprise Ticket RAG Copilot/);
   assert.doesNotMatch(readme, /DNS is not configured/);
