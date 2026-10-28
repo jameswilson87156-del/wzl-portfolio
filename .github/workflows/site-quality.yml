@@ -1,0 +1,41 @@
+name: Site quality
+
+on:
+  push:
+    branches:
+      - main
+      - feat/testdev-live-site
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npx tsc --noEmit
+
+      - name: Audit production dependencies
+        run: npm audit --omit=dev
+
+      - name: Build and run static release checks
+        run: npm test

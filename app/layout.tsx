@@ -6,7 +6,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.origin),
   title: {
-    default: "王震龙｜Java 后端与 AI 应用开发作品集",
+    default: "王震龙｜测试开发 · AI Agent 评测作品集",
     template: "%s · 王震龙",
   },
 };

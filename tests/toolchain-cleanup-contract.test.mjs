@@ -40,8 +40,8 @@ test("STATIC_NGINX package contract excludes retired targets and templates", () 
 
 test("security-compatible framework versions remain coordinated", () => {
   const pkg = json("package.json");
-  assert.equal(pkg.dependencies.next, "16.2.12");
-  assert.equal(pkg.devDependencies["eslint-config-next"], "16.2.12");
+  assert.equal(pkg.dependencies.next, "16.4.3");
+  assert.equal(pkg.devDependencies["eslint-config-next"], "16.4.3");
   assert.equal(pkg.devDependencies.vinext, "0.0.50");
   assert.equal(pkg.dependencies.react, "19.2.8");
   assert.equal(pkg.dependencies["react-dom"], pkg.dependencies.react);
@@ -49,7 +49,7 @@ test("security-compatible framework versions remain coordinated", () => {
     pkg.devDependencies["react-server-dom-webpack"],
     pkg.dependencies.react,
   );
-  assert.equal(pkg.devDependencies.vite, "8.0.16");
+  assert.equal(pkg.devDependencies.vite, "8.3.5");
   assert.doesNotMatch(pkg.devDependencies.vite, /beta|alpha|canary|rc/i);
   assert.equal(pkg.devDependencies["@vitejs/plugin-rsc"], "0.5.26");
   assert.equal(pkg.devDependencies["@vitejs/plugin-react"], "6.0.2");
@@ -73,25 +73,28 @@ test("static export, routes, assets and README retain the release boundary", () 
     "public/favicon.ico",
     "public/favicon.svg",
     "public/og.jpg",
+    "public/og-testdev.jpg",
+    "public/og-testdev.svg",
     "public/projects/commerceflow/ai-service.png",
     "public/projects/ticket/workbench.png",
     "public/projects/devflow/trace.png",
   ]) {
     assert.equal(exists(required), true, `${required} must remain`);
   }
-  assert.match(readme, /Java 后端/);
-  assert.match(readme, /AI 应用开发/);
+  assert.match(readme, /测试开发实习/);
+  assert.match(readme, /Gitea Quality Lab/);
+  assert.match(readme, /PromptOps Studio/);
+  assert.match(readme, /24 通过、2 失败/);
   assert.match(readme, /正式网站/);
   assert.match(readme, /https:\/\/wzl8\.top/);
-  assert.match(readme, /正式公网访问/);
-  assert.match(readme, /npm test：30\/30 PASS/);
-  assert.match(readme, /Keyword Retrieval/);
-  assert.match(readme, /Retrieval V2/);
-  assert.match(readme, /97\.78%/);
-  assert.match(
-    readme,
-    /不声称模型训练、算法研究或复杂自治多 Agent Runtime/,
-  );
+  assert.match(readme, /公开域名与既有静态发布链路/);
+  assert.match(readme, /当前线上仍是旧版 Java 后端 \/ AI 应用定位/);
+  assert.match(readme, /npm ci.*使用现有 lockfile/);
+  assert.match(readme, /工程背景案例/);
+  assert.match(readme, /CommerceFlow.*Enterprise AI Ticket Copilot.*DevFlow Copilot/);
+  assert.match(readme, /确定性 Mock Agent/);
+  assert.match(readme, /测试开发改版已在 `feat\/testdev-live-site` 分支通过本地与 GitHub Actions 验收/);
+  assert.match(readme, /活跃 VU 峰值为 1/);
   assert.doesNotMatch(readme, /Enterprise Ticket RAG Copilot/);
   assert.doesNotMatch(readme, /DNS is not configured/);
   assert.doesNotMatch(readme, /SSL has not been requested/);

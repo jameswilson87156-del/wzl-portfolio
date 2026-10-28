@@ -16,105 +16,99 @@ import ScreenshotFrame from "./projects/_components/ScreenshotFrame";
 
 const techStackGroups = [
   {
-    label: "JAVA BACKEND CORE",
-    title: "Java 后端核心",
+    label: "TEST AUTOMATION & SYSTEM QA",
+    title: "测试自动化与系统质量",
     items: [
-      "Java 17",
-      "Spring Boot 3",
-      "Spring MVC",
-      "MyBatis / MyBatis-Plus",
-      "MySQL",
-      "Redis",
-      "REST API",
-      "Maven",
-      "JUnit / MockMvc",
+      "Python 3.12",
+      "pytest",
+      "HTTPX",
+      "Playwright / Chromium",
+      "Java / JUnit / MockMvc",
+      "API / HTTP testing",
+      "权限 / 状态 / 幂等",
+      "JSON / HTML reports",
+      "GitHub Actions",
     ],
   },
   {
-    label: "FRONTEND & FULL-STACK DELIVERY",
-    title: "前端与全栈交付",
+    label: "AGENT EVALUATION & QUALITY SIGNALS",
+    title: "Agent 评测与质量信号",
     items: [
-      "Vue 3",
-      "TypeScript",
-      "Axios",
-      "Element Plus",
-      "前后端联调",
-      "Git",
-      "Linux",
-      "Docker",
-      "Nginx",
-      "Portfolio HTTPS",
+      "26-case synthetic dataset",
+      "Deterministic Mock Agent",
+      "Tool choice / arguments",
+      "Trace / failure attribution",
+      "Run history / JSON report",
+      "Regression comparison",
+      "Micrometer / Prometheus",
+      "Alertmanager local drill",
     ],
   },
   {
-    label: "AI APPLICATION, TOOLING & AGENT",
-    title: "AI 应用、工具与 Agent",
+    label: "SYSTEMS UNDER TEST",
+    title: "理解被测系统",
     items: [
-      "Python 3.12 / FastAPI",
-      "Pydantic / pytest",
-      "Provider Router",
-      "Retrieval Workflow",
-      "RAG Evaluation",
-      "Observability / Load Testing",
-      "PromptOps",
-      "Tool Calling",
-      "Human Review",
-      "Trace",
-      "Fallback Handling",
-      "Agent Workflow",
+      "Java 17 / Spring Boot",
+      "MySQL / Redis",
+      "Vue 3 / TypeScript",
+      "Docker Compose",
+      "SQLite / H2 fixtures",
+      "k6 local load test",
+      "REST / state machine",
+      "Git / Linux",
     ],
   },
 ] as const;
 
 const heroProjectRail = [
   {
-    slug: "commerceflow",
+    slug: "gitea-quality-lab",
     no: "01",
-    shortTitle: "CommerceFlow",
-    type: "JAVA BACKEND",
-    trace: "REQUEST → VERIFY → COMMIT",
-    cue: "订单事实 / 一致性",
+    shortTitle: "Gitea Quality Lab",
+    type: "OPEN-SOURCE SYSTEM QA",
+    trace: "API → BROWSER → SQLITE",
+    cue: "24 unit + 16 integration checks",
   },
   {
-    slug: "ticket",
+    slug: "promptops",
     no: "02",
-    shortTitle: "Ticket Copilot",
-    type: "AI APPLICATION + PYTHON",
-    trace: "RETRIEVE → EVAL → OBSERVE → REVIEW",
-    cue: "FastAPI / 检索评测 / 压测证据",
+    shortTitle: "PromptOps Studio",
+    type: "AI AGENT EVALUATION",
+    trace: "DATASET → MOCK → TRACE",
+    cue: "26 cases · 2 retained failures",
   },
 ] as const;
 
 export const metadata: Metadata = {
   title: {
-    absolute: "王震龙｜Java 后端与 AI 应用开发作品集",
+    absolute: "王震龙｜测试开发 · AI Agent 评测作品集",
   },
   description:
-    "王震龙的软件工程作品集，展示以 Java 后端为核心的 Spring Boot 3、Vue 3 全栈项目，以及 AI 应用、AI 工具和 Agent 工作流工程实践。",
+    "王震龙，2027 届软件工程本科生，测试开发实习方向。展示 API 与 Web 自动化、AI Agent 确定性评测、失败定位及可核验的运行证据。",
   alternates: {
     canonical: siteUrl("/"),
   },
   openGraph: {
-    title: "王震龙｜Java 后端与 AI 应用开发作品集",
+    title: "王震龙｜测试开发 · AI Agent 评测作品集",
     description:
-      "王震龙的软件工程作品集，展示以 Java 后端为核心的 Spring Boot 3、Vue 3 全栈项目，以及 AI 应用、AI 工具和 Agent 工作流工程实践。",
+      "测试开发实习方向：API 与 Web 自动化、AI Agent 确定性评测、失败定位及可核验的运行证据。",
     url: siteUrl("/"),
     type: "website",
     images: [
       {
-        url: siteUrl("/og.jpg"),
+        url: siteUrl("/og-testdev.jpg"),
         width: 1200,
         height: 630,
-        alt: "王震龙 Java 后端与 AI 应用开发作品集",
+        alt: "王震龙测试开发与 AI Agent 评测作品集",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "王震龙｜Java 后端与 AI 应用开发作品集",
+    title: "王震龙｜测试开发 · AI Agent 评测作品集",
     description:
-      "王震龙的软件工程作品集，展示以 Java 后端为核心的 Spring Boot 3、Vue 3 全栈项目，以及 AI 应用、AI 工具和 Agent 工作流工程实践。",
-    images: [siteUrl("/og.jpg")],
+      "测试开发实习方向：API 与 Web 自动化、AI Agent 确定性评测、失败定位及可核验的运行证据。",
+    images: [siteUrl("/og-testdev.jpg")],
   },
 };
 
@@ -259,50 +253,50 @@ export default function Home() {
           </div>
           <p className="hero-kicker hero-identity">王震龙 · 软件工程本科 · 2027 届</p>
           <h1 className="hero-title" data-hero-title="true">
-            <span className="hero-title-mask"><span>Java 后端开发</span></span>
+            <span className="hero-title-mask"><span>测试开发实习方向</span></span>
             <span className="hero-title-mask"><span><em>×</em></span></span>
-            <span className="hero-title-mask"><span>AI 应用开发</span></span>
+            <span className="hero-title-mask"><span>AI Agent 评测</span></span>
           </h1>
           <nav
             className="hero-direction-tags hero-capability-rail"
             aria-label="求职方向与项目入口"
           >
             <a
-              className="hero-capability hero-capability--java"
-              href="#project-commerceflow"
-              aria-label="Java Backend：查看 CommerceFlow 项目"
+              className="hero-capability hero-capability--qa"
+              href="#project-gitea-quality-lab"
+              aria-label="System QA：查看 Gitea Quality Lab 项目"
             >
               <span className="hero-capability-index">01</span>
               <div className="hero-capability-copy">
-                <span className="hero-capability-label">JAVA BACKEND</span>
-                <strong>Java Backend</strong>
-                <small>业务闭环 · 接口与数据一致性</small>
+                <span className="hero-capability-label">SYSTEM QA</span>
+                <strong>API + Web 自动化</strong>
+                <small>接口 · 权限 · 浏览器 · 持久化</small>
               </div>
               <i aria-hidden="true">↗</i>
             </a>
             <a
               className="hero-capability hero-capability--ai"
-              href="#project-ticket"
-              aria-label="AI Application：查看 Ticket Copilot 项目"
+              href="#project-promptops"
+              aria-label="Agent Evaluation：查看 PromptOps Studio 项目"
             >
               <span className="hero-capability-index">02</span>
               <div className="hero-capability-copy">
-                <span className="hero-capability-label">AI APPLICATION</span>
-                <strong>AI Application</strong>
-                <small>Python 3.12 · FastAPI · Retrieval V2</small>
+                <span className="hero-capability-label">AGENT EVALUATION</span>
+                <strong>确定性评测</strong>
+                <small>固定用例 · Trace · 失败归因</small>
               </div>
               <i aria-hidden="true">↗</i>
             </a>
             <a
-              className="hero-capability hero-capability--agent"
-              href="#project-devflow"
-              aria-label="AI Tooling and Agent：查看 DevFlow 项目"
+              className="hero-capability hero-capability--system"
+              href="#engineering-background"
+              aria-label="System Foundations：查看后端和 AI 工程背景"
             >
               <span className="hero-capability-index">03</span>
               <div className="hero-capability-copy">
-                <span className="hero-capability-label">AI TOOLING</span>
-                <strong>AI Tooling &amp; Agent</strong>
-                <small>Provider 路由 · Trace 回放</small>
+                <span className="hero-capability-label">SYSTEM FOUNDATIONS</span>
+                <strong>理解被测服务</strong>
+                <small>Java · Spring Boot · 数据状态</small>
               </div>
               <i aria-hidden="true">↗</i>
             </a>
@@ -310,13 +304,13 @@ export default function Home() {
           <HeroProjectRail projects={heroProjectRail} />
           <div className="hero-bottom">
             <p>
-              以 Java 后端能力为核心，使用 Spring Boot 3 与 Vue 3 完成全栈交付，
+              用 Python / pytest、Java / JUnit 与浏览器自动化检查系统行为，
               <br className="hero-break" />
-              并以 Python 3.12 / FastAPI 实践 Retrieval V2、Citation、人工复核与 AI 工作流。
+              并通过运行记录、Trace、失败复现和 CI 质量门禁说明测试结论。
             </p>
             <div className="hero-actions">
               <Link className="hero-action primary" href="#projects">
-                <span>查看工程项目</span>
+                <span>查看测试开发项目</span>
                 <b aria-hidden="true">↗</b>
               </Link>
               <a
@@ -343,17 +337,123 @@ export default function Home() {
         </div>
       </section>
 
+      <section
+        className="project-section"
+        id="projects"
+        data-portfolio-scope="test-development-case-studies"
+      >
+        <div className="shell projects-head" data-reveal="section">
+          <div>
+            <p className="section-label light">/ TEST DEVELOPMENT · OPEN PROJECTS</p>
+            <h2>把测试结论做成可重放的证据。</h2>
+            <p className="projects-reading-key">
+              CASE → ASSERTION → TRACE <span>从测试对象、断言到可核验运行结果。</span>
+            </p>
+          </div>
+          <p>
+            下面是独立测试开发项目：Gitea Quality Lab 验证开源业务系统，PromptOps Studio 验证 AI Agent 行为。执行状态与被测行为结果分开呈现。
+          </p>
+        </div>
+
+        <div className="shell quality-project-grid">
+          <article
+            className="quality-project-card quality-project-card-gitea"
+            id="project-gitea-quality-lab"
+            data-project="gitea-quality-lab"
+          >
+            <div className="quality-project-top">
+              <span>PROJECT 01 · OPEN-SOURCE SYSTEM QA</span>
+              <span className="quality-status">CI VERIFIED</span>
+            </div>
+            <h3>Gitea Quality Lab</h3>
+            <p className="quality-project-summary">
+              在隔离的 Gitea 28.2 / SQLite 实例上验证 REST API、角色权限、浏览器工作流与重启持久化；将逐条结果汇总为 JSON、JUnit、HTML 和浏览器证据。
+            </p>
+            <div className="quality-evidence-panel" aria-label="GitHub Actions 中的测试结果">
+              <div className="quality-panel-heading">
+                <span>GITHUB ACTIONS · ISOLATED CI INSTANCE</span>
+                <b>RUN 40710451708</b>
+              </div>
+              <div className="quality-result-row">
+                <span>测试框架单元测试</span>
+                <strong>24 / 24</strong>
+                <em>PASS</em>
+              </div>
+              <div className="quality-result-row">
+                <span>Gitea API / UI 集成</span>
+                <strong>16 / 16</strong>
+                <em>PASS</em>
+              </div>
+              <div className="quality-result-foot">
+                <span>API · PERMISSIONS · PLAYWRIGHT · RESTART</span>
+                <span>JSON / JUNIT CONSISTENCY</span>
+              </div>
+            </div>
+            <ul className="quality-check-list">
+              <li>匿名与登录访问、身份和仓库权限边界。</li>
+              <li>浏览器创建仓库与 Issue；重启后再次读取 SQLite 数据。</li>
+              <li>检查报告 Run ID、逐条用例 ID 和 JSON / JUnit 汇总一致。</li>
+            </ul>
+            <p className="quality-project-boundary">
+              范围：隔离 Docker Compose / SQLite。40 项通过表示定义的检查通过，不代表发现了 40 个 Gitea 产品缺陷。
+            </p>
+            <div className="quality-project-links">
+              <a href="https://github.com/jameswilson87156-del/gitea-quality-lab/tree/feat/gitea-quality-lab" target="_blank" rel="noreferrer">源码与用例 ↗</a>
+              <a href="https://github.com/jameswilson87156-del/gitea-quality-lab/actions/runs/40710451708" target="_blank" rel="noreferrer">CI 运行 ↗</a>
+              <a href="https://github.com/jameswilson87156-del/gitea-quality-lab/blob/feat/gitea-quality-lab/reports/evidence.md" target="_blank" rel="noreferrer">验收证据 ↗</a>
+            </div>
+          </article>
+
+          <article
+            className="quality-project-card quality-project-card-promptops"
+            id="project-promptops"
+            data-project="promptops"
+          >
+            <div className="quality-project-top">
+              <span>PROJECT 02 · AI AGENT EVALUATION</span>
+              <span className="quality-status quality-status-mock">MOCK MODE</span>
+            </div>
+            <h3>PromptOps Studio</h3>
+            <p className="quality-project-summary">
+              用 26 条固定合成用例驱动确定性 Mock Agent，检查输出规则、工具选择与参数，并保存逐条结果、Trace、失败归因和 JSON 报告。
+            </p>
+            <div className="quality-evaluation-grid" aria-label="PromptOps 最近一次 Mock 评测结果">
+              <div><span>用例执行</span><strong>26 / 26</strong><small>EXECUTED</small></div>
+              <div><span>Agent 行为断言</span><strong>24 / 26</strong><small>PASS</small></div>
+              <div><span>保留失败</span><strong>2</strong><small>NOT HIDDEN</small></div>
+            </div>
+            <div className="quality-failure-panel" aria-label="两个可重复的 Agent 行为失败样本">
+              <div className="quality-panel-heading">
+                <span>DETERMINISTIC FAILURE SAMPLES</span>
+                <b>RUN ID · PER EXECUTION</b>
+              </div>
+              <div className="quality-failure-row"><code>agent-014</code><span>工具选择错误</span><strong>FAIL</strong></div>
+              <div className="quality-failure-row"><code>agent-015</code><span>重复调用工具</span><strong>FAIL</strong></div>
+              <div className="quality-result-foot"><span>EXECUTOR SUCCESS ≠ AGENT BEHAVIOR PASS</span></div>
+            </div>
+            <p className="quality-project-boundary">
+              仅为 Mock / 规则评测，无真实模型准确率。配套 30 分钟本地 Soak 完成 60/60 轮；k6 完成 8,103 个本地工作流，但活跃 VU 峰值为 1。
+            </p>
+            <div className="quality-project-links">
+              <a href="https://github.com/jameswilson87156-del/ai-agent-eval-promptops/tree/feat/agent-evaluation-platform" target="_blank" rel="noreferrer">源码与固定集 ↗</a>
+              <a href="https://github.com/jameswilson87156-del/ai-agent-eval-promptops/actions/runs/40724124012" target="_blank" rel="noreferrer">CI 运行 ↗</a>
+              <a href="https://github.com/jameswilson87156-del/ai-agent-eval-promptops/blob/feat/agent-evaluation-platform/docs/test-development-acceptance.md" target="_blank" rel="noreferrer">运行报告 ↗</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <section className="evidence-strip" id="evidence" data-reveal="section">
         <div className="shell evidence-grid">
           <div className="evidence-intro">
-            <p className="section-label light">/ VERIFIED EVIDENCE</p>
+            <p className="section-label light">/ ENGINEERING BACKGROUND · VERIFIED</p>
             <h2>
-              声明之后，
+              系统理解能力，
               <br />
-              紧跟证据。
+              也有证据。
             </h2>
             <p>
-              首页先给出每个项目的一条主证据；完整账本和边界说明留在案例页。
+              后端业务与 AI 应用项目作为被测系统工程背景；其证据保留原有范围，不替代测试开发项目经历。
             </p>
           </div>
           {projects.map((project) => (
@@ -406,20 +506,20 @@ export default function Home() {
       </section>
 
       <section
-        className="project-section"
-        id="projects"
-        data-portfolio-scope="static-case-studies"
+        className="project-section engineering-background"
+        id="engineering-background"
+        data-portfolio-scope="supporting-engineering-case-studies"
       >
         <div className="shell projects-head" data-reveal="section">
           <div>
-            <p className="section-label light">/ 精选项目 · STATIC CASE STUDIES</p>
-            <h2>两个业务主案例，一个 AI 工作流案例。</h2>
+            <p className="section-label light">/ SYSTEM ENGINEERING · SUPPORTING CASES</p>
+            <h2>从后端与 AI 项目理解被测系统。</h2>
             <p className="projects-reading-key">
-              PROBLEM → ROLE → PROOF <span>先看问题，再看我的贡献和可验证证据。</span>
+              SYSTEM → STATE → FAILURE <span>业务规则、接口和数据状态是测试设计的上下文。</span>
             </p>
           </div>
           <p>
-            先看 CommerceFlow 与 Ticket Copilot 两个业务主案例，再看 DevFlow AI 工具工作流。这里展示截图、源码、测试和边界，不是在线业务入口。
+            以下是此前的 Java 后端与 AI 应用工程案例，作为测试开发的系统背景补充。核心求职方向已转为测试开发；这些项目不冒充测试岗位或生产系统经验。
           </p>
         </div>
 
@@ -504,23 +604,23 @@ export default function Home() {
         <div className="positioning-heading">
           <div>
             <p className="section-label">/ ABOUT & STACK</p>
-            <h2>把后端基础，接到真实的 AI 应用场景。</h2>
+            <h2>把后端基础转成系统测试与失败定位能力。</h2>
           </div>
           <p>项目中使用的技术与当前学习方向，按交付链路分组展示。</p>
         </div>
         <div className="positioning-grid">
           <div className="positioning-copy">
             <p>
-              我是一名 2027 届软件工程本科生，以 Java 后端为核心，同时持续实践 AI 应用开发与 Java + Vue 全栈交付。
+              我是一名 2027 届软件工程本科生，主要寻找测试开发实习。我通过 API / Web 自动化、确定性评测和可重复运行来检查系统行为，并用逐条结果与失败证据解释结论。
             </p>
             <p>
               2026.07–2026.09 在南京玻璃纤维研究设计院有限公司江宁分公司研发部参与企业内网材料研发数据与文件资源管理平台开发，使用 Java 17、Spring Boot 3、MyBatis/MyBatis-Plus、MySQL 完成 REST API、CRUD、分页与关联查询，并参与文件导入预览和页面联调。
             </p>
             <p>
-              项目中以 Java、Spring Boot 3、MySQL、Redis 和 Vue 3 为主要技术栈，关注业务流程、接口设计、数据状态、异常处理、测试与部署；同时在 AI 工具与 Agent 应用项目中实践 Provider 路由、检索、Prompt、Tool Calling、Trace、人工复核与失败降级。
+              Java 后端实践帮助我理解业务状态、幂等、接口契约与数据边界。测试项目使用 Python / pytest、Java / JUnit、HTTPX、Playwright、Docker Compose、GitHub Actions、k6、Prometheus 与本地 Alertmanager 演练。
             </p>
             <p className="positioning-openness">
-              目前主要寻找 Java 后端、AI 应用、AI 工具或 Agent 应用开发方向的实习机会，同时关注 Java + Vue 全栈岗位。
+              目前主要寻找测试开发实习，也关注 AI 测试与 Agent 评测方向。个人项目数据均注明 Mock、合成数据、隔离环境和本地负载范围。
             </p>
             <div className="availability-strip" aria-label="实习条件">
               <span>2027 届</span>
@@ -540,9 +640,9 @@ export default function Home() {
                 <div className="stack-tags">
                   {group.items.map((item) => <span key={item}>{item}</span>)}
                 </div>
-                {group.label === "AI APPLICATION, TOOLING & AGENT" ? (
+                {group.label === "AGENT EVALUATION & QUALITY SIGNALS" ? (
                   <p className="stack-group-note">
-                    Agent 仅指应用工作流与证据聚合，不代表复杂自治多 Agent Runtime。
+                    PromptOps 使用确定性 Mock Agent；指标来自本地合成环境，不代表真实模型质量或生产监控。
                   </p>
                 ) : null}
               </div>
@@ -559,23 +659,23 @@ export default function Home() {
         <h2 className="sr-only">工程方法</h2>
         <div className="cap-title">
           <p className="section-label">/ ENGINEERING METHOD</p>
-          <p>Java 后端 · Python / FastAPI · AI 应用与 Agent 工作流</p>
+          <p>TEST DESIGN · AUTOMATION · FAILURE EVIDENCE</p>
         </div>
         <div className="cap-list">
           <article>
             <span>01</span>
             <h3>BUILD</h3>
-            <p>把业务约束转成可运行链路。</p>
+            <p>把业务规则拆成可重复执行的用例。</p>
           </article>
           <article>
             <span>02</span>
             <h3>VERIFY</h3>
-            <p>验证正常路径、失败路径和数据边界。</p>
+            <p>覆盖正常、异常、权限、状态与数据边界。</p>
           </article>
           <article>
             <span>03</span>
             <h3>EXPLAIN</h3>
-            <p>用源码、测试、CI 和文档说明结论。</p>
+            <p>保留 Run ID、逐条断言、Trace 与 CI 报告。</p>
           </article>
         </div>
         <p className="collaboration-disclosure">{collaborationDisclosure}</p>
@@ -593,15 +693,15 @@ export default function Home() {
             className="contact-hero-link"
             data-reveal="contact"
           >
-            <span>JAVA BACKEND × AI APPLICATIONS</span>
+            <span>TEST DEVELOPMENT × AI AGENT EVALUATION</span>
             <strong>
-              <span>寻求 <span className="contact-phrase">Java 后端</span></span>
+              <span>寻求 <span className="contact-phrase">测试开发</span></span>
               <em>
-                或 <span className="contact-phrase">AI 应用开发</span>
+                或 <span className="contact-phrase">AI 测试 / Agent 评测</span>
                 <span className="contact-phrase">实习机会。</span>
               </em>
             </strong>
-            <small className="contact-subline">Java + Vue 全栈可作为工程交付补充方向。</small>
+            <small className="contact-subline">Java 后端实践作为理解被测系统的工程背景。</small>
             <i aria-hidden="true">↗</i>
           </div>
           <ContactActions />

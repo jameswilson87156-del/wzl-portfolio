@@ -8,13 +8,13 @@ const root = process.cwd();
 const readJson = (relative) => JSON.parse(fs.readFileSync(path.join(root, relative), "utf8"));
 const sha256 = (buffer) => crypto.createHash("sha256").update(buffer).digest("hex");
 
-test("Next security patch versions stay aligned and inside the approved 16.2 line", () => {
+test("Next security patch versions stay aligned on the patched 16.4 release", () => {
   const pkg = readJson("package.json");
   const next = pkg.dependencies.next;
   const eslintNext = pkg.devDependencies["eslint-config-next"];
-  assert.equal(next, "16.2.12");
+  assert.equal(next, "16.4.3");
   assert.equal(eslintNext, next);
-  assert.match(next, /^16\.2\.(?:1[1-9]|[2-9]\d)$/);
+  assert.match(next, /^16\.4\.3$/);
   assert.equal(pkg.devDependencies.vinext, "0.0.50");
   assert.equal(pkg.dependencies.react, "19.2.8");
   assert.equal(pkg.dependencies["react-dom"], pkg.dependencies.react);
